@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/presentaion/home_screen/view/home_screen.dart';
 
-import '../../../global_widgets/searchbar/search_bar.dart';
+import '../../../global_widgets/search_bar.dart';
 import 'custom_screen_widgets/custom_widget.dart';
 
 class CustomMadeSolutionScreen extends StatefulWidget {
@@ -39,7 +40,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
       children: [
         Container(
           decoration:
-              BoxDecoration(color: colorConstant.kistlerWhite, boxShadow: [
+              BoxDecoration(color: ColorConstant.kistlerWhite, boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(.1),
               blurRadius: 10,
@@ -73,11 +74,11 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     Text(
                       "Back",
                       style: TextStyle(
-                          color: colorConstant.kistlerBrandGreen, fontSize: 16),
+                          color: ColorConstant.kistlerBrandGreen, fontSize: 16),
                     ),
                     Icon(
                       Icons.close,
-                      color: colorConstant.kistlerBrandGreen,
+                      color: ColorConstant.kistlerBrandGreen,
                       size: 20,
                     ),
                   ],
@@ -89,7 +90,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   child: Text(
                     "Custom Made Solutions",
                     style: TextStyle(
-                        color: colorConstant.kistlerTextBlack, fontSize: 16),
+                        color: ColorConstant.kistlerTextBlack, fontSize: 16),
                   ),
                 ),
                 SizedBox(
@@ -98,7 +99,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 Text(
                   "Find the solutions with us",
                   style: TextStyle(
-                      color: colorConstant.kistlerTextBlack, fontSize: 16),
+                      color: ColorConstant.kistlerTextBlack, fontSize: 16),
                 ),
                 SizedBox(height: 10),
                 TextfieldRefactor(name: "Company Name", length: 1),

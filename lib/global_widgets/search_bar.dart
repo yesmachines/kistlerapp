@@ -7,7 +7,7 @@ class SearchBarRefactor extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: colorConstant.kistlerBrandBorder)),
+          border: Border.all(color: ColorConstant.kistlerBrandBorder)),
       child: Row(
         children: [
           Expanded(
@@ -28,7 +28,7 @@ class SearchBarRefactor extends StatelessWidget {
             width: 55,
             child: Icon(
               Icons.search,
-              color: colorConstant.kistlerWhite,
+              color: ColorConstant.kistlerWhite,
             ),
           ),
         ],

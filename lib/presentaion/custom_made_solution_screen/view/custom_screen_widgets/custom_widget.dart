@@ -14,14 +14,14 @@ class TextfieldRefactor extends StatelessWidget {
         //  isDense: true,
         contentPadding: EdgeInsets.all(15),
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: colorConstant.kistlerBrandGreen),
+            borderSide: BorderSide(color: ColorConstant.kistlerBrandGreen),
             borderRadius: BorderRadius.circular(6)),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: colorConstant.kistlerBrandGreen)),
+            borderSide: BorderSide(color: ColorConstant.kistlerBrandGreen)),
         labelText: name, alignLabelWithHint: true,
-        labelStyle: TextStyle(color: colorConstant.kistlerBrandGreen),
+        labelStyle: TextStyle(color: ColorConstant.kistlerBrandGreen),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: colorConstant.kistlerBrandGreen),
+          borderSide: BorderSide(color: ColorConstant.kistlerBrandGreen),
         ),
         //  focusedBorder: OutlineInputBorder()
       ),
