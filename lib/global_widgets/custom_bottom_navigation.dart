@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
-import 'package:kistler/core/image_constant/images.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -31,22 +30,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               BottomNavItem(
-                my_image: ImageConstant.profileIcon,
+                my_icon: Icons.person,
                 isSelected: currentIndex == 0,
                 onTap: () => onTap(0),
               ),
               BottomNavItem(
-                my_image: ImageConstant.homeIcon,
+                my_icon: Icons.home,
                 isSelected: currentIndex == 1,
                 onTap: () => onTap(1),
               ),
               BottomNavItem(
-                my_image: ImageConstant.customMadeIcon,
+                my_icon: Icons.settings_suggest,
                 isSelected: currentIndex == 2,
                 onTap: () => onTap(2),
               ),
               BottomNavItem(
-                my_image: ImageConstant.productIcon,
+                my_icon: Icons.domain,
                 isSelected: currentIndex == 3,
                 onTap: () => onTap(3),
               ),
@@ -59,13 +58,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
 }
 
 class BottomNavItem extends StatelessWidget {
-  final String my_image;
+  final IconData my_icon;
 
   final bool isSelected;
   final Function onTap;
 
   BottomNavItem({
-    required this.my_image,
+    required this.my_icon,
     required this.isSelected,
     required this.onTap,
   });
@@ -77,15 +76,15 @@ class BottomNavItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            my_image,
-            scale: isSelected ? .8 : 1,
-          )
-          // Icon(
-          //   icon,
-          //   color: isSelected ? ColorConstant.kistlerBrandGreen : Colors.grey,
-          //   size: isSelected ? 25 : 20,
-          // ),
+          // Image.asset(
+          //   my_icon,
+          //   scale: isSelected ? .8 : 1,
+          // )
+          Icon(
+            my_icon,
+            color: isSelected ? ColorConstant.kistlerBrandGreen : Colors.grey,
+            size: isSelected ? 30 : 25,
+          ),
         ],
       ),
     );

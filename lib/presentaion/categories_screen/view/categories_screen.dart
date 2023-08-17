@@ -4,6 +4,8 @@ import 'package:kistler/global_widgets/search_bar.dart';
 import 'package:kistler/presentaion/tab_all_screen/view/tab_all_screen.dart';
 import 'package:kistler/presentaion/tab_screen_cutter/view/tab_screen_cutter.dart';
 
+import '../../tab_all_screen_welding/view/tab_view_welding.dart';
+
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
 
@@ -12,14 +14,12 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
-  final ScrollController _scrollController = ScrollController();
-
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 5,
+        length: 7,
         child: Column(children: [
           Container(
             decoration:
@@ -60,6 +60,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               Tab(text: 'Welding'),
               Tab(text: 'Kistler'),
               Tab(text: 'Bode'),
+              Tab(text: 'PLC Controlled'),
+              Tab(text: 'CNC Controlled'),
             ],
           ),
           Expanded(
@@ -67,9 +69,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               children: [
                 TabAllViewScreen(),
                 TabScreenCutter(),
-                Center(child: Text('Content for Kister Tab')),
+                TabScreenWelding(),
+                Center(child: Text('Content for Kistler Tab')),
                 Center(child: Text('Content for Bode Tab')),
-                Center(child: Text('Content for Bode Tab')),
+                Center(child: Text('Content for plc Controlled Tab')),
+                Center(child: Text('Content for CNC Controlled Tab')),
               ],
             ),
           )
