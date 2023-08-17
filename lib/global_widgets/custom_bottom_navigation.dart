@@ -77,7 +77,10 @@ class BottomNavItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(my_image)
+          Image.asset(
+            my_image,
+            scale: isSelected ? .8 : 1,
+          )
           // Icon(
           //   icon,
           //   color: isSelected ? ColorConstant.kistlerBrandGreen : Colors.grey,

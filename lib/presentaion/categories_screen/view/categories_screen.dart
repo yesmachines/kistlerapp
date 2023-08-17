@@ -49,6 +49,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             labelColor: ColorConstant.kistlerBrandGreen,
             labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             indicatorWeight: 4,
+            // padding: EdgeInsets.symmetric(horizontal: 50),
+            labelPadding: EdgeInsets.symmetric(horizontal: 30),
             indicatorPadding: EdgeInsets.only(left: 8, right: 8),
             tabs: [
               Tab(
@@ -66,6 +68,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 TabAllViewScreen(),
                 TabScreenCutter(),
                 Center(child: Text('Content for Kister Tab')),
+                Center(child: Text('Content for Bode Tab')),
                 Center(child: Text('Content for Bode Tab')),
               ],
             ),
