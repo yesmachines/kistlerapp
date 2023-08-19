@@ -21,7 +21,7 @@ class SearchBarRefactor extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: ColorConstant.kistlerBrandGreen,
               borderRadius: BorderRadius.circular(8.0),
             ),
             height: MediaQuery.of(context).size.height,

@@ -17,11 +17,12 @@ class GetStartedScreen extends StatelessWidget {
           children: [
             SizedBox(),
             Container(
-                width: MediaQuery.of(context).size.width * .60,
-                child: Image.asset(
-                  ImageConstant.kistlerLogo,
-                  fit: BoxFit.fitWidth,
-                )),
+              width: MediaQuery.of(context).size.width * .60,
+              child: Image.asset(
+                ImageConstant.kistlerLogo,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
             InkWell(
               onTap: () {
                 Navigator.push(
@@ -30,20 +31,22 @@ class GetStartedScreen extends StatelessWidget {
                 );
               },
               child: Container(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * .70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: ColorConstant.kistlerBrandGreen,
-                  ),
-                  child: Center(
-                      child: Text(
+                height: 50,
+                width: MediaQuery.of(context).size.width * .70,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: ColorConstant.kistlerBrandGreen,
+                ),
+                child: Center(
+                  child: Text(
                     "Get started",
                     style: TextStyle(
                         color: ColorConstant.kistlerWhite,
                         fontSize: 18,
                         fontWeight: FontWeight.w600),
-                  ))),
+                  ),
+                ),
+              ),
             )
           ],
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../global_widgets/custom_container.dart';
+import '../../../global_widgets/custom_product_container.dart';
 
 class TabScreenCutter extends StatelessWidget {
   const TabScreenCutter({super.key});

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/profile_screen/view/profile_screen.dart';
-
 import '../../../global_widgets/Drawer.dart';
 import '../../../global_widgets/custom_bottom_navigation.dart';
 import '../../custom_made_solution_screen/view/custom_made_solution_screen.dart';
@@ -21,9 +19,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   final List<Widget> _screens = [
     ProfilScreen(),
-    HomeScreen(),
-    CustomMadeSolutionScreen(),
     CategoriesScreen(),
+    CustomMadeSolutionScreen(),
+    // HomeScreen(),
   ];
 
   @override

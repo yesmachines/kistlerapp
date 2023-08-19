@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kistler/global_widgets/custom_container.dart';
+import 'package:kistler/global_widgets/custom_product_container.dart';
 
 class TabAllViewScreen extends StatelessWidget {
   const TabAllViewScreen({super.key});

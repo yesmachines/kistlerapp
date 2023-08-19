@@ -44,11 +44,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 isSelected: currentIndex == 2,
                 onTap: () => onTap(2),
               ),
-              BottomNavItem(
-                my_icon: Icons.domain,
-                isSelected: currentIndex == 3,
-                onTap: () => onTap(3),
-              ),
+              // BottomNavItem(
+              //   my_icon: Icons.domain,
+              //   isSelected: currentIndex == 3,
+              //   onTap: () => onTap(3),
+              // ),
             ],
           ),
         ),

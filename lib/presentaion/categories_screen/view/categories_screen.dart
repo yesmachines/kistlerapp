@@ -19,7 +19,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 7,
+        length: 3,
         child: Column(children: [
           Container(
             decoration:
@@ -58,10 +58,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               Tab(text: 'Cutting'),
               Tab(text: 'Welding'),
-              Tab(text: 'Kistler'),
-              Tab(text: 'Bode'),
-              Tab(text: 'PLC Controlled'),
-              Tab(text: 'CNC Controlled'),
             ],
           ),
           Expanded(
@@ -70,10 +66,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 TabAllViewScreen(),
                 TabScreenCutter(),
                 TabScreenWelding(),
-                Center(child: Text('Content for Kistler Tab')),
-                Center(child: Text('Content for Bode Tab')),
-                Center(child: Text('Content for plc Controlled Tab')),
-                Center(child: Text('Content for CNC Controlled Tab')),
               ],
             ),
           )

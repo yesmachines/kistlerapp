@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
-import 'package:kistler/global_widgets/custom_container.dart';
+import 'package:kistler/global_widgets/custom_product_container.dart';
 
 import '../../../global_widgets/search_bar.dart';
 

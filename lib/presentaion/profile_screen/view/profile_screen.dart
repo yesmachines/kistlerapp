@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:kistler/core/constants.dart/color.dart';
 
 class ProfilScreen extends StatelessWidget {
@@ -20,11 +20,12 @@ class ProfilScreen extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      Icons.edit_calendar_outlined,
+                      Icons.save_as,
+                      size: 30,
                       color: ColorConstant.kistlerBrandGreen,
                     ),
                     SizedBox(
-                      width: 15,
+                      width: 20,
                     ),
                     CircleAvatar(
                       radius: 75,
@@ -37,10 +38,11 @@ class ProfilScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 15,
+                      width: 20,
                     ),
                     Icon(
                       Icons.share,
+                      size: 30,
                       color: ColorConstant.kistlerBrandGreen,
                     ),
                   ],
@@ -62,7 +64,7 @@ class ProfilScreen extends StatelessWidget {
                 "Marketing & Sales Management",
               ),
               SizedBox(
-                child: SvgPicture.asset("assets/images_svg/facebook.svg"),
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
