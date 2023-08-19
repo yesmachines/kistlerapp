@@ -3,6 +3,7 @@ import 'package:kistler/global_widgets/Drawer.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/global_widgets/search_bar.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/three_images_containers.dart';
+import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/youtube_video_player.dart';
 import '../../../core/constants.dart/color.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -41,120 +42,261 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
             ),
             Expanded(
-                child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Close",
-                            style: TextStyle(
-                                color: ColorConstant.kistlerBrandGreen),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Icon(Icons.close,
-                              color: ColorConstant.kistlerBrandGreen)
-                        ],
-                      ),
-                      Icon(Icons.share,
-                          weight: 30, color: ColorConstant.kistlerBrandGreen),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Stack(
-                    children: [
-                      SizedBox(
-                        height: 240,
-                        child: Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Close",
+                              style: TextStyle(
+                                  color: ColorConstant.kistlerBrandGreen),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(Icons.close,
+                                color: ColorConstant.kistlerBrandGreen)
+                          ],
+                        ),
+                        Icon(Icons.share,
+                            weight: 30, color: ColorConstant.kistlerBrandGreen),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Stack(
+                      children: [
+                        SizedBox(
                           height: 240,
-                          width: MediaQuery.of(context).size.width * 75,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Image.network(
-                              "https://imgs.search.brave.com/diuwAGp0a3Kc82mymdXgtdXUWi9BvTlMfBKEkqGQjLU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9oaXBz/LmhlYXJzdGFwcHMu/Y29tL3ZhZGVyLXBy/b2QuczMuYW1hem9u/YXdzLmNvbS8xNjc5/NTA3MjY2LXJ5b2Jp/LTY0MWIzZjNjOTEx/ODMuanBnP2Nyb3A9/MXh3OjF4aDtjZW50/ZXIsdG9wJnJlc2l6/ZT05ODA6Kg",
-                              fit: BoxFit.fitHeight,
+                          child: Container(
+                            height: 240,
+                            width: MediaQuery.of(context).size.width * 75,
+                            child: Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Image.network(
+                                "https://imgs.search.brave.com/diuwAGp0a3Kc82mymdXgtdXUWi9BvTlMfBKEkqGQjLU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9oaXBz/LmhlYXJzdGFwcHMu/Y29tL3ZhZGVyLXBy/b2QuczMuYW1hem9u/YXdzLmNvbS8xNjc5/NTA3MjY2LXJ5b2Jp/LTY0MWIzZjNjOTEx/ODMuanBnP2Nyb3A9/MXh3OjF4aDtjZW50/ZXIsdG9wJnJlc2l6/ZT05ODA6Kg",
+                                fit: BoxFit.fitHeight,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                          height: 30,
-                          width: 100,
-                          child: Image.asset(
-                            "assets/images/logo.png",
-                            fit: BoxFit.fitWidth,
-                          ))
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(),
-
-                      // here is calling the three images containers
-                      ThreeImagesContainers(),
-                      SizedBox(),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "Programmable Saddle Cutting Machines - SCM Series",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: ColorConstant.kistlerBrandGreen),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "PLC-Controlled",
-                      style: TextStyle(
-                          fontSize: 16, color: ColorConstant.kistlerTextColor),
+                        Container(
+                            height: 30,
+                            width: 100,
+                            child: Image.asset(
+                              "assets/images/logo.png",
+                              fit: BoxFit.fitWidth,
+                            ))
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 50,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: ColorConstant.kistlerBrandGreen,
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(),
+
+                        // here is calling the three images containers
+                        ThreeImagesContainers(),
+                        SizedBox(),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Programmable Saddle Cutting Machines - SCM Series",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: ColorConstant.kistlerBrandGreen),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "PLC-Controlled",
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: ColorConstant.kistlerTextColor),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 45,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: ColorConstant.kistlerBrandGreen,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Enquiry",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorConstant.kistlerWhite),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 45,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: ColorConstant.kistlerBrandGreen,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Price",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorConstant.kistlerWhite),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Description",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Container(
-                        height: 50,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: ColorConstant.kistlerBrandGreen,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Description: The SCM machines are equipped with two PLC-controlled axis which enables the machin to cut pipes in conjunction with a plasma or oxy-fuel torch. The work piece is clamped by a driven chuck (axis1), then the torch is moved ovr the pipe (axis2). Optional, a third controlled axis can be added to enable the machine to bevel end cuts (straight, miter and branches). All programming is menu-driven, the machine is therefore easy to operate.",
+                      style: TextStyle(fontSize: 14, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Specification: ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Container(
+                      height: 200,
+                      color: Colors.amber,
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "*Other than specified sizes available or request",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Catalogue",
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: ColorConstant.kistlerTextColor),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Download",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorConstant.kistlerBrandGreen),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Icon(Icons.file_download_outlined,
+                                color: ColorConstant.kistlerBrandGreen)
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "share",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorConstant.kistlerBrandGreen),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Icon(Icons.share,
+                                size: 20,
+                                color: ColorConstant.kistlerBrandGreen)
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    // here is calling the video player screen
+                    VideoPlayerScreen(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Specification: ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ))
+            )
           ],
         ),
       ),
