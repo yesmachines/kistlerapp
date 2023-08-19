@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 
 class ProfilScreen extends StatelessWidget {
   const ProfilScreen({super.key});
@@ -87,7 +89,7 @@ class ProfilScreen extends StatelessWidget {
               ),
               child: Center(
                   child: Text(
-                "LogOut",
+                LocaleKeys.logout.tr(),
                 style: TextStyle(color: ColorConstant.kistlerWhite),
               ))),
           SizedBox()
