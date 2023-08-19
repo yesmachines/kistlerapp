@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/global_widgets/Drawer.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
-import 'package:kistler/global_widgets/search_bar.dart';
+import 'package:kistler/presentaion/enquiry_screen/view/enquiry_screen.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/accessories_container.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/application_images.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/technical_diagram.dart';
@@ -26,23 +26,26 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            Container(
-              decoration:
-                  BoxDecoration(color: ColorConstant.kistlerWhite, boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(.1),
-                  blurRadius: 10,
-                  offset: Offset(1, 3),
-                ),
-              ]),
-              height: 70,
-              child: Center(
-                child: Container(
-                  height: 45,
-                  width: MediaQuery.of(context).size.width * .80,
-                  child: SearchBarRefactor(),
-                ),
-              ),
+            // Container(
+            //   decoration:
+            //       BoxDecoration(color: ColorConstant.kistlerWhite, boxShadow: [
+            //     BoxShadow(
+            //       color: Colors.black.withOpacity(.1),
+            //       blurRadius: 10,
+            //       offset: Offset(1, 3),
+            //     ),
+            //   ]),
+            //   height: 70,
+            //   child: Center(
+            //     child: Container(
+            //       height: 45,
+            //       width: MediaQuery.of(context).size.width * .80,
+            //       child: SearchBarRefactor(),
+            //     ),
+            //   ),
+            // ),
+            SizedBox(
+              height: 10,
             ),
             Expanded(
               child: ListView(
@@ -55,20 +58,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Close",
-                                style: TextStyle(
-                                    color: ColorConstant.kistlerBrandGreen),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(Icons.close,
-                                  color: ColorConstant.kistlerBrandGreen)
-                            ],
-                          ),
+                          SizedBox(),
                           Icon(Icons.share,
                               weight: 30,
                               color: ColorConstant.kistlerBrandGreen),
@@ -141,20 +131,28 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            height: 45,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: ColorConstant.kistlerBrandGreen,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Enquiry",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorConstant.kistlerWhite),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Enquirycreen()));
+                            },
+                            child: Container(
+                              height: 45,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: ColorConstant.kistlerBrandGreen,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Enquiry",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorConstant.kistlerWhite),
+                                ),
                               ),
                             ),
                           ),

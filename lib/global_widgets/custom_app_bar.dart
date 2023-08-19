@@ -14,20 +14,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 150,
       leading: Row(
         children: [
-          Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: ColorConstant.kistlerBrandGreen,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            },
-          ),
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: ColorConstant.kistlerBrandGreen,
+              )),
           LanguageToggleButton()
         ],
       ),
