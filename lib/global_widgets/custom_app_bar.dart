@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/global_widgets/language_toggle_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -27,10 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             },
           ),
-          Switch(
-            value: true,
-            onChanged: (value) {},
-          )
+          LanguageToggleButton()
         ],
       ),
       actions: [

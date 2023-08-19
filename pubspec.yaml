@@ -39,7 +39,6 @@ dependencies:
   google_fonts: ^5.1.0
   sweet_nav_bar: ^1.0.5
   flutter_toggle_tab: ^1.4.1
-  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
