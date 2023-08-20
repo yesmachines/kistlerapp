@@ -82,7 +82,7 @@ class MainPageTable extends StatelessWidget {
                     child: Text('Cutting speed (inch/min)',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: ColorConstant.kistlerBrandBorder),
+                            color: ColorConstant.kistlerWhite),
                         textAlign: TextAlign.center),
                   ),
                 ),
