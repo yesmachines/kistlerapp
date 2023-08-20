@@ -41,6 +41,7 @@ dependencies:
   flutter_toggle_tab: ^1.4.1
   youtube_player_flutter: ^8.1.2
   easy_localization: ^3.0.2
+  flutter_phoenix: ^1.1.1
 
 dev_dependencies:
   flutter_test:

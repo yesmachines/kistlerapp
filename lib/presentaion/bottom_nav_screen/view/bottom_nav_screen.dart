@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/profile_screen/view/profile_screen.dart';
 import '../../../global_widgets/Drawer.dart';
@@ -17,15 +19,17 @@ class BottomNavScreen extends StatefulWidget {
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int _currentIndex = 1;
 
-  final List<Widget> _screens = [
-    ProfilScreen(),
-    CategoriesScreen(),
-    CustomMadeSolutionScreen(),
-    // HomeScreen(),
-  ];
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _screens = [
+      ProfilScreen(),
+      CategoriesScreen(),
+      CustomMadeSolutionScreen(),
+      // HomeScreen(),
+    ];
+    print("my BN localle ${context.locale}");
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: CustomAppBar(),

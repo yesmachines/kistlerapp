@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/image_constant/images.dart';
 
@@ -11,6 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    context.setLocale(Locale('de'));
     super.initState();
 
     Future.delayed(Duration(seconds: 3), () {
