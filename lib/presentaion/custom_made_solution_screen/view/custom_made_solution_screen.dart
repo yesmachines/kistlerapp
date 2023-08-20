@@ -55,7 +55,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 ),
                 content: Text(
                   // this is the one that actually works
-                  'Thank you !!!\n your enquiry has been submitted successfully',
+                  LocaleKeys.tank_you.tr(),
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
@@ -73,7 +73,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                             color: ColorConstant.kistlerBrandGreen),
                         child: Center(
                           child: Text(
-                            "Back",
+                            LocaleKeys.back.tr(),
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,

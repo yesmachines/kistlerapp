@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
@@ -123,14 +125,14 @@ class Enquirycreen extends StatelessWidget {
               ),
               Container(
                 height: 35,
-                width: 170,
+                width: 200,
                 decoration: BoxDecoration(border: Border.all()),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Select Model"),
+                      child: Text(LocaleKeys.select_model.tr()),
                     ),
                     Container(
                       width: 30,
@@ -147,15 +149,16 @@ class Enquirycreen extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              TextfieldRefactor(name: "Company Name", length: 1),
+              TextfieldRefactor(name: LocaleKeys.conpany_name.tr(), length: 1),
               SizedBox(
                 height: 20,
               ),
-              TextfieldRefactor(name: "Email Adress", length: 1),
+              TextfieldRefactor(name: LocaleKeys.email_address.tr(), length: 1),
               SizedBox(
                 height: 10,
               ),
-              TextfieldRefactor(name: "Contact Number", length: 1),
+              TextfieldRefactor(
+                  name: LocaleKeys.contact_number.tr(), length: 1),
               SizedBox(
                 height: 20,
               ),
@@ -168,7 +171,7 @@ class Enquirycreen extends StatelessWidget {
                   showEnquirySumitPopup();
                 },
                 child: Text(
-                  "Submit",
+                  LocaleKeys.submit.tr(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -178,7 +181,7 @@ class Enquirycreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Terms and Conditions",
+                  LocaleKeys.t_and_c.tr(),
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

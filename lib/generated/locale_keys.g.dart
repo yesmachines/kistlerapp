@@ -36,5 +36,34 @@ abstract class  LocaleKeys {
   static const all = 'all';
   static const cutting = 'cutting';
   static const welding = 'welding';
+  static const select_model = 'select_model';
+  static const t_and_c = 't_and_c';
+  static const Log_in = 'Log_in';
+  static const user_id = 'user_id';
+  static const password = 'password';
+  static const safe1 = 'safe1';
+  static const safe2 = 'safe2';
+  static const model_name = 'model_name';
+  static const add_to_quote = 'add_to_quote';
+  static const product_price = 'product_price';
+  static const product_qty = 'product_qty';
+  static const no = 'no';
+  static const table_name = 'table_name';
+  static const peice = 'peice';
+  static const qty = 'qty';
+  static const select = 'select';
+  static const Accessories = 'Accessories';
+  static const quotation_summary = 'quotation_summary';
+  static const total = 'total';
+  static const Customer_Details = 'Customer_Details';
+  static const comment = 'comment';
+  static const send_quotation = 'send_quotation';
+  static const quotation_req_sucess = 'quotation_req_sucess';
+  static const back_to_home = 'back_to_home';
+  static const tank_you = 'tank_you';
+  static const back = 'back';
+  static const want_to_exit = 'want_to_exit';
+  static const yes = 'yes';
+  static const No = 'No';
 
 }

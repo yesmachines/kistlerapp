@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/profile_screen/view/profile_screen.dart';
 import '../../../global_widgets/custom_bottom_navigation.dart';
@@ -44,7 +45,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                   ),
                 ),
                 content: Text(
-                  'Do you want to exit ?',
+                  LocaleKeys.want_to_exit.tr(),
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
@@ -66,7 +67,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                             ),
                             child: Center(
                               child: Text(
-                                "No",
+                                LocaleKeys.no.tr(),
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -89,7 +90,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                                 color: ColorConstant.kistlerBrandGreen),
                             child: Center(
                               child: Text(
-                                "Yes",
+                                LocaleKeys.yes.tr(),
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,

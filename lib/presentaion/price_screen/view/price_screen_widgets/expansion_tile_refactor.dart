@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/tables.dart';
+
+import '../../../../generated/locale_keys.g.dart';
 
 class ExpansionTileRefactor extends StatefulWidget {
   final List<Map<dynamic, dynamic>> data;
@@ -52,7 +55,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Product Price : ",
+                  LocaleKeys.product_price.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 Row(
@@ -82,7 +85,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Product Price : ",
+                  LocaleKeys.product_qty.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 DropdownButton<int>(
@@ -109,7 +112,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
             height: 18,
           ),
           Text(
-            "Accessories",
+            LocaleKeys.accessories.tr(),
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           SizedBox(

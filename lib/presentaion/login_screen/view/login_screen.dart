@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/core/image_constant/images.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -23,7 +25,7 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "Log in",
+                    LocaleKeys.Log_in.tr(),
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.black,
@@ -43,8 +45,9 @@ class LoginScreen extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: ColorConstant.kistlerBrandGreen)),
-                      labelText: "User ID", alignLabelWithHint: true,
-                      hintText: "User ID",
+                      labelText: LocaleKeys.user_id.tr(),
+                      alignLabelWithHint: true,
+                      hintText: LocaleKeys.user_id.tr(),
 
                       border: OutlineInputBorder(
                         borderSide:
@@ -67,8 +70,9 @@ class LoginScreen extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: ColorConstant.kistlerBrandGreen)),
-                      labelText: "Password", alignLabelWithHint: true,
-                      hintText: "Password",
+                      labelText: LocaleKeys.password.tr(),
+                      alignLabelWithHint: true,
+                      hintText: LocaleKeys.password.tr(),
 
                       border: OutlineInputBorder(
                         borderSide:
@@ -97,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "Login",
+                          LocaleKeys.Log_in.tr(),
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -111,10 +115,13 @@ class LoginScreen extends StatelessWidget {
             ),
             Column(
               children: [
-                Text("You are completely safe."),
                 Text(
-                  " Read our Terms & Conditions.",
-                  style: TextStyle(color: ColorConstant.kistlerBrandGreen),
+                  LocaleKeys.safe1.tr(),
+                ),
+                Text(
+                  LocaleKeys.safe2.tr(),
+                  style: TextStyle(
+                      color: ColorConstant.kistlerBrandGreen, fontSize: 13),
                 ),
                 SizedBox(
                   height: 50,

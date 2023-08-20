@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
@@ -35,7 +37,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                 ),
                 content: Text(
                   // this is the one that actually works
-                  'Quotation Requested Successfully',
+                  LocaleKeys.quotation_req_sucess.tr(),
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
@@ -57,7 +59,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                             color: ColorConstant.kistlerBrandGreen),
                         child: Center(
                           child: Text(
-                            "Back to home",
+                            LocaleKeys.back_to_home.tr(),
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -89,7 +91,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
               ),
               Center(
                 child: Text(
-                  "Quotation summary",
+                  LocaleKeys.quotation_summary.tr(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -114,7 +116,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                         padding:
                             EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                         child: Text(
-                          'Total ',
+                          LocaleKeys.total.tr(),
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                           textAlign: TextAlign.start,
@@ -138,7 +140,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
               Row(
                 children: [
                   Text(
-                    "Customer Details",
+                    LocaleKeys.Customer_Details.tr(),
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -146,23 +148,24 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
               SizedBox(
                 height: 20,
               ),
-              TextfieldRefactor(name: "Name", length: 1),
+              TextfieldRefactor(name: LocaleKeys.contact_name.tr(), length: 1),
               SizedBox(
                 height: 10,
               ),
-              TextfieldRefactor(name: "Company Name", length: 1),
+              TextfieldRefactor(name: LocaleKeys.conpany_name.tr(), length: 1),
               SizedBox(
                 height: 10,
               ),
-              TextfieldRefactor(name: "Email Address", length: 1),
+              TextfieldRefactor(name: LocaleKeys.email_address.tr(), length: 1),
               SizedBox(
                 height: 10,
               ),
-              TextfieldRefactor(name: "Contact Number", length: 1),
+              TextfieldRefactor(
+                  name: LocaleKeys.contact_number.tr(), length: 1),
               SizedBox(
                 height: 10,
               ),
-              TextfieldRefactor(name: "Comment", length: 5),
+              TextfieldRefactor(name: LocaleKeys.comment.tr(), length: 5),
               SizedBox(
                 height: 40,
               ),
@@ -181,7 +184,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     ),
                     child: Center(
                         child: Text(
-                      "Send Quotation",
+                      LocaleKeys.send_quotation.tr(),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/expansion_tile_refactor.dart';
 import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/tables.dart';
@@ -93,7 +94,7 @@ class _MyTableState extends State<MyTable> {
             child: Row(
               children: [
                 Text(
-                  "Model Name",
+                  LocaleKeys.model_name.tr(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 )
               ],
@@ -148,10 +149,10 @@ class _MyTableState extends State<MyTable> {
             ),
             child: Center(
                 child: Text(
-              "Add to quote",
+              LocaleKeys.add_to_quote.tr(),
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 14,
                   color: ColorConstant.kistlerWhite),
             )),
           ),
