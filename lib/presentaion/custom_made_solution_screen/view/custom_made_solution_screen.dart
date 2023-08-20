@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
-import 'package:kistler/presentaion/home_screen/view/home_screen.dart';
 
 import '../../../global_widgets/search_bar.dart';
 import 'custom_screen_widgets/custom_widget.dart';
