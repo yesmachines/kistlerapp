@@ -183,7 +183,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 Text(
                   LocaleKeys.about_company_data.tr(),
                   style: TextStyle(fontSize: 14, height: 2),
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.left,
                 ),
                 SizedBox(height: 25),
               ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
-import 'package:kistler/presentaion/categories_screen/view/categories_screen.dart';
+
 import 'package:kistler/global_widgets/textfield_refactor.dart';
 import 'package:kistler/presentaion/quote_summary_screen/view/quote_screen_widgets/table_row_refactor.dart';
 
@@ -18,7 +18,6 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
   @override
   Widget build(BuildContext context) {
     Future<bool> showExitPopup() async {
-//show confirm dialogue =================================================================================================================================================================
       return await showDialog(
             //the return value will be from "Yes" or "No" options
             context: context,
@@ -182,7 +181,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     ),
                     child: Center(
                         child: Text(
-                      "Add to quote",
+                      "Send Quotation",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
