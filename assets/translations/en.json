@@ -62,5 +62,6 @@
     "back": "Back",
     "want_to_exit": "Do you want to exit ?",
     "yes": "Yes",
-    "No": "No"
+    "No": "No",
+    "want_to_logout": "Do you want to Logout ?"
 }

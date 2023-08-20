@@ -78,7 +78,8 @@ class CodegenLoader extends AssetLoader{
   "back": "Zurück",
   "want_to_exit": "Möchten Sie beenden?",
   "yes": "Ja",
-  "No": "Nein"
+  "No": "Nein",
+  "want_to_logout": "Möchten Sie sich abmelden?"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -144,7 +145,8 @@ static const Map<String,dynamic> en = {
   "back": "Back",
   "want_to_exit": "Do you want to exit ?",
   "yes": "Yes",
-  "No": "No"
+  "No": "No",
+  "want_to_logout": "Do you want to Logout ?"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

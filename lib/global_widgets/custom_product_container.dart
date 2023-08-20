@@ -25,12 +25,13 @@ class ProductContainer extends StatelessWidget {
                 height: 5,
               ),
               Container(
-                  width: 80, child: Image.asset("assets/images/logo.png")),
+                  width: 80,
+                  child: Image.asset("assets/images/kistlerloggo.png")),
               Center(
                 child: Container(
                     height: 100,
                     child: Image.asset(
-                      "assets/images/item.png",
+                      "assets/images/imageee.jpeg",
                     )),
               ),
               Column(

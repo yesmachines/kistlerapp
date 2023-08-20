@@ -129,8 +129,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               width: MediaQuery.of(context).size.width * 75,
                               child: Padding(
                                 padding: const EdgeInsets.all(12),
-                                child: Image.network(
-                                  "https://imgs.search.brave.com/diuwAGp0a3Kc82mymdXgtdXUWi9BvTlMfBKEkqGQjLU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9oaXBz/LmhlYXJzdGFwcHMu/Y29tL3ZhZGVyLXBy/b2QuczMuYW1hem9u/YXdzLmNvbS8xNjc5/NTA3MjY2LXJ5b2Jp/LTY0MWIzZjNjOTEx/ODMuanBnP2Nyb3A9/MXh3OjF4aDtjZW50/ZXIsdG9wJnJlc2l6/ZT05ODA6Kg",
+                                child: Image.asset(
+                                  "assets/images/imageee.jpeg",
                                   fit: BoxFit.fitHeight,
                                 ),
                               ),

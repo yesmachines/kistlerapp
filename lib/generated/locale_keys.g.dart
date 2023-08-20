@@ -65,5 +65,6 @@ abstract class  LocaleKeys {
   static const want_to_exit = 'want_to_exit';
   static const yes = 'yes';
   static const No = 'No';
+  static const want_to_logout = 'want_to_logout';
 
 }

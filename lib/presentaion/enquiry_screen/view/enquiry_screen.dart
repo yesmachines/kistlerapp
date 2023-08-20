@@ -30,7 +30,7 @@ class Enquirycreen extends StatelessWidget {
                 ),
                 content: Text(
                   // this is the one that actually works
-                  'Thank you !!!\n your enquiry has been submitted successfully',
+                  LocaleKeys.tank_you.tr(),
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
@@ -51,7 +51,7 @@ class Enquirycreen extends StatelessWidget {
                             color: ColorConstant.kistlerBrandGreen),
                         child: Center(
                           child: Text(
-                            "Back to home",
+                            LocaleKeys.back_to_home.tr(),
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,

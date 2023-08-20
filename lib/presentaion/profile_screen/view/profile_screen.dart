@@ -34,7 +34,7 @@ class ProfilScreen extends StatelessWidget {
                 ),
                 content: Text(
                   // this is the one that actually works
-                  'Do you want to Logout',
+                  LocaleKeys.want_to_logout.tr(),
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
@@ -56,7 +56,7 @@ class ProfilScreen extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                "No",
+                                LocaleKeys.no.tr(),
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -82,7 +82,7 @@ class ProfilScreen extends StatelessWidget {
                                 color: ColorConstant.kistlerBrandGreen),
                             child: Center(
                               child: Text(
-                                "Yes",
+                                LocaleKeys.yes.tr(),
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -131,11 +131,9 @@ class ProfilScreen extends StatelessWidget {
                       radius: 75,
                       backgroundColor: ColorConstant.kistlerBrandGreen,
                       child: CircleAvatar(
-                        backgroundColor: ColorConstant.kistlerWhite,
-                        radius: 72,
-                        backgroundImage: NetworkImage(
-                            "https://imgs.search.brave.com/NY3q4iDdSa0W_vEw16mKYGZk5hcoC1HeBYjN7k89hD4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS53aXJlZC5jb20v/cGhvdG9zLzY0OWM3/NjU3NjI3OWUzNjQ3/Mjg0NDY0Ni8zOjIv/d18xMjgwLGNfbGlt/aXQvRWxvbi1NdXNr/LVZpdmF0ZWNoLUJ1/c2luZXNzLTE0OTkw/MTMxMDIuanBn"),
-                      ),
+                          backgroundColor: ColorConstant.kistlerWhite,
+                          radius: 72,
+                          backgroundImage: AssetImage("assets/images/dp.png")),
                     ),
                     SizedBox(
                       width: 20,

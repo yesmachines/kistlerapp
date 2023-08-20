@@ -62,5 +62,6 @@
     "back": "Zurück",
     "want_to_exit": "Möchten Sie beenden?",
     "yes": "Ja",
-    "No": "Nein"
+    "No": "Nein",
+    "want_to_logout": "Möchten Sie sich abmelden?"
 }
