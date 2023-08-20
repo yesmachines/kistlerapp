@@ -4,7 +4,7 @@ import 'package:kistler/presentaion/profile_screen/view/profile_screen.dart';
 import '../../../global_widgets/Drawer.dart';
 import '../../../global_widgets/custom_bottom_navigation.dart';
 import '../../custom_made_solution_screen/view/custom_made_solution_screen.dart';
-import '../../home_screen/view/home_screen.dart';
+
 import '../../categories_screen/view/categories_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {

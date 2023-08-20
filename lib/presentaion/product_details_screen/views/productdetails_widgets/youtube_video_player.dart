@@ -15,8 +15,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
     _controller = YoutubePlayerController(
       initialVideoId: 'ENSjcy3eh8U',
-      flags:
-          YoutubePlayerFlags(autoPlay: true, mute: false, hideControls: true),
+      flags: YoutubePlayerFlags(
+          autoPlay: true,
+          mute: true,
+          controlsVisibleAtStart: true,
+          showLiveFullscreenButton: false,
+          isLive: true,
+          hideControls: true),
     );
   }
 

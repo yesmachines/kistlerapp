@@ -8,6 +8,7 @@ import 'package:kistler/presentaion/product_details_screen/views/productdetails_
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/three_images_containers.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/youtube_video_player.dart';
 import '../../../core/constants.dart/color.dart';
+import '../../price_screen/view/price_screen.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key});
@@ -156,20 +157,28 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ),
                             ),
                           ),
-                          Container(
-                            height: 45,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: ColorConstant.kistlerBrandGreen,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Price",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorConstant.kistlerWhite),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyTable()));
+                            },
+                            child: Container(
+                              height: 45,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: ColorConstant.kistlerBrandGreen,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Price",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorConstant.kistlerWhite),
+                                ),
                               ),
                             ),
                           ),
