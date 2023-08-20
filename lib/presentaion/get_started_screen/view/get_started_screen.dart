@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/presentaion/login_screen/view/login_screen.dart';
 
 import '../../bottom_nav_screen/view/bottom_nav_screen.dart';
 
@@ -29,7 +30,7 @@ class GetStartedScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BottomNavScreen()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
               child: Container(

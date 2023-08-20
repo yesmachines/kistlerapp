@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 
-import '../../custom_made_solution_screen/view/custom_screen_widgets/custom_widget.dart';
+import '../../../global_widgets/textfield_refactor.dart';
 
 class Enquirycreen extends StatelessWidget {
   const Enquirycreen({super.key});

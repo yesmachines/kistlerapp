@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/global_widgets/language_toggle_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -28,8 +29,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Container(
             height: 20,
-            width: 160,
-            child: Image.asset("assets/images/logo.png")),
+            width: 140,
+            child: Image.asset(
+              ImageConstant.kistlerLogo,
+              fit: BoxFit.fitWidth,
+            )),
         SizedBox(
           width: 15,
         ),

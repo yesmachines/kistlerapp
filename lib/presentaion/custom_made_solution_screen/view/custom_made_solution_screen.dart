@@ -4,7 +4,7 @@ import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 
 import '../../../global_widgets/search_bar.dart';
-import 'custom_screen_widgets/custom_widget.dart';
+import '../../../global_widgets/textfield_refactor.dart';
 
 class CustomMadeSolutionScreen extends StatefulWidget {
   const CustomMadeSolutionScreen({super.key});
@@ -39,24 +39,24 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          decoration:
-              BoxDecoration(color: ColorConstant.kistlerWhite, boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(.1),
-              blurRadius: 10,
-              offset: Offset(1, 3),
-            ),
-          ]),
-          height: 70,
-          child: Center(
-            child: Container(
-              height: 45,
-              width: MediaQuery.of(context).size.width * .80,
-              child: SearchBarRefactor(),
-            ),
-          ),
-        ),
+        // Container(
+        //   decoration:
+        //       BoxDecoration(color: ColorConstant.kistlerWhite, boxShadow: [
+        //     BoxShadow(
+        //       color: Colors.black.withOpacity(.1),
+        //       blurRadius: 10,
+        //       offset: Offset(1, 3),
+        //     ),
+        //   ]),
+        //   height: 70,
+        //   child: Center(
+        //     child: Container(
+        //       height: 45,
+        //       width: MediaQuery.of(context).size.width * .80,
+        //       child: SearchBarRefactor(),
+        //     ),
+        //   ),
+        // ),
         SizedBox(
           height: 10,
         ),

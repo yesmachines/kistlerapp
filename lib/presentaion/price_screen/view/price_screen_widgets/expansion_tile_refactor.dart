@@ -20,6 +20,7 @@ class ExpansionTileRefactor extends StatefulWidget {
 
 class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
   int selectedNumber = 1;
+  bool? checkValue = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,9 +55,24 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                   "Product Price : ",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
-                Text("\$ 3500",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                Row(
+                  children: [
+                    Text("\$ 3500",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16)),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Checkbox(
+                        activeColor: ColorConstant.kistlerBrandGreen,
+                        value: checkValue,
+                        onChanged: (value) {
+                          setState(() {
+                            checkValue = value;
+                          });
+                        })
+                  ],
+                ),
               ],
             ),
           ),

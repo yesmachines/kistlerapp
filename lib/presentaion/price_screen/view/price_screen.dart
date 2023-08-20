@@ -4,6 +4,7 @@ import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/expansion_tile_refactor.dart';
 import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/tables.dart';
+import 'package:kistler/presentaion/quote_summary_screen/view/quote_summary_screen.dart';
 
 class MyTable extends StatefulWidget {
   @override
@@ -87,6 +88,20 @@ class _MyTableState extends State<MyTable> {
           SizedBox(
             height: 30,
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              children: [
+                Text(
+                  "Model Name",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           ExpansionTileRefactor(
             tilenumber: "01",
             tileName: "SCM300",
@@ -116,22 +131,30 @@ class _MyTableState extends State<MyTable> {
           ),
         ]),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 50, bottom: 20, right: 50),
-        child: Container(
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: ColorConstant.kistlerBrandGreen,
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const QuoteSummaryScreen()));
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 50, bottom: 20, right: 50),
+          child: Container(
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: ColorConstant.kistlerBrandGreen,
+            ),
+            child: Center(
+                child: Text(
+              "Add to quote",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: ColorConstant.kistlerWhite),
+            )),
           ),
-          child: Center(
-              child: Text(
-            "Add to quote",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: ColorConstant.kistlerWhite),
-          )),
         ),
       ),
     );
