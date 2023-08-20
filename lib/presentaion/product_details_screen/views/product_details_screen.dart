@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
@@ -9,6 +11,7 @@ import 'package:kistler/presentaion/product_details_screen/views/productdetails_
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/technical_diagram.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/three_images_containers.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/youtube_video_player.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants.dart/color.dart';
 import '../../price_screen/view/price_screen.dart';
 
@@ -20,6 +23,16 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  final String _linkUrl = 'https://www.youtube.com/watch?v=ENSjcy3eh8U';
+
+  _launchURL() async {
+    if (await canLaunch(_linkUrl)) {
+      await launch(_linkUrl);
+    } else {
+      throw 'Could not launch $_linkUrl';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -314,7 +327,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         height: 20,
                       ),
                       // here is calling the video player screen
-                      VideoPlayerScreen(),
+                      GestureDetector(
+                          onTap: _launchURL, child: VideoPlayerScreen()),
                       SizedBox(
                         height: 20,
                       ),

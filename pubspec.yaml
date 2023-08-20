@@ -42,6 +42,7 @@ dependencies:
   youtube_player_flutter: ^8.1.2
   easy_localization: ^3.0.2
   flutter_phoenix: ^1.1.1
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:
