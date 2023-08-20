@@ -30,17 +30,22 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       // HomeScreen(),
     ];
     print("my BN localle ${context.locale}");
-    return Scaffold(
-      drawer: CustomDrawer(),
-      appBar: CustomAppBar(),
-      body: _screens[_currentIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        // drawer: CustomDrawer(),
+        appBar: CustomAppBar(backButtonVisibility: false),
+        body: _screens[_currentIndex],
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

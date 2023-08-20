@@ -36,7 +36,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(languageButtonVisibility: false),
       drawer: CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

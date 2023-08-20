@@ -46,10 +46,11 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                       horizontal: 30,
                     ),
                     child: InkWell(
-                      onTap: () => Navigator.pushReplacement(
+                      onTap: () => Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BottomNavScreen())),
+                              builder: (context) => BottomNavScreen()),
+                          (route) => false),
                       child: Container(
                         height: 40,
                         decoration: BoxDecoration(
@@ -78,7 +79,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
     }
 
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(languageButtonVisibility: false),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

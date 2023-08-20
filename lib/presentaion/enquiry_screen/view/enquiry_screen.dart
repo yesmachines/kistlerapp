@@ -70,7 +70,7 @@ class Enquirycreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(languageButtonVisibility: false),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

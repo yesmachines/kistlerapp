@@ -17,7 +17,7 @@ abstract class  LocaleKeys {
   static const pipe_rotators = 'pipe_rotators';
   static const cnc_controlled = 'cnc_controlled';
   static const plc_controlled = 'plc_controlled';
-  static const Cutter = 'Cutter';
+  static const cutter = 'cutter';
   static const about_company_data = 'about_company_data';
   static const search = 'search';
   static const submit = 'submit';

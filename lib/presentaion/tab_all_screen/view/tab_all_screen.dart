@@ -17,7 +17,7 @@ class TabAllViewScreen extends StatelessWidget {
           ),
           Center(
             child: Text(
-              LocaleKeys.Cutter.tr(),
+              LocaleKeys.cutter.tr(),
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
             ),
           ),

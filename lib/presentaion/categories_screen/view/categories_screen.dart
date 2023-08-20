@@ -55,9 +55,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             labelPadding: EdgeInsets.symmetric(horizontal: 30),
             indicatorPadding: EdgeInsets.only(left: 8, right: 8),
             tabs: [
-              Tab(
-                text: LocaleKeys.all.tr(),
-              ),
+              Tab(text: LocaleKeys.all.tr()),
               Tab(text: LocaleKeys.cutting.tr()),
               Tab(text: LocaleKeys.welding.tr()),
             ],
