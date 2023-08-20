@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
+import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 import '../../../global_widgets/textfield_refactor.dart';
 
@@ -9,6 +10,65 @@ class Enquirycreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<bool> showEnquirySumitPopup() async {
+      return await showDialog(
+            //the return value will be from "Yes" or "No" options
+            context: context,
+            builder: (context) => Padding(
+              padding: const EdgeInsets.all(25),
+              child: AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                title: CircleAvatar(
+                  radius: 22,
+                  backgroundColor: ColorConstant.kistlerBrandGreen,
+                  child: Icon(
+                    Icons.done,
+                  ),
+                ),
+                content: Text(
+                  // this is the one that actually works
+                  'Thank you !!!\n your enquiry has been submitted successfully',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.center,
+                ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                    ),
+                    child: InkWell(
+                      onTap: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BottomNavScreen())),
+                      child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: ColorConstant.kistlerBrandGreen),
+                        child: Center(
+                          child: Text(
+                            "Back to home",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  )
+                ],
+              ),
+            ),
+          ) ??
+          false; //if showDialouge had returned null, then return false
+    }
+
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
@@ -104,7 +164,9 @@ class Enquirycreen extends StatelessWidget {
                   backgroundColor:
                       MaterialStatePropertyAll(ColorConstant.kistlerBrandGreen),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showEnquirySumitPopup();
+                },
                 child: Text(
                   "Submit",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

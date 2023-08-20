@@ -37,6 +37,62 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Future<bool> customMadeSumitPopup() async {
+      return await showDialog(
+            //the return value will be from "Yes" or "No" options
+            context: context,
+            builder: (context) => Padding(
+              padding: const EdgeInsets.all(25),
+              child: AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                title: CircleAvatar(
+                  radius: 22,
+                  backgroundColor: ColorConstant.kistlerBrandGreen,
+                  child: Icon(
+                    Icons.done,
+                  ),
+                ),
+                content: Text(
+                  // this is the one that actually works
+                  'Thank you !!!\n your enquiry has been submitted successfully',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.center,
+                ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                    ),
+                    child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: ColorConstant.kistlerBrandGreen),
+                        child: Center(
+                          child: Text(
+                            "Back",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  )
+                ],
+              ),
+            ),
+          ) ??
+          false; //if showDialouge had returned null, then return false
+    }
+
     return Column(
       children: [
         // Container(
@@ -112,10 +168,13 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
+                      backgroundColor: ColorConstant.kistlerBrandGreen,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      customMadeSumitPopup();
+                    },
                     child: Text(
+                      //  LocaleKeys.submit.tr(),
                       LocaleKeys.submit.tr(),
                     ),
                   ),
