@@ -55,7 +55,7 @@ class _MyTableState extends State<MyTable> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(languageButtonVisibility: false),
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(

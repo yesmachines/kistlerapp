@@ -80,11 +80,12 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(
+                      Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
                           builder: (context) => BottomNavScreen(),
                         ),
+                        (route) => false,
                       );
                     },
                     child: Container(

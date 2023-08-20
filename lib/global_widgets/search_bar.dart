@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 
 class SearchBarRefactor extends StatelessWidget {
   @override
@@ -13,7 +15,7 @@ class SearchBarRefactor extends StatelessWidget {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search',
+                hintText: LocaleKeys.search.tr(),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.all(10),
               ),

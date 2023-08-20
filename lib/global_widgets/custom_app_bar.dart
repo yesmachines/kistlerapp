@@ -4,8 +4,13 @@ import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/global_widgets/language_toggle_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar(
+      {super.key,
+      this.languageButtonVisibility = true,
+      this.backButtonVisibility = true});
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  final bool languageButtonVisibility;
+  final bool backButtonVisibility;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +20,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 150,
       leading: Row(
         children: [
-          IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: ColorConstant.kistlerBrandGreen,
-              )),
-          LanguageToggleButton()
+          backButtonVisibility
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: ColorConstant.kistlerBrandGreen,
+                  ))
+              : SizedBox(
+                  width: 20,
+                ),
+          languageButtonVisibility ? LanguageToggleButton() : SizedBox()
         ],
       ),
       actions: [

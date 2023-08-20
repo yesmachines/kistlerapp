@@ -12,7 +12,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    context.setLocale(Locale('de'));
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await context.setLocale(Locale('de'));
+    });
+
     super.initState();
 
     Future.delayed(Duration(seconds: 3), () {
