@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/Drawer.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/enquiry_screen/view/enquiry_screen.dart';
@@ -148,7 +150,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "Enquiry",
+                                  LocaleKeys.enquiry.tr(),
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -173,7 +175,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "Price",
+                                  LocaleKeys.price.tr(),
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -190,7 +192,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Description",
+                          LocaleKeys.description.tr(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -211,7 +213,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Specification: ",
+                          "${LocaleKeys.specificattion.tr()} :",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -246,7 +248,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Catalogue",
+                            LocaleKeys.catalogue.tr(),
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -255,7 +257,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           Row(
                             children: [
                               Text(
-                                "Download",
+                                LocaleKeys.download.tr(),
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -271,7 +273,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           Row(
                             children: [
                               Text(
-                                "share",
+                                LocaleKeys.share.tr(),
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -293,7 +295,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Application",
+                          LocaleKeys.application.tr(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -320,7 +322,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Application images",
+                          LocaleKeys.application_images.tr(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -337,7 +339,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Technical Diagram",
+                          LocaleKeys.technical_diagram.tr(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -354,7 +356,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Accessories",
+                          LocaleKeys.accessories.tr(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,

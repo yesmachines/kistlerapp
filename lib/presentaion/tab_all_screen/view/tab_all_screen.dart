@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_product_container.dart';
 
 class TabAllViewScreen extends StatelessWidget {
@@ -15,7 +17,7 @@ class TabAllViewScreen extends StatelessWidget {
           ),
           Center(
             child: Text(
-              "Cutter",
+              LocaleKeys.Cutter.tr(),
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
             ),
           ),
@@ -34,7 +36,7 @@ class TabAllViewScreen extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'PLC Controlled',
+                    LocaleKeys.plc_controlled.tr(),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),

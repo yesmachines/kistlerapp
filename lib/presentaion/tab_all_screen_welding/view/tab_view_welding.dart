@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 
 import '../../../global_widgets/custom_product_container.dart';
 
@@ -28,7 +30,7 @@ class TabScreenWelding extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Pipe Rotators',
+                    LocaleKeys.pipe_rotators.tr(),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -67,7 +69,7 @@ class TabScreenWelding extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Positioners',
+                    LocaleKeys.positioners.tr(),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -102,7 +104,7 @@ class TabScreenWelding extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Rotators',
+                    LocaleKeys.roators.tr(),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -137,7 +139,7 @@ class TabScreenWelding extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Beam Welding Lines',
+                    LocaleKeys.beam_welding_lines.tr(),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -172,7 +174,7 @@ class TabScreenWelding extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Special',
+                    LocaleKeys.special.tr(),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),

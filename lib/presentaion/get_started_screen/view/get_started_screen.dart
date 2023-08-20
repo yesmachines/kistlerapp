@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/core/image_constant/images.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 
 import '../../bottom_nav_screen/view/bottom_nav_screen.dart';
 
@@ -39,7 +41,7 @@ class GetStartedScreen extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "Get started",
+                    LocaleKeys.get_started.tr(),
                     style: TextStyle(
                         color: ColorConstant.kistlerWhite,
                         fontSize: 18,

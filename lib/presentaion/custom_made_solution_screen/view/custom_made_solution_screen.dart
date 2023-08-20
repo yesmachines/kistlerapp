@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/presentaion/home_screen/view/home_screen.dart';
 
 import '../../../global_widgets/search_bar.dart';
 import 'custom_screen_widgets/custom_widget.dart';
@@ -73,7 +76,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 ),
                 Center(
                   child: Text(
-                    "Custom Made Solutions",
+                    LocaleKeys.custom_made_solution.tr(),
                     style: TextStyle(
                         color: ColorConstant.kistlerTextBlack, fontSize: 16),
                   ),
@@ -82,24 +85,30 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   height: 25,
                 ),
                 Text(
-                  "Find the solutions with us",
+                  LocaleKeys.find_the_solution_with_us.tr(),
                   style: TextStyle(
                       color: ColorConstant.kistlerTextBlack, fontSize: 16),
                 ),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Company Name", length: 1),
+                TextfieldRefactor(
+                    name: LocaleKeys.conpany_name.tr(), length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Contact Name", length: 1),
+                TextfieldRefactor(
+                    name: LocaleKeys.contact_name.tr(), length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Email Address", length: 1),
+                TextfieldRefactor(
+                    name: LocaleKeys.email_address.tr(), length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Contact Number", length: 1),
+                TextfieldRefactor(
+                    name: LocaleKeys.contact_number.tr(), length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Country Name", length: 1),
+                TextfieldRefactor(
+                    name: LocaleKeys.country_name.tr(), length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Product Name", length: 1),
+                TextfieldRefactor(
+                    name: LocaleKeys.product_name.tr(), length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: "Description", length: 5),
+                TextfieldRefactor(name: LocaleKeys.description.tr(), length: 5),
                 SizedBox(height: 25),
                 Center(
                   child: ElevatedButton(
@@ -107,12 +116,14 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                       backgroundColor: Colors.green,
                     ),
                     onPressed: () {},
-                    child: Text("Submit"),
+                    child: Text(
+                      LocaleKeys.submit.tr(),
+                    ),
                   ),
                 ),
                 SizedBox(height: 25),
                 Text(
-                  "To ensure optimum customer satisfaction, KISTLER goes above and beyond by providing not only an extensive range of standard equipment but also by offering customized automation solutions tailored to meet specific customer needs. Our commitment to delivering exceptional service extends beyond our wide portfolio of over 2000 standard machines for automated welding processes, including pipe rotators, welding positioners, and manipulators. We understand that every industry has unique requirements, and we strive to fulfill them comprehensively. This commitment drives us to provide the flexibility of designing and manufacturing machines that are specifically customized to match the precise needs of our customers. This approach ensures that our equipment perfectly aligns with the industry's demands and standards, enabling our customers to attain optimal results and success in their operations. With our expertise in automation and a dedicated team of professionals, we are capable of developing and manufacturing machines that address the intricate demands of various industries. We work closely with our customers, understanding their specific challenges, and engineering innovative solutions that enhance their productivity and efficiency. We continuously invest in research and development to stay at the forefront of technological advancements. This enables us to offer cutting-edge automation solutions that are reliable, efficient, and meet the highest industry standards. Our commitment to customer satisfaction drives us to continually improve our product range, ensuring that we can always fulfill the evolving needs of the industry. With KISTLER, you can rely on a trusted partner who understands your needs and delivers the right equipment to optimize your welding processes and achieve exceptional results.",
+                  LocaleKeys.about_company_data.tr(),
                   style: TextStyle(fontSize: 14, height: 2),
                   textAlign: TextAlign.justify,
                 ),

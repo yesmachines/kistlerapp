@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/search_bar.dart';
 import 'package:kistler/presentaion/tab_all_screen/view/tab_all_screen.dart';
 import 'package:kistler/presentaion/tab_screen_cutter/view/tab_screen_cutter.dart';
@@ -54,10 +56,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             indicatorPadding: EdgeInsets.only(left: 8, right: 8),
             tabs: [
               Tab(
-                text: 'All',
+                text: LocaleKeys.all.tr(),
               ),
-              Tab(text: 'Cutting'),
-              Tab(text: 'Welding'),
+              Tab(text: LocaleKeys.cutting.tr()),
+              Tab(text: LocaleKeys.welding.tr()),
             ],
           ),
           Expanded(
