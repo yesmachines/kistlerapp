@@ -1,6 +1,6 @@
 class ImageConstant {
   //   app logos
-  static String smallLogo = 'assets/images/Maskgroup.png';
+  static String smallLogo = 'assets/images/logo_final.png';
   static String kistlerLogo = "assets/images/kistlerloggo.png";
 
   // Bottom navigation bar icons

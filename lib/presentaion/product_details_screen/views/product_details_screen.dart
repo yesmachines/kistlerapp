@@ -6,8 +6,10 @@ import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/Drawer.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/enquiry_screen/view/enquiry_screen.dart';
+import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/tables.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/accessories_container.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/application_images.dart';
+import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/main_page_table_refactor.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/technical_diagram.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/three_images_containers.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/youtube_video_player.dart';
@@ -24,6 +26,43 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final String _linkUrl = 'https://www.youtube.com/watch?v=ENSjcy3eh8U';
+  bool _isChecked = false;
+  int selectedNumber = 1;
+
+  _toggleCheckbox(bool value) {
+    setState(() {
+      _isChecked = value;
+    });
+  }
+
+  final List<Map<dynamic, dynamic>> data = [
+    {
+      "no": "SCM300",
+      "name": "1",
+      "price": "12",
+      "qty": "32",
+      "select": "22",
+      "cutting": "22"
+    },
+    {
+      "no": "SCM400",
+      "name": "1",
+      "price": "30",
+      "qty": "6",
+      "select": "33",
+      "cutting": "22"
+    },
+    {
+      "no": "SCM630",
+      "name": "1",
+      "price": "18",
+      "qty": "22",
+      "select": "44",
+      "cutting": "22"
+    },
+
+    // Add more rows as needed
+  ];
 
   _launchURL() async {
     if (await canLaunch(_linkUrl)) {
@@ -237,8 +276,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         height: 18,
                       ),
                       Container(
-                        height: 200,
-                        color: Colors.amber,
+                        height: 220,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 1,
+                          itemBuilder: (BuildContext context, int index) {
+                            return MainPageTable(data: data);
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: 12,
