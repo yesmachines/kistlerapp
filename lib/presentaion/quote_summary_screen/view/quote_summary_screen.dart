@@ -187,7 +187,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                       LocaleKeys.send_quotation.tr(),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 14,
                           color: ColorConstant.kistlerWhite),
                     )),
                   ),

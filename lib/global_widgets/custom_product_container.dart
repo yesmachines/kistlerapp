@@ -40,14 +40,14 @@ class ProductContainer extends StatelessWidget {
                   Text(
                     "SCM 300",
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: ColorConstant.kistlerTextColor),
                   ),
-                  Text(
-                    "PLC-Controlled",
-                    style: TextStyle(color: ColorConstant.kistlerTextColor),
-                  ),
+                  // Text(
+                  //   "PLC-Controlled",
+                  //   style: TextStyle(color: ColorConstant.kistlerTextColor),
+                  // ),
                   SizedBox(
                     height: 10,
                   )

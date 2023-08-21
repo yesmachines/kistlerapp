@@ -45,7 +45,7 @@ class GetStartedScreen extends StatelessWidget {
                     LocaleKeys.get_started.tr(),
                     style: TextStyle(
                         color: ColorConstant.kistlerWhite,
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: FontWeight.w600),
                   ),
                 ),

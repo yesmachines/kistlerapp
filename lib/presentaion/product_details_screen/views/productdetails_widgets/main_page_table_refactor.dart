@@ -30,6 +30,7 @@ class MainPageTable extends StatelessWidget {
                     child: Text(
                       "Model No",
                       style: TextStyle(
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: ColorConstant.kistlerWhite),
                       textAlign: TextAlign.center,
@@ -41,6 +42,7 @@ class MainPageTable extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text('Workpiece diameter - min. (inch)',
                         style: TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: ColorConstant.kistlerWhite),
                         textAlign: TextAlign.center),
@@ -52,6 +54,7 @@ class MainPageTable extends StatelessWidget {
                     child: Text('Workpiece diameter - max. (inch)',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
+                            fontSize: 14,
                             color: ColorConstant.kistlerWhite),
                         textAlign: TextAlign.center),
                   ),
@@ -61,6 +64,7 @@ class MainPageTable extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text('Torch stroke (Inch)',
                         style: TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: ColorConstant.kistlerWhite),
                         textAlign: TextAlign.center),
@@ -71,6 +75,7 @@ class MainPageTable extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text('Through-hole (inch)',
                         style: TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: ColorConstant.kistlerWhite),
                         textAlign: TextAlign.center),
@@ -81,6 +86,7 @@ class MainPageTable extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text('Cutting speed (inch/min)',
                         style: TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: ColorConstant.kistlerWhite),
                         textAlign: TextAlign.center),

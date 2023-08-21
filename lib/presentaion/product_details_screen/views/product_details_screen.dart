@@ -164,7 +164,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Text(
                         "Programmable Saddle Cutting Machines - SCM Series",
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 14,
                             fontWeight: FontWeight.w900,
                             color: ColorConstant.kistlerBrandGreen),
                       ),
@@ -176,7 +176,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         child: Text(
                           "PLC-Controlled",
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 12,
                               color: ColorConstant.kistlerTextColor),
                         ),
                       ),
@@ -204,7 +204,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Text(
                                   LocaleKeys.enquiry.tr(),
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: ColorConstant.kistlerWhite),
                                 ),
@@ -229,7 +229,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Text(
                                   LocaleKeys.price.tr(),
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: ColorConstant.kistlerWhite),
                                 ),
@@ -246,7 +246,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         child: Text(
                           LocaleKeys.description.tr(),
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -267,7 +267,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         child: Text(
                           "${LocaleKeys.specificattion.tr()} :",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -308,7 +308,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           Text(
                             LocaleKeys.catalogue.tr(),
                             style: TextStyle(
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: ColorConstant.kistlerTextColor),
                           ),
@@ -373,7 +373,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                       // here is calling the video player screen
                       GestureDetector(
-                          onTap: _launchURL, child: VideoPlayerScreen()),
+                          onTap: _launchURL,
+                          child: Container(
+                            height: 200,
+                            width: double.infinity,
+                            child: Image.asset(
+                              "assets/images/thumbnail.jpg",
+                              fit: BoxFit.fitWidth,
+                            ),
+                          )),
                       SizedBox(
                         height: 20,
                       ),

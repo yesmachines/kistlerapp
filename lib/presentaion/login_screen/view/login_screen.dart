@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                   Text(
                     LocaleKeys.Log_in.tr(),
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
@@ -103,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                         child: Text(
                           LocaleKeys.Log_in.tr(),
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),

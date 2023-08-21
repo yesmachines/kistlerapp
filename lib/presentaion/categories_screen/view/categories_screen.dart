@@ -49,7 +49,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             unselectedLabelColor: ColorConstant.kistlerBrandBorder,
             indicatorColor: ColorConstant.kistlerBrandGreen,
             labelColor: ColorConstant.kistlerBrandGreen,
-            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
             indicatorWeight: 4,
             // padding: EdgeInsets.symmetric(horizontal: 50),
             labelPadding: EdgeInsets.symmetric(horizontal: 30),

@@ -44,7 +44,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
             ),
             Text(
               widget.tileName,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
             ),
           ],
         ),

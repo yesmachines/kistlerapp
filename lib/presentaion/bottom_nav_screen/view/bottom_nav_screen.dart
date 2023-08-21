@@ -46,7 +46,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                 ),
                 content: Text(
                   LocaleKeys.want_to_exit.tr(),
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
                 actions: [

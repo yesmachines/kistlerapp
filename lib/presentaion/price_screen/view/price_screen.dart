@@ -66,9 +66,11 @@ class _MyTableState extends State<MyTable> {
             child: Container(
               height: 180,
               width: 180,
-              child: Image.network(
-                "https://imgs.search.brave.com/diuwAGp0a3Kc82mymdXgtdXUWi9BvTlMfBKEkqGQjLU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9oaXBz/LmhlYXJzdGFwcHMu/Y29tL3ZhZGVyLXBy/b2QuczMuYW1hem9u/YXdzLmNvbS8xNjc5/NTA3MjY2LXJ5b2Jp/LTY0MWIzZjNjOTEx/ODMuanBnP2Nyb3A9/MXh3OjF4aDtjZW50/ZXIsdG9wJnJlc2l6/ZT05ODA6Kg",
-                fit: BoxFit.fitHeight,
+              child: Center(
+                child: Image.asset(
+                  "assets/images/imageee.jpeg",
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
           ),
@@ -81,7 +83,7 @@ class _MyTableState extends State<MyTable> {
               "Programmable Saddle Cutting Machines - SCM Series",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w900,
                   color: ColorConstant.kistlerBrandGreen),
             ),
@@ -95,7 +97,7 @@ class _MyTableState extends State<MyTable> {
               children: [
                 Text(
                   LocaleKeys.model_name.tr(),
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 )
               ],
             ),

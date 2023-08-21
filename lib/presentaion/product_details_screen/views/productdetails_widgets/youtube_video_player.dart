@@ -11,8 +11,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     _controller = YoutubePlayerController(
       initialVideoId: 'ENSjcy3eh8U',
       flags: YoutubePlayerFlags(
@@ -20,9 +18,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           mute: true,
           controlsVisibleAtStart: true,
           showLiveFullscreenButton: false,
-          isLive: true,
           hideControls: true),
     );
+    super.initState();
   }
 
   @override
@@ -40,7 +38,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    try {
+      _controller.dispose();
+    } catch (e) {
+      print(e);
+    }
+
     super.dispose();
   }
 }

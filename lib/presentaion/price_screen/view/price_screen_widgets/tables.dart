@@ -27,11 +27,11 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
         border: TableBorder.all(color: ColorConstant.kistlerBrandGreen),
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         columnWidths: {
-          0: FlexColumnWidth(.5),
+          0: FlexColumnWidth(.8),
           1: FlexColumnWidth(1.6),
           2: FlexColumnWidth(1.1),
           3: FlexColumnWidth(.8),
-          4: FlexColumnWidth(.8),
+          4: FlexColumnWidth(1),
         },
         children: [
           TableRow(
