@@ -133,7 +133,9 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   child: Text(
                     LocaleKeys.custom_made_solution.tr(),
                     style: TextStyle(
-                        color: ColorConstant.kistlerTextBlack, fontSize: 16),
+                        color: ColorConstant.kistlerTextBlack,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(
@@ -180,12 +182,12 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   ),
                 ),
                 SizedBox(height: 25),
-                Text(
-                  LocaleKeys.about_company_data.tr(),
-                  style: TextStyle(fontSize: 14, height: 2),
-                  textAlign: TextAlign.left,
-                ),
-                SizedBox(height: 25),
+                // Text(
+                //   LocaleKeys.about_company_data.tr(),
+                //   style: TextStyle(fontSize: 14, height: 2),
+                //   textAlign: TextAlign.left,
+                // ),
+                // SizedBox(height: 25),
               ],
             ),
           ),

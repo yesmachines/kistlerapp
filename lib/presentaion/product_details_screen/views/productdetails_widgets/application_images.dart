@@ -22,10 +22,14 @@ class ApplicationImages extends StatelessWidget {
           childAspectRatio: .8),
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          child: Image.asset(
-            imageList[index],
-            fit: BoxFit.cover,
-          ),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage(
+                  imageList[index],
+                ),
+                fit: BoxFit.cover,
+              )),
         );
       },
       itemCount: 4,

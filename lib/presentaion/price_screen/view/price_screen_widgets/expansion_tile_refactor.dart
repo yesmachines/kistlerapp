@@ -32,22 +32,14 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
         backgroundColor: Colors.transparent,
         collapsedBackgroundColor: ColorConstant.kistlerBrandGreen,
         collapsedTextColor: ColorConstant.kistlerWhite,
-        collapsedIconColor: ColorConstant.kistlerWhite,
+        collapsedIconColor: ColorConstant.kistlerBrandGreen,
         textColor: ColorConstant.kistlerBrandGreen,
         iconColor: ColorConstant.kistlerBrandGreen,
-        title: Row(
-          children: [
-            Text(widget.tilenumber),
-            VerticalDivider(
-              thickness: 3,
-              color: Colors.white,
-            ),
-            Text(
-              widget.tileName,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-          ],
+        title: Text(
+          widget.tileName,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
+        leading: Text(widget.tilenumber),
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
