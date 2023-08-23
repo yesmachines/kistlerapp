@@ -29,89 +29,100 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ExpansionTile(
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorConstant.kistlerBrandGreen,
         collapsedBackgroundColor: ColorConstant.kistlerBrandGreen,
         collapsedTextColor: ColorConstant.kistlerWhite,
         collapsedIconColor: ColorConstant.kistlerBrandGreen,
-        textColor: ColorConstant.kistlerBrandGreen,
-        iconColor: ColorConstant.kistlerBrandGreen,
+        textColor: ColorConstant.kistlerWhite,
+        iconColor: ColorConstant.kistlerWhite,
         title: Text(
           widget.tileName,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
         leading: Text(widget.tilenumber),
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(
+            color: ColorConstant.kistlerWhite,
+            child: Column(
               children: [
-                Text(
-                  LocaleKeys.product_price.tr(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                ),
-                Row(
-                  children: [
-                    Text("\$ 3500",
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        LocaleKeys.product_price.tr(),
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16)),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Checkbox(
-                        activeColor: ColorConstant.kistlerBrandGreen,
-                        value: checkValue,
-                        onChanged: (value) {
+                            fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                      Row(
+                        children: [
+                          Text("\$ 3500",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16)),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Checkbox(
+                              activeColor: ColorConstant.kistlerBrandGreen,
+                              value: checkValue,
+                              onChanged: (value) {
+                                setState(() {
+                                  checkValue = value;
+                                });
+                              })
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        LocaleKeys.product_qty.tr(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                      DropdownButton<int>(
+                        value: selectedNumber,
+                        onChanged: (int? newValue) {
                           setState(() {
-                            checkValue = value;
+                            selectedNumber = newValue!;
                           });
-                        })
-                  ],
+                        },
+                        items: List.generate(100, (index) {
+                          return DropdownMenuItem<int>(
+                            value: index + 1,
+                            child: Text((index + 1).toString()),
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+                PriceScreenTable(
+                  data: widget.data,
+                ),
+                SizedBox(
+                  height: 18,
+                ),
                 Text(
-                  LocaleKeys.product_qty.tr(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  LocaleKeys.accessories.tr(),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-                DropdownButton<int>(
-                  value: selectedNumber,
-                  onChanged: (int? newValue) {
-                    setState(() {
-                      selectedNumber = newValue!;
-                    });
-                  },
-                  items: List.generate(100, (index) {
-                    return DropdownMenuItem<int>(
-                      value: index + 1,
-                      child: Text((index + 1).toString()),
-                    );
-                  }),
+                SizedBox(
+                  height: 18,
+                ),
+                PriceScreenTable(
+                  data: widget.assdata,
                 ),
               ],
             ),
-          ),
-          PriceScreenTable(
-            data: widget.data,
-          ),
-          SizedBox(
-            height: 18,
-          ),
-          Text(
-            LocaleKeys.accessories.tr(),
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          SizedBox(
-            height: 18,
-          ),
-          PriceScreenTable(
-            data: widget.assdata,
           ),
         ],
       ),
