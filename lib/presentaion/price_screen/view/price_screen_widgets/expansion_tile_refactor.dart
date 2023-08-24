@@ -88,20 +88,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 14),
                       ),
-                      DropdownButton<int>(
-                        value: selectedNumber,
-                        onChanged: (int? newValue) {
-                          setState(() {
-                            selectedNumber = newValue!;
-                          });
-                        },
-                        items: List.generate(100, (index) {
-                          return DropdownMenuItem<int>(
-                            value: index + 1,
-                            child: Text((index + 1).toString()),
-                          );
-                        }),
-                      ),
+                      
                     ],
                   ),
                 ),

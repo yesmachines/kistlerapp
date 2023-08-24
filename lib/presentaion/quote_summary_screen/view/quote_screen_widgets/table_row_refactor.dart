@@ -11,6 +11,9 @@ class TableRowRefactor extends StatefulWidget {
 }
 
 class _TableRowRefactorState extends State<TableRowRefactor> {
+  String selectedValue = 'Option 1';
+  List<String> dropdownOptions = ['Option 1', 'Option 2', 'Option 3'];
+
   int selectedNumber = 1;
   @override
   Widget build(BuildContext context) {
@@ -19,10 +22,10 @@ class _TableRowRefactorState extends State<TableRowRefactor> {
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       columnWidths: {
         0: FlexColumnWidth(1.7),
-        1: FlexColumnWidth(2.9),
-        2: FlexColumnWidth(1.8),
+        1: FlexColumnWidth(3),
+        2: FlexColumnWidth(2),
         3: FlexColumnWidth(2.5),
-        4: FlexColumnWidth(1.5),
+        4: FlexColumnWidth(1),
       },
       children: [
         TableRow(
@@ -104,27 +107,27 @@ class _TableRowRefactorState extends State<TableRowRefactor> {
               ),
             ),
             TableCell(
-              child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    height: 40,
-                    width: 40,
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: ColorConstant.kistlerBrandGreen)),
-                      ),
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  showDropdown(context);
+                },
+                child: Row(
+                  children: [
+                    Text(
+                      "100",
                     ),
-                  )),
-            ),
+                    Icon(Icons.arrow_drop_down)
+                  ],
+                ),
+              ),
+            )),
             TableCell(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Text(
-                  '33 510',
+                  '33510',
                 ),
               ),
             ),
@@ -133,7 +136,7 @@ class _TableRowRefactorState extends State<TableRowRefactor> {
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Icon(
                     Icons.delete,
-                    size: 22,
+                    size: 20,
                   )),
             ),
           ],
@@ -188,12 +191,33 @@ class _TableRowRefactorState extends State<TableRowRefactor> {
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Icon(
                     Icons.delete,
-                    size: 22,
+                    size: 20,
                   )),
             ),
           ],
         ),
       ],
+    );
+  }
+
+  void showDropdown(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Select an option'),
+          content: DropdownButton<String>(
+            value: selectedValue,
+            items: dropdownOptions.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (value) => SizedBox(),
+          ),
+        );
+      },
     );
   }
 }
