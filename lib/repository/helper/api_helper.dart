@@ -76,8 +76,31 @@ import '../../core/app_utils/app_utils.dart';
 import 'api_response.dart';
 
 class ApiHelper {
-  static const String baseUrl =
-      'http://3.110.186.49:8000/'; // Replace with your API base URL
+  // static const String baseUrl =
+  //     'http://3.110.186.49:8000/'; // Replace with your API base URL
+
+  static Map<String, String> getApiHeader({String? access, String? dbName}) {
+    // AppUtils.logger.d("Access : Bearer $access");
+
+    if (access != null) {
+      return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $access'
+      };
+    } else if (dbName != null) {
+      return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'dbName': dbName,
+      };
+    } else {
+      return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      };
+    }
+  }
 
   static getData(
       {required String endPoint,
@@ -91,7 +114,7 @@ class ApiHelper {
       if (isRequestSucceeded(res.statusCode)) {
         var resBody = json.decode(utf8.decode(res.bodyBytes));
         print(resBody);
-        if (resBody['status'] == 'ok') {
+        if (resBody['status'] == '1') {
           print(resBody);
           return APIResponse(data: resBody, error: false, errorMessage: '');
         } else {
@@ -121,6 +144,7 @@ class ApiHelper {
     if (await AppUtils.isOnline()) {
       // try{
       final uri = Uri.parse(finalUrl ?? AppConfig.finalUrl + endPoint);
+      print("uri :$uri");
       // AppUtils.logger.i(uri);
       // print(header);
       final res = await http.post(uri, headers: header, body: jsonEncode(body));
@@ -129,7 +153,7 @@ class ApiHelper {
         var resBody = json.decode(utf8.decode(res.bodyBytes));
         print('post resBody');
         print(resBody);
-        if (resBody['status'] == 'ok') {
+        if (resBody['status'] == '1') {
           return APIResponse(data: resBody, error: false, errorMessage: '');
         } else {
           // AppUtils.oneTimeSnackBar(resBody['message'].toString());
@@ -173,7 +197,7 @@ class ApiHelper {
         var resBody = json.decode(utf8.decode(res.bodyBytes));
         print('post resBody');
         print(resBody);
-        if (resBody['status'] == 'ok') {
+        if (resBody['status'] == '1') {
           return APIResponse(data: resBody, error: false, errorMessage: '');
         } else {
           // AppUtils.oneTimeSnackBar(
