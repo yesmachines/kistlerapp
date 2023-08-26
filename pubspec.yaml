@@ -46,7 +46,9 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   provider: ^6.0.5
   http: ^1.1.0
-  quantity_input: ^1.0.2
+  
+  lottie: ^2.6.0
+  
 
 dev_dependencies:
   flutter_test:
