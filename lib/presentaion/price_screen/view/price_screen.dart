@@ -19,18 +19,11 @@ class _MyTableState extends State<MyTable> {
       "name":
           "Extra charge for 3rd controlled axis (allows beveling of end cuts), part no. 808800",
       "price": "\$10000",
-      "qty": "1",
       "select": false
     },
-    {"no": "2", "name": "Jane", "price": "\$10000", "qty": "1", "select": true},
-    {"no": "3", "name": "Alex", "price": "\$10000", "qty": "1", "select": true},
-    {
-      "no": "3",
-      "name": "Alex",
-      "price": "\$10000",
-      "qty": "1",
-      "select": false
-    },
+    {"no": "2", "name": "Jane", "price": "\$10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "\$10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "\$10000", "select": false},
     // Add more rows as needed
   ];
   final List<Map<dynamic, dynamic>> assData = [
@@ -38,18 +31,11 @@ class _MyTableState extends State<MyTable> {
       "no": "1",
       "name": "Extra charge for 3rd cuts), part no. 808800",
       "price": "\$10000",
-      "qty": "1",
       "select": false
     },
-    {"no": "2", "name": "Jane", "price": "\$10000", "qty": "1", "select": true},
-    {"no": "3", "name": "Alex", "price": "\$10000", "qty": "1", "select": true},
-    {
-      "no": "3",
-      "name": "Alex",
-      "price": "\$10000",
-      "qty": "1",
-      "select": false
-    },
+    {"no": "2", "name": "Jane", "price": "\$10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "\$10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "\$10000", "select": false},
     // Add more rows as needed
   ];
 

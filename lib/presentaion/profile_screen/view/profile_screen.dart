@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/presentaion/get_started_screen/view/get_started_screen.dart';
+import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
 
 class ProfilScreen extends StatelessWidget {
   const ProfilScreen({super.key});
@@ -108,93 +109,199 @@ class ProfilScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(),
-          Column(
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                SizedBox(),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(),
+            Column(
+              children: [
+                SizedBox(height: 60),
                 Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(),
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfileUpdateScreen()),
+                              );
+                            },
+                            child: Icon(
+                              Icons.save_as,
+                              size: 30,
+                              color: ColorConstant.kistlerBrandGreen,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          CircleAvatar(
+                            radius: 75,
+                            backgroundColor: ColorConstant.kistlerBrandGreen,
+                            child: CircleAvatar(
+                                backgroundColor: ColorConstant.kistlerWhite,
+                                radius: 72,
+                                backgroundImage:
+                                    AssetImage("assets/images/dp.png")),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Icon(
+                            Icons.share,
+                            size: 30,
+                            color: ColorConstant.kistlerBrandGreen,
+                          ),
+                        ],
+                      ),
+                      SizedBox(),
+                    ]),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Felix Kistler",
+                  style: TextStyle(
+                      fontSize: 30,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.w500,
+                      color: ColorConstant.kistlerBrandGreen),
+                ),
+                Text(
+                  "Marketing & Sales Management",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.save_as,
-                      size: 30,
-                      color: ColorConstant.kistlerBrandGreen,
-                    ),
+                    Icon(Icons.call, color: ColorConstant.kistlerBrandGreen),
                     SizedBox(
-                      width: 20,
+                      width: 15,
                     ),
-                    CircleAvatar(
-                      radius: 75,
-                      backgroundColor: ColorConstant.kistlerBrandGreen,
-                      child: CircleAvatar(
-                          backgroundColor: ColorConstant.kistlerWhite,
-                          radius: 72,
-                          backgroundImage: AssetImage("assets/images/dp.png")),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Icon(
-                      Icons.share,
-                      size: 30,
-                      color: ColorConstant.kistlerBrandGreen,
-                    ),
+                    Icon(Icons.message, color: ColorConstant.kistlerBrandGreen)
                   ],
                 ),
-                SizedBox(),
-              ]),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Felix Kistler",
-                style: TextStyle(
-                    fontSize: 30,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w500,
-                    color: ColorConstant.kistlerBrandGreen),
-              ),
-              Text(
-                "Marketing & Sales Management",
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.call, color: ColorConstant.kistlerBrandGreen),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Icon(Icons.message, color: ColorConstant.kistlerBrandGreen)
-                ],
-              ),
-            ],
-          ),
-          InkWell(
-            onTap: () {
-              logoutConfirmPopup();
-            },
-            child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width * .50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  color: ColorConstant.kistlerBrandGreen,
+                SizedBox(
+                  height: 20,
                 ),
-                child: Center(
-                    child: Text(
-                  LocaleKeys.logout.tr(),
-                  style: TextStyle(color: ColorConstant.kistlerWhite),
-                ))),
-          ),
-          SizedBox()
-        ],
+                Container(
+                  width: MediaQuery.of(context).size.width * .80,
+                  padding:
+                      EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(2.0, 2.0),
+                        blurRadius: 4.0,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.phone,
+                        color: ColorConstant.kistlerBrandGreen,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        "+49 152 22972391",
+                        style: TextStyle(
+                          fontSize: 14,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * .80,
+                  padding:
+                      EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(2.0, 2.0),
+                        blurRadius: 4.0,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.mail_outline_rounded,
+                        color: ColorConstant.kistlerBrandGreen,
+                      ),
+                      SizedBox(width: 10),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .60,
+                        child: Text(
+                          "felix.kistler@kistler-machine.dsksjsjhjhe",
+                          style: TextStyle(
+                            fontSize: 12,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 40),
+            Container(
+              height: 200,
+              width: 200,
+              color: ColorConstant.kistlerBrandGreen,
+              child: Image.asset(
+                "assets/images/QR.png",
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 40),
+            InkWell(
+              onTap: () {
+                logoutConfirmPopup();
+              },
+              child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * .50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    color: ColorConstant.kistlerBrandGreen,
+                  ),
+                  child: Center(
+                      child: Text(
+                    LocaleKeys.logout.tr(),
+                    style: TextStyle(color: ColorConstant.kistlerWhite),
+                  ))),
+            ),
+            SizedBox()
+          ],
+        ),
       ),
     );
   }

@@ -32,7 +32,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
         backgroundColor: ColorConstant.kistlerBrandGreen,
         collapsedBackgroundColor: ColorConstant.kistlerBrandGreen,
         collapsedTextColor: ColorConstant.kistlerWhite,
-        collapsedIconColor: ColorConstant.kistlerBrandGreen,
+        collapsedIconColor: ColorConstant.kistlerWhite,
         textColor: ColorConstant.kistlerWhite,
         iconColor: ColorConstant.kistlerWhite,
         title: Text(
@@ -58,9 +58,11 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                       ),
                       Row(
                         children: [
-                          Text("\$ 3500",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16)),
+                          Text(
+                            "\$ 3500",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -81,17 +83,17 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         LocaleKeys.product_qty.tr(),
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 14),
                       ),
-                      
                     ],
                   ),
                 ),
+                SizedBox(height: 15),
                 PriceScreenTable(
                   data: widget.data,
                 ),

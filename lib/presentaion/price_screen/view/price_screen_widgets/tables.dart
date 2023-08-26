@@ -30,7 +30,6 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
           0: FlexColumnWidth(.8),
           1: FlexColumnWidth(1.6),
           2: FlexColumnWidth(1.1),
-          3: FlexColumnWidth(.8),
           4: FlexColumnWidth(1),
         },
         children: [
@@ -58,14 +57,6 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text('Price',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center),
-                ),
-              ),
-              TableCell(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('Qty',
                       style: TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center),
                 ),
@@ -102,11 +93,6 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
                     padding: EdgeInsets.all(8.0),
                     child: Text(row['price'], textAlign: TextAlign.center),
                   ),
-                ),
-                TableCell(
-                  child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(row['qty'], textAlign: TextAlign.center)),
                 ),
                 TableCell(
                   child: Padding(
