@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kistler/generated/codegen_loader.g.dart';
+import 'package:kistler/presentaion/login_screen/controller/login_screen_controller.dart';
 import 'package:kistler/presentaion/splash_Screen/view/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,15 +33,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LoginScreenController()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(),
+        ),
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+        supportedLocales: context.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
+        locale: context.locale,
       ),
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-      supportedLocales: context.supportedLocales,
-      localizationsDelegates: context.localizationDelegates,
-      locale: context.locale,
     );
   }
 }

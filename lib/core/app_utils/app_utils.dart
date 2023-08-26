@@ -23,23 +23,6 @@ class AppUtils {
     }
   }
 
-  static Map<String, String> getApiHeader({String? access, String? dbName}) {
-    // AppUtils.logger.d("Access : Bearer $access");
-
-    if (access != null) {
-      return {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $access'
-      };
-    } else if (dbName != null) {
-      return {'Content-Type': 'application/json', 'dbName': dbName};
-    } else {
-      return {
-        'Content-Type': 'application/json',
-      };
-    }
-  }
-
   ///used this for myrent
   static Future<String?> getAccessKey() async {
     final sharedPreferences = await SharedPreferences.getInstance();
