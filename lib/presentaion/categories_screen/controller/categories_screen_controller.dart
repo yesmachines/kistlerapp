@@ -45,34 +45,34 @@ class CategoriesScreenController extends ChangeNotifier {
     }
   }
 
-  Future<bool> getProductByCategoryId({required Locale language}) async {
-    sharedPreferences = await SharedPreferences.getInstance();
-    isLoading = true;
-    notifyListeners();
+  // Future<bool> getProductByCategoryId({required Locale language}) async {
+  //   sharedPreferences = await SharedPreferences.getInstance();
+  //   isLoading = true;
+  //   notifyListeners();
 
-    try {
-      // need to update values from  user input
-      final fetchedData = await CategoriesScreenServices()
-          .getProductsByCategories(language: language);
-      if (fetchedData.error != true) {
-        allProductsData = fetchedData.data;
-        if (allProductsData != null) {
-          categoriesList = allProductsData!.categoriesList ?? [];
-        }
+  //   try {
+  //     // need to update values from  user input
+  //     final fetchedData = await CategoriesScreenServices()
+  //         .getProductsByCategories(language: language);
+  //     if (fetchedData.error != true) {
+  //       allProductsData = fetchedData.data;
+  //       if (allProductsData != null) {
+  //         categoriesList = allProductsData!.categoriesList ?? [];
+  //       }
 
-        isLoading = false;
-        notifyListeners();
-        return true;
-      } else {
-        isLoading = false;
-        notifyListeners();
-        return false;
-      }
-    } catch (e) {
-      isLoading = false;
-      notifyListeners();
-      print(e);
-      rethrow;
-    }
-  }
+  //       isLoading = false;
+  //       notifyListeners();
+  //       return true;
+  //     } else {
+  //       isLoading = false;
+  //       notifyListeners();
+  //       return false;
+  //     }
+  //   } catch (e) {
+  //     isLoading = false;
+  //     notifyListeners();
+  //     print(e);
+  //     rethrow;
+  //   }
+  // }
 }
