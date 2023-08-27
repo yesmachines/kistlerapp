@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/presentaion/product_details_screen/views/product_details_screen.dart';
+import 'package:kistler/repository/api/categories_screen/models/get_all_products_res_model.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({super.key});
+  const ProductContainer({super.key, required this.productData});
+  final Product productData;
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +27,24 @@ class ProductContainer extends StatelessWidget {
                 height: 5,
               ),
               Container(
+                  //TODO: need to be updated with no image
                   width: 80,
-                  child: Image.asset("assets/images/kistlerloggo.png")),
+                  child: productData.brandImage != null
+                      ? Image.network(productData.brandImage!)
+                      : SizedBox()),
               Center(
                 child: Container(
                     height: 100,
-                    child: Image.asset(
-                      "assets/images/imageee.jpeg",
-                    )),
+                    child: productData.defaultImage != null
+                        ? Image.network(productData.defaultImage!)
+                        : SizedBox()),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "SCM 300",
+                    productData.ttitle ?? "N/a",
+                    maxLines: 3,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

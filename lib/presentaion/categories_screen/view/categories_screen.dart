@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/search_bar.dart';
-import 'package:kistler/presentaion/tab_all_screen/view/tab_all_screen.dart';
-import 'package:kistler/presentaion/tab_screen_cutter/view/tab_screen_cutter.dart';
+import 'package:kistler/presentaion/categories_screen/controller/categories_screen_controller.dart';
+import 'package:kistler/presentaion/categories_screen/view/tabs/tab_all_screen.dart';
+import 'package:kistler/presentaion/categories_screen/view/tabs/tab_screen_cutter.dart';
+import 'package:provider/provider.dart';
 
-import '../../tab_all_screen_welding/view/tab_view_welding.dart';
+import 'tabs/tab_view_welding.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -16,6 +18,11 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   int selectedIndex = 0;
 
   @override

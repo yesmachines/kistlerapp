@@ -4,6 +4,7 @@ import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 import 'package:kistler/presentaion/login_screen/controller/login_screen_controller.dart';
 
@@ -142,10 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 20),
                         provider.isLoading
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                color: ColorConstant.kistlerBrandGreen,
-                              ))
+                            ? Center(child: ReusableLoadingIndicator())
                             : InkWell(
                                 onTap: () {
                                   if (_loginFormKey.currentState!.validate()) {

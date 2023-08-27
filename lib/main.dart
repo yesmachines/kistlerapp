@@ -7,6 +7,8 @@ import 'package:kistler/presentaion/login_screen/controller/login_screen_control
 import 'package:kistler/presentaion/splash_Screen/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'presentaion/categories_screen/controller/categories_screen_controller.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LoginScreenController()),
+        ChangeNotifierProvider(
+            create: (context) => CategoriesScreenController()),
       ],
       child: MaterialApp(
         theme: ThemeData(
