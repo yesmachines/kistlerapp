@@ -8,7 +8,7 @@ import '../../../core/app_utils/app_utils.dart';
 import '../../../repository/api/login_screen/models/login_res_model.dart';
 import '../../../repository/api/login_screen/service/login_screen_service.dart';
 
-class LoginScreenController extends ChangeNotifier {
+class ProfileScreenController extends ChangeNotifier {
   bool isLogged = false;
   bool isLoading = false;
   late SharedPreferences sharedPreferences;

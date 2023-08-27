@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:provider/provider.dart';
+
+import '../presentaion/categories_screen/controller/categories_screen_controller.dart';
 
 class LanguageToggleButton extends StatefulWidget {
   const LanguageToggleButton({super.key});
@@ -60,6 +63,9 @@ class _LanguageToggleButtonState extends State<LanguageToggleButton> {
             print("language updated to ${Locale('de')}");
             setState(() {});
           }
+
+          Provider.of<CategoriesScreenController>(context, listen: false)
+              .getAllProducts(language: context.locale);
         },
         isScroll: false,
       ),
