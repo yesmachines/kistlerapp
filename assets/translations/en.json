@@ -63,5 +63,14 @@
     "want_to_exit": "Do you want to exit ?",
     "yes": "Yes",
     "No": "No",
-    "want_to_logout": "Do you want to Logout ?"
+    "want_to_logout": "Do you want to Logout ?",
+    "change_dp": "Change Profile Picture",
+    "First_Name": "First Name",
+    "Middle_Name": "Middle Name",
+    "Last_Name": "Last Name",
+    "Designation": "Designation",
+    "Contact No.": "Contact No",
+    "Account_Details": "Account Details",
+    "QR": "Upload your QR here",
+    "Update": "Update"
 }

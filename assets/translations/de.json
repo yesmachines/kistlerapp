@@ -63,5 +63,14 @@
     "want_to_exit": "Möchten Sie beenden?",
     "yes": "Ja",
     "No": "Nein",
-    "want_to_logout": "Möchten Sie sich abmelden?"
+    "want_to_logout": "Möchten Sie sich abmelden?",
+    "change_dp": "Profilbild ändern",
+    "First_Name": "Vorname",
+    "Middle_Name": "Zweiter Vorname",
+    "Last_Name": "Nachname",
+    "Designation": "Bezeichnung",
+    "Contact No.": "Kontaktnummer",
+    "Account_Details": "Kontodetails",
+    "QR": "Laden Sie Ihren QR-Code hier hoch",
+    "Update": "Aktualisieren"
 }

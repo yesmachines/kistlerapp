@@ -169,13 +169,17 @@ class ProfilScreen extends StatelessWidget {
                 Text(
                   "Felix Kistler",
                   style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 23,
                       letterSpacing: 1,
                       fontWeight: FontWeight.w500,
                       color: ColorConstant.kistlerBrandGreen),
                 ),
                 Text(
                   "Marketing & Sales Management",
+                  style: TextStyle(
+                    fontSize: 12,
+                    letterSpacing: 1,
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -198,6 +202,7 @@ class ProfilScreen extends StatelessWidget {
                   padding:
                       EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
@@ -235,6 +240,7 @@ class ProfilScreen extends StatelessWidget {
                   padding:
                       EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
@@ -271,13 +277,13 @@ class ProfilScreen extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 30),
             Container(
               height: 200,
               width: 200,
               color: ColorConstant.kistlerBrandGreen,
               child: Image.asset(
-                "assets/images/QR.png",
+                "assets/images/QR1.png",
                 fit: BoxFit.cover,
               ),
             ),

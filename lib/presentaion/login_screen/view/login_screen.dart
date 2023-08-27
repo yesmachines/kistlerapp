@@ -6,7 +6,7 @@ import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 import 'package:kistler/presentaion/login_screen/controller/login_screen_controller.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {

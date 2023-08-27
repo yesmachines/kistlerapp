@@ -79,7 +79,16 @@ class CodegenLoader extends AssetLoader{
   "want_to_exit": "Möchten Sie beenden?",
   "yes": "Ja",
   "No": "Nein",
-  "want_to_logout": "Möchten Sie sich abmelden?"
+  "want_to_logout": "Möchten Sie sich abmelden?",
+  "change_dp": "Profilbild ändern",
+  "First_Name": "Vorname",
+  "Middle_Name": "Zweiter Vorname",
+  "Last_Name": "Nachname",
+  "Designation": "Bezeichnung",
+  "Contact No.": "Kontaktnummer",
+  "Account_Details": "Kontodetails",
+  "QR": "Laden Sie Ihren QR-Code hier hoch",
+  "Update": "Aktualisieren"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -146,7 +155,16 @@ static const Map<String,dynamic> en = {
   "want_to_exit": "Do you want to exit ?",
   "yes": "Yes",
   "No": "No",
-  "want_to_logout": "Do you want to Logout ?"
+  "want_to_logout": "Do you want to Logout ?",
+  "change_dp": "Change Profile Picture",
+  "First_Name": "First Name",
+  "Middle_Name": "Middle Name",
+  "Last_Name": "Last Name",
+  "Designation": "Designation",
+  "Contact No.": "Contact No",
+  "Account_Details": "Account Details",
+  "QR": "Upload your QR here",
+  "Update": "Update"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }
