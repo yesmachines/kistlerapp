@@ -6,13 +6,13 @@ import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/Drawer.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/enquiry_screen/view/enquiry_screen.dart';
-import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/tables.dart';
+
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/accessories_container.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/application_images.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/main_page_table_refactor.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/technical_diagram.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/three_images_containers.dart';
-import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/youtube_video_player.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants.dart/color.dart';
 import '../../price_screen/view/price_screen.dart';
@@ -26,14 +26,10 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final String _linkUrl = 'https://www.youtube.com/watch?v=ENSjcy3eh8U';
-  bool _isChecked = false;
-  int selectedNumber = 1;
+  final String _brochure_Download =
+      'https://cms.kistler-machine.com/storage/pdf/Wendewalzen-der-Baureihe-SAR---Selbsteinstellend1686046160.pdf';
 
-  _toggleCheckbox(bool value) {
-    setState(() {
-      _isChecked = value;
-    });
-  }
+  int selectedNumber = 1;
 
   final List<Map<dynamic, dynamic>> data = [
     {
@@ -69,6 +65,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       await launch(_linkUrl);
     } else {
       throw 'Could not launch $_linkUrl';
+    }
+  }
+
+  _brocture_Download() async {
+    if (await canLaunch(_brochure_Download)) {
+      await launch(_brochure_Download);
+    } else {
+      throw 'Could not launch $_brochure_Download';
     }
   }
 
@@ -312,21 +316,24 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 fontWeight: FontWeight.bold,
                                 color: ColorConstant.kistlerTextColor),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                LocaleKeys.download.tr(),
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: ColorConstant.kistlerBrandGreen),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Icon(Icons.file_download_outlined,
-                                  color: ColorConstant.kistlerBrandGreen)
-                            ],
+                          InkWell(
+                            onTap: _brocture_Download,
+                            child: Row(
+                              children: [
+                                Text(
+                                  LocaleKeys.download.tr(),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ColorConstant.kistlerBrandGreen),
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Icon(Icons.file_download_outlined,
+                                    color: ColorConstant.kistlerBrandGreen)
+                              ],
+                            ),
                           ),
                           Row(
                             children: [
