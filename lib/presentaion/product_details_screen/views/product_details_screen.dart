@@ -85,24 +85,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            // Container(
-            //   decoration:
-            //       BoxDecoration(color: ColorConstant.kistlerWhite, boxShadow: [
-            //     BoxShadow(
-            //       color: Colors.black.withOpacity(.1),
-            //       blurRadius: 10,
-            //       offset: Offset(1, 3),
-            //     ),
-            //   ]),
-            //   height: 70,
-            //   child: Center(
-            //     child: Container(
-            //       height: 45,
-            //       width: MediaQuery.of(context).size.width * .80,
-            //       child: SearchBarRefactor(),
-            //     ),
-            //   ),
-            // ),
             SizedBox(
               height: 10,
             ),
