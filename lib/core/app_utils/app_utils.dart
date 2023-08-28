@@ -23,7 +23,7 @@ class AppUtils {
     }
   }
 
-  ///used this for myrent
+  ///used this for kistler
   static Future<String?> getAccessKey() async {
     final sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.get(AppConfig.LOGIN_DATA) != null) {
@@ -35,6 +35,19 @@ class AppUtils {
     }
   }
 
+  static Future<String?> getUserId() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    if (sharedPreferences.get(AppConfig.LOGIN_DATA) != null) {
+      final userId = jsonDecode(
+              sharedPreferences.get(AppConfig.LOGIN_DATA) as String)['user_id']
+          .toString();
+      return userId;
+    } else {
+      return null;
+    }
+  }
+
+//one time snackbar
   static oneTimeSnackBar(
     String? message, {
     int time = 2,

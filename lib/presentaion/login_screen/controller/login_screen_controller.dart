@@ -38,6 +38,7 @@ class LoginScreenController extends ChangeNotifier {
             'access': loginData!.token,
             "name": loginData!.userData?.name,
             "email": loginData!.userData?.email,
+            "user_id": loginData!.userData?.id,
           };
           print(sharedData);
 
