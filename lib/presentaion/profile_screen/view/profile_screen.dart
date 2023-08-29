@@ -1,18 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/global_widgets/profile_card.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/widgets/logout_confirm_popup.dart';
 import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
-import 'package:kistler/repository/helper_fucntions/helper_functions.dart';
 import 'package:provider/provider.dart';
 
 class ProfilScreen extends StatefulWidget {
   const ProfilScreen({super.key});
-
   @override
   State<ProfilScreen> createState() => _ProfilScreenState();
 }
@@ -27,143 +25,9 @@ class _ProfilScreenState extends State<ProfilScreen> {
     super.initState();
   }
 
-  @override
-  State<ProfilScreen> createState() => _ProfilScreenState();
-}
-
-class _ProfilScreenState extends State<ProfilScreen> {
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<ProfileScreenController>(context, listen: false)
-          .getUserData(language: context.locale);
-    });
-    super.initState();
-  }
-
-  @override
-  State<ProfilScreen> createState() => _ProfilScreenState();
-}
-
-class _ProfilScreenState extends State<ProfilScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProfileScreenController>(context);
-    Future<bool> logoutConfirmPopup() async {
-      return await showDialog(
-            //the return value will be from "Yes" or "No" options
-            context: context,
-            builder: (context) => Padding(
-              padding: const EdgeInsets.all(25),
-              child: AlertDialog(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-                title: CircleAvatar(
-                  radius: 24,
-                  backgroundColor: ColorConstant.kistlerBrandGreen,
-                  child: CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.logout,
-                      size: 25,
-                      color: ColorConstant.kistlerBrandGreen,
-                    ),
-                  ),
-                ),
-                content: Text(
-                  // this is the one that actually works
-                  LocaleKeys.want_to_logout.tr(),
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.center,
-                ),
-                actions: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                  color: ColorConstant.kistlerBrandGreen),
-                            ),
-                            child: Center(
-                              child: Text(
-                                LocaleKeys.no.tr(),
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: ColorConstant.kistlerBrandGreen),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => GetStartedScreen())),
-                          child: Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ColorConstant.kistlerBrandGreen),
-                            child: Center(
-                              child: Text(
-                                LocaleKeys.yes.tr(),
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  )
-                ],
-              ),
-            ),
-          ) ??
-          false; //if showDialouge had returned null, then return false
-    }
-
-    void _showProfileCard(BuildContext context) {
-      showModalBottomSheet(
-        context: context,
-        isScrollControlled:
-            true, // This allows the content to take up the whole screen
-        backgroundColor:
-            Colors.transparent, // Set the background color to transparent
-        builder: (context) {
-          return Center(
-            child: Container(
-              width: 400.0, // Set the width to 400
-              padding: EdgeInsets.all(16.0),
-              child: ProfileCard(),
-            ),
-          );
-        },
-      );
-    }
 
     return Scaffold(
       body: provider.isLoading
@@ -216,10 +80,13 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Icon(
-                                  Icons.share,
-                                  size: 30,
-                                  color: ColorConstant.kistlerBrandGreen,
+                                InkWell(
+                                  onTap: () => _showProfileCard(context),
+                                  child: Icon(
+                                    Icons.share,
+                                    size: 30,
+                                    color: ColorConstant.kistlerBrandGreen,
+                                  ),
                                 ),
                               ],
                             ),
@@ -245,18 +112,6 @@ class _ProfilScreenState extends State<ProfilScreen> {
                       ),
                       SizedBox(
                         height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.call,
-                              color: ColorConstant.kistlerBrandGreen),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Icon(Icons.message,
-                              color: ColorConstant.kistlerBrandGreen)
-                        ],
                       ),
                       SizedBox(
                         height: 20,
@@ -369,10 +224,28 @@ class _ProfilScreenState extends State<ProfilScreen> {
                           style: TextStyle(color: ColorConstant.kistlerWhite),
                         ))),
                   ),
-                  SizedBox()
+                  SizedBox(
+                    height: 40,
+                  ),
                 ],
               ),
             ),
+    );
+  }
+
+  void _showProfileCard(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return Center(
+          child: Container(
+            padding: EdgeInsets.all(5),
+            child: ProfileCard(),
+          ),
+        );
+      },
     );
   }
 }

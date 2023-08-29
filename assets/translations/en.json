@@ -69,8 +69,10 @@
     "Middle_Name": "Middle Name",
     "Last_Name": "Last Name",
     "Designation": "Designation",
-    "Contact No.": "Contact No",
+    "Contact": "Contact No",
     "Account_Details": "Account Details",
     "QR": "Upload your QR here",
-    "Update": "Update"
+    "Update": "Update",
+    "cancel": "Cancel",
+    "send": "Send"
 }

@@ -85,10 +85,12 @@ class CodegenLoader extends AssetLoader{
   "Middle_Name": "Zweiter Vorname",
   "Last_Name": "Nachname",
   "Designation": "Bezeichnung",
-  "Contact No.": "Kontaktnummer",
+  "Contact": "Kontakt nummer",
   "Account_Details": "Kontodetails",
   "QR": "Laden Sie Ihren QR-Code hier hoch",
-  "Update": "Aktualisieren"
+  "Update": "Aktualisieren",
+  "cancel": "Abbrechen",
+  "send": "Senden"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -161,10 +163,12 @@ static const Map<String,dynamic> en = {
   "Middle_Name": "Middle Name",
   "Last_Name": "Last Name",
   "Designation": "Designation",
-  "Contact No.": "Contact No",
+  "Contact": "Contact No",
   "Account_Details": "Account Details",
   "QR": "Upload your QR here",
-  "Update": "Update"
+  "Update": "Update",
+  "cancel": "Cancel",
+  "send": "Send"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

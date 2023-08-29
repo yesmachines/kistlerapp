@@ -69,8 +69,10 @@
     "Middle_Name": "Zweiter Vorname",
     "Last_Name": "Nachname",
     "Designation": "Bezeichnung",
-    "Contact No.": "Kontaktnummer",
+    "Contact": "Kontakt nummer",
     "Account_Details": "Kontodetails",
     "QR": "Laden Sie Ihren QR-Code hier hoch",
-    "Update": "Aktualisieren"
+    "Update": "Aktualisieren",
+    "cancel": "Abbrechen",
+    "send": "Senden"
 }
