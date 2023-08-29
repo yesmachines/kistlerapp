@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/widgets/logout_confirm_popup.dart';
 import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
-import 'package:kistler/repository/helper_fucntions/helper_functions.dart';
 import 'package:provider/provider.dart';
 
 class ProfilScreen extends StatefulWidget {
@@ -67,18 +67,33 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                 SizedBox(
                                   width: 20,
                                 ),
+
                                 CircleAvatar(
-                                  radius: 75,
                                   backgroundColor:
                                       ColorConstant.kistlerBrandGreen,
-                                  child: CircleAvatar(
-                                      backgroundColor:
-                                          ColorConstant.kistlerWhite,
-                                      radius: 72,
-                                      backgroundImage: NetworkImage(provider
-                                              .userData?.imageUrl ??
-                                          "")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
+                                  radius: 102,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(200),
+                                    child: SizedBox(
+                                      height: 200,
+                                      child: CommonImageView(
+                                        url: provider.userData?.imageUrl,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
                                 ),
+                                // CircleAvatar(
+                                //   radius: 75,
+                                //   backgroundColor:
+                                //       ColorConstant.kistlerBrandGreen,
+                                //   child: CircleAvatar(
+                                //       backgroundColor:
+                                //           ColorConstant.kistlerWhite,
+                                //       radius: 72,
+                                //       backgroundImage: NetworkImage( ??
+                                //           "")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
+                                // ),
                                 SizedBox(
                                   width: 20,
                                 ),
