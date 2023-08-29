@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kistler/repository/api/product_details_screen/model/product_details_res_model.dart';
 
 class AccessoriesContainer extends StatelessWidget {
-  const AccessoriesContainer({super.key});
+  const AccessoriesContainer({super.key, required this.accessoryData});
+  final ProductAccessory? accessoryData;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class AccessoriesContainer extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             Text(
-                "Accessory No. 1002 Part No: 800521 Roller support frame to support longer pipes, height adjustable."),
+                "${accessoryData?.tAccessTitle ?? "N/a"} ${accessoryData?.tAccessDescription ?? "N/a"}"),
             SizedBox(height: 10),
           ],
         ),

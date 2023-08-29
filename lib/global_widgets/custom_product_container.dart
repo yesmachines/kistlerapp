@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/presentaion/product_details_screen/views/product_details_screen.dart';
 import 'package:kistler/repository/api/categories_screen/models/get_all_products_res_model.dart';
 
@@ -10,8 +11,10 @@ class ProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => ProductDetailsScreen())),
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ProductDetailsScreen(
+                productId: productData.id.toString(),
+              ))),
       child: Container(
         decoration: BoxDecoration(
             border:
@@ -27,17 +30,25 @@ class ProductContainer extends StatelessWidget {
                 height: 5,
               ),
               Container(
-                  //TODO: need to be updated with no image
-                  width: 80,
-                  child: productData.brandImage != null
-                      ? Image.network(productData.brandImage!)
-                      : SizedBox()),
+                //TODO: need to be updated with no image
+                width: 80,
+                child: CommonImageView(
+                  fit: BoxFit.contain,
+                  url: productData.brandImage,
+                ),
+              ),
               Center(
                 child: Container(
-                    height: 100,
-                    child: productData.defaultImage != null
-                        ? Image.network(productData.defaultImage!)
-                        : SizedBox()),
+                  height: 100,
+                  child: Container(
+                    //TODO: need to be updated with no image
+                    width: 80,
+                    child: CommonImageView(
+                      fit: BoxFit.contain,
+                      url: productData.defaultImage,
+                    ),
+                  ),
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

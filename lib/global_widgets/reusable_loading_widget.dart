@@ -8,8 +8,10 @@ class ReusableLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator(
-      color: ColorConstant.kistlerBrandGreen,
+    return Center(
+      child: CircularProgressIndicator(
+        color: ColorConstant.kistlerBrandGreen,
+      ),
     );
   }
 }

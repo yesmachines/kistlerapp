@@ -17,6 +17,12 @@ class QuoteSummaryScreen extends StatefulWidget {
 }
 
 class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
+  TextEditingController companyNameController = TextEditingController();
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController contactNumberController = TextEditingController();
+  TextEditingController contactNameController = TextEditingController();
+  TextEditingController commentsController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Future<bool> showExitPopup() async {
@@ -153,26 +159,37 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     height: 20,
                   ),
                   TextfieldRefactor(
-                      name: LocaleKeys.contact_name.tr(), length: 1),
+                      controller: contactNameController,
+                      name: LocaleKeys.contact_name.tr(),
+                      length: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      name: LocaleKeys.conpany_name.tr(), length: 1),
+                      controller: emailAddressController,
+                      name: LocaleKeys.conpany_name.tr(),
+                      length: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      name: LocaleKeys.email_address.tr(), length: 1),
+                      controller: emailAddressController,
+                      name: LocaleKeys.email_address.tr(),
+                      length: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      name: LocaleKeys.contact_number.tr(), length: 1),
+                      controller: contactNumberController,
+                      name: LocaleKeys.contact_number.tr(),
+                      length: 1),
                   SizedBox(
                     height: 10,
                   ),
-                  TextfieldRefactor(name: LocaleKeys.comment.tr(), length: 5),
+                  TextfieldRefactor(
+                      controller: commentsController,
+                      name: LocaleKeys.comment.tr(),
+                      length: 5),
                   SizedBox(
                     height: 40,
                   ),

@@ -4,10 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kistler/generated/codegen_loader.g.dart';
 import 'package:kistler/presentaion/login_screen/controller/login_screen_controller.dart';
+import 'package:kistler/presentaion/profile_update_screen/controller/profile_update_screen_controller.dart';
 import 'package:kistler/presentaion/splash_Screen/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'presentaion/categories_screen/controller/categories_screen_controller.dart';
+import 'presentaion/product_details_screen/controller/product_details_screen_controller.dart';
+import 'presentaion/profile_screen/controller/profile_screen_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +46,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LoginScreenController()),
         ChangeNotifierProvider(
             create: (context) => CategoriesScreenController()),
+        ChangeNotifierProvider(create: (context) => ProfileScreenController()),
+        ChangeNotifierProvider(
+            create: (context) => ProfileUpdateScreenController()),
+        ChangeNotifierProvider(
+            create: (context) => ProductDetailsScreenController()),
       ],
       child: MaterialApp(
         theme: ThemeData(
