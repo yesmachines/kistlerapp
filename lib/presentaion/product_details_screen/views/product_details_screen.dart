@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/Drawer.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
@@ -12,6 +13,7 @@ import 'package:kistler/presentaion/product_details_screen/views/productdetails_
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/main_page_table_refactor.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/technical_diagram.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/three_images_containers.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants.dart/color.dart';
@@ -75,6 +77,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       throw 'Could not launch $_brochure_Download';
     }
   }
+
+  // Function to share URL using flutter_share
 
   @override
   Widget build(BuildContext context) {
@@ -317,22 +321,26 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ],
                             ),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                LocaleKeys.share.tr(),
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: ColorConstant.kistlerBrandGreen),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Icon(Icons.share,
-                                  size: 20,
-                                  color: ColorConstant.kistlerBrandGreen)
-                            ],
+                          InkWell(
+                            onTap: () => Share.share(
+                                'https://www.youtube.com/watch?v=qGNIfvJVP3Q'),
+                            child: Row(
+                              children: [
+                                Text(
+                                  LocaleKeys.share.tr(),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ColorConstant.kistlerBrandGreen),
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Icon(Icons.share,
+                                    size: 20,
+                                    color: ColorConstant.kistlerBrandGreen)
+                              ],
+                            ),
                           )
                         ],
                       ),

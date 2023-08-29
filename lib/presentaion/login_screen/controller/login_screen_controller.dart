@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../app_config/app_config.dart';
 import '../../../core/app_utils/app_utils.dart';
 import '../../../repository/api/login_screen/models/login_res_model.dart';

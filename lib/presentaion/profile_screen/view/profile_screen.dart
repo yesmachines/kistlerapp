@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/global_widgets/profile_card.dart';
 import 'package:kistler/presentaion/get_started_screen/view/get_started_screen.dart';
 import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
 
-class ProfilScreen extends StatelessWidget {
+class ProfilScreen extends StatefulWidget {
   const ProfilScreen({super.key});
 
+  @override
+  State<ProfilScreen> createState() => _ProfilScreenState();
+}
+
+class _ProfilScreenState extends State<ProfilScreen> {
   @override
   Widget build(BuildContext context) {
     Future<bool> logoutConfirmPopup() async {
@@ -108,6 +114,25 @@ class ProfilScreen extends StatelessWidget {
           false; //if showDialouge had returned null, then return false
     }
 
+    void _showProfileCard(BuildContext context) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled:
+            true, // This allows the content to take up the whole screen
+        backgroundColor:
+            Colors.transparent, // Set the background color to transparent
+        builder: (context) {
+          return Center(
+            child: Container(
+              width: 400.0, // Set the width to 400
+              padding: EdgeInsets.all(16.0),
+              child: ProfileCard(),
+            ),
+          );
+        },
+      );
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -154,10 +179,15 @@ class ProfilScreen extends StatelessWidget {
                           SizedBox(
                             width: 20,
                           ),
-                          Icon(
-                            Icons.share,
-                            size: 30,
-                            color: ColorConstant.kistlerBrandGreen,
+                          InkWell(
+                            onTap: () {
+                              _showProfileCard(context);
+                            },
+                            child: Icon(
+                              Icons.share,
+                              size: 30,
+                              color: ColorConstant.kistlerBrandGreen,
+                            ),
                           ),
                         ],
                       ),
@@ -183,16 +213,6 @@ class ProfilScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.call, color: ColorConstant.kistlerBrandGreen),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Icon(Icons.message, color: ColorConstant.kistlerBrandGreen)
-                  ],
                 ),
                 SizedBox(
                   height: 20,

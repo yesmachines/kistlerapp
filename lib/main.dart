@@ -16,7 +16,8 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]).then(
     (value) {
-      runApp(EasyLocalization(
+      runApp(
+        EasyLocalization(
           path: 'assets/translations',
           supportedLocales: [
             const Locale('de'),
@@ -25,7 +26,9 @@ Future<void> main() async {
           assetLoader: const CodegenLoader(),
           fallbackLocale: const Locale('de'),
           useOnlyLangCode: true,
-          child: const MyApp()));
+          child: const MyApp(),
+        ),
+      );
     },
   );
 }
@@ -55,8 +58,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//language changer class
-
+//   Language Changer Class
+//
+//
 // class LocalisationChecker {
 //   static changeLanguage(BuildContext context) {
 //     Locale? currentLocalle = EasyLocalization.of(context)!.currentLocale;
