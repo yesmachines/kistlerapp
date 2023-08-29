@@ -32,9 +32,12 @@ class ProductContainer extends StatelessWidget {
               Container(
                 //TODO: need to be updated with no image
                 width: 80,
-                child: CommonImageView(
-                  fit: BoxFit.contain,
-                  url: productData.brandImage,
+                child: Container(
+                  height: 25,
+                  child: CommonImageView(
+                    fit: BoxFit.contain,
+                    url: productData.brandImage,
+                  ),
                 ),
               ),
               Center(
