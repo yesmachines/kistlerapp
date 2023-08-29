@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 
 import '../../../repository/api/login_screen/service/login_screen_service.dart';
 
-class LoginScreenController extends ChangeNotifier {
+class ProfileUpdateScreenController extends ChangeNotifier {
   bool isSuccess = false;
   bool isLoading = false;
+  String? errorMessage;
 
   // to Fetch the Course demo videos
 
   Future<bool> onProfileUpdate(
-      {required String name,
-      required String email,
-      required String password,
-      required String confirmPassword,
-      required String phoneNumber,
+      {String? name,
+      String? email,
+      String? password,
+      String? confirmPassword,
+      String? phoneNumber,
       required Locale language}) async {
     isLoading = true;
     notifyListeners();
@@ -33,6 +34,7 @@ class LoginScreenController extends ChangeNotifier {
         notifyListeners();
         return true;
       } else {
+        errorMessage = fetchedData.errorMessage;
         isLoading = false;
         notifyListeners();
         return false;

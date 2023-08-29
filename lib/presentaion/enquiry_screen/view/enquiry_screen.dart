@@ -7,9 +7,17 @@ import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dar
 
 import '../../../global_widgets/textfield_refactor.dart';
 
-class Enquirycreen extends StatelessWidget {
+class Enquirycreen extends StatefulWidget {
   const Enquirycreen({super.key});
 
+  @override
+  State<Enquirycreen> createState() => _EnquirycreenState();
+}
+
+class _EnquirycreenState extends State<Enquirycreen> {
+  TextEditingController companyNameController = TextEditingController();
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController contactNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Future<bool> showEnquirySumitPopup() async {
@@ -141,16 +149,24 @@ class Enquirycreen extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              TextfieldRefactor(name: LocaleKeys.conpany_name.tr(), length: 1),
+              TextfieldRefactor(
+                  controller: companyNameController,
+                  name: LocaleKeys.conpany_name.tr(),
+                  length: 1),
               SizedBox(
                 height: 20,
               ),
-              TextfieldRefactor(name: LocaleKeys.email_address.tr(), length: 1),
+              TextfieldRefactor(
+                  controller: emailAddressController,
+                  name: LocaleKeys.email_address.tr(),
+                  length: 1),
               SizedBox(
                 height: 10,
               ),
               TextfieldRefactor(
-                  name: LocaleKeys.contact_number.tr(), length: 1),
+                  controller: contactNumberController,
+                  name: LocaleKeys.contact_number.tr(),
+                  length: 1),
               SizedBox(
                 height: 20,
               ),

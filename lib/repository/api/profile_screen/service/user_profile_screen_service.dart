@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
-import 'package:kistler/repository/api/categories_screen/models/get_all_products_res_model.dart';
 import 'package:kistler/repository/api/profile_screen/model/user_profile_res_model.dart';
 import 'package:kistler/repository/helper/api_response.dart';
 

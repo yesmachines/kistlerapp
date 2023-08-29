@@ -15,23 +15,23 @@ class CustomMadeSolutionScreen extends StatefulWidget {
 }
 
 class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
-  TextEditingController _controller1 = TextEditingController();
-  TextEditingController _controller2 = TextEditingController();
-  TextEditingController _controller3 = TextEditingController();
-  TextEditingController _controller4 = TextEditingController();
-  TextEditingController _controller5 = TextEditingController();
-  TextEditingController _controller6 = TextEditingController();
-  TextEditingController _controller7 = TextEditingController();
+  TextEditingController companyNameController = TextEditingController();
+  TextEditingController contactNumbercontroller = TextEditingController();
+  TextEditingController emailAddressController = TextEditingController();
+  TextEditingController contactNameController = TextEditingController();
+  TextEditingController productNameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController countryNameController = TextEditingController();
 
   @override
   void dispose() {
-    _controller1.dispose();
-    _controller2.dispose();
-    _controller3.dispose();
-    _controller4.dispose();
-    _controller5.dispose();
-    _controller6.dispose();
-    _controller7.dispose();
+    companyNameController.dispose();
+    contactNumbercontroller.dispose();
+    emailAddressController.dispose();
+    contactNameController.dispose();
+    productNameController.dispose();
+    descriptionController.dispose();
+    countryNameController.dispose();
     super.dispose();
   }
 
@@ -148,24 +148,40 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    name: LocaleKeys.conpany_name.tr(), length: 1),
+                    controller: companyNameController,
+                    name: LocaleKeys.conpany_name.tr(),
+                    length: 1),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    name: LocaleKeys.contact_name.tr(), length: 1),
+                    controller: contactNameController,
+                    name: LocaleKeys.contact_name.tr(),
+                    length: 1),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    name: LocaleKeys.email_address.tr(), length: 1),
+                    controller: emailAddressController,
+                    name: LocaleKeys.email_address.tr(),
+                    length: 1),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    name: LocaleKeys.contact_number.tr(), length: 1),
+                    controller: contactNumbercontroller,
+                    name: LocaleKeys.contact_number.tr(),
+                    length: 1),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    name: LocaleKeys.country_name.tr(), length: 1),
+                    controller: countryNameController,
+                    name: LocaleKeys.country_name.tr(),
+                    length: 1),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    name: LocaleKeys.product_name.tr(), length: 1),
+                    controller: productNameController,
+                    name: LocaleKeys.product_name.tr(),
+                    length: 1),
                 SizedBox(height: 10),
-                TextfieldRefactor(name: LocaleKeys.description.tr(), length: 5),
+                TextfieldRefactor(
+                  controller: descriptionController,
+                  name: LocaleKeys.description.tr(),
+                  length: 5,
+                ),
                 SizedBox(height: 25),
                 Center(
                   child: ElevatedButton(

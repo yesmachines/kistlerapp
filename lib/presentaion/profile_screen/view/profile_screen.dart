@@ -7,6 +7,7 @@ import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/widgets/logout_confirm_popup.dart';
 import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
+import 'package:kistler/repository/helper_fucntions/helper_functions.dart';
 import 'package:provider/provider.dart';
 
 class ProfilScreen extends StatefulWidget {

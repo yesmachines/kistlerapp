@@ -1,11 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
+import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/global_widgets/textfield_refactor.dart';
+import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/profile_screen.dart';
+import 'package:kistler/presentaion/profile_update_screen/controller/profile_update_screen_controller.dart';
+import 'package:provider/provider.dart';
 
 class ProfileUpdateScreen extends StatefulWidget {
   const ProfileUpdateScreen({super.key});
@@ -16,11 +21,28 @@ class ProfileUpdateScreen extends StatefulWidget {
 
 class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
   TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _midddleNameController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _designationNameController = TextEditingController();
+  TextEditingController _contactNumberController = TextEditingController();
+  TextEditingController _emailAddressController = TextEditingController();
+  TextEditingController _userIdController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
+
+  final userIdFormKey = GlobalKey<FormState>();
+  final passwordFormKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     _firstNameController.dispose();
+    _midddleNameController.dispose();
+    _lastNameController.dispose();
+    _designationNameController.dispose();
+    _contactNumberController.dispose();
+    _emailAddressController.dispose();
+    _userIdController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -54,6 +76,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ProfileUpdateScreenController>(context);
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
@@ -109,7 +132,8 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 1),
+                  child: TextfieldRefactor(
+                      controller: _firstNameController, name: "", length: 1),
                 ),
               ],
             ),
@@ -127,7 +151,8 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 1),
+                  child: TextfieldRefactor(
+                      controller: _midddleNameController, name: "", length: 1),
                 ),
               ],
             ),
@@ -145,7 +170,8 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 1),
+                  child: TextfieldRefactor(
+                      controller: _lastNameController, name: "", length: 1),
                 ),
               ],
             ),
@@ -163,7 +189,10 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 2),
+                  child: TextfieldRefactor(
+                      controller: _designationNameController,
+                      name: "",
+                      length: 2),
                 ),
               ],
             ),
@@ -181,7 +210,10 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 1),
+                  child: TextfieldRefactor(
+                      controller: _contactNumberController,
+                      name: "",
+                      length: 1),
                 ),
               ],
             ),
@@ -199,7 +231,8 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 1),
+                  child: TextfieldRefactor(
+                      controller: _emailAddressController, name: "", length: 1),
                 ),
               ],
             ),
@@ -227,7 +260,19 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextfieldRefactor(name: "", length: 1),
+                  child: TextfieldRefactor(
+                    formKey: userIdFormKey,
+                    controller: _userIdController,
+                    name: "",
+                    length: 1,
+                    validator: (value) {
+                      if (value != null && value.isNotEmpty) {
+                        return null;
+                      } else {
+                        return "Enter a valid data";
+                      }
+                    },
+                  ),
                 ),
               ],
             ),
@@ -245,44 +290,57 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 ),
                 SizedBox(width: 15),
                 Expanded(
-                  child: TextField(
-                    obscureText: !_isPasswordVisible,
-                    decoration: InputDecoration(
-                      //  isDense: true,
-                      contentPadding: EdgeInsets.all(15),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: ColorConstant.kistlerBrandGreen),
-                      ),
-                      focusedBorder: OutlineInputBorder(
+                  child: Form(
+                    key: passwordFormKey,
+                    child: TextFormField(
+                      controller: _passwordController,
+                      obscureText: !_isPasswordVisible,
+                      decoration: InputDecoration(
+                        //  isDense: true,
+                        contentPadding: EdgeInsets.all(15),
+                        enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: ColorConstant.kistlerBrandGreen)),
-
-                      labelStyle:
-                          TextStyle(color: ColorConstant.kistlerBrandBorder),
-                      alignLabelWithHint: true,
-
-                      focusColor: ColorConstant.kistlerBrandGreen,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isPasswordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: ColorConstant.kistlerBrandGreen,
+                              color: ColorConstant.kistlerBrandGreen),
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
-                          });
-                        },
-                      ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: ColorConstant.kistlerBrandGreen)),
 
-                      border: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: ColorConstant.kistlerBrandGreen),
-                      ),
+                        labelStyle:
+                            TextStyle(color: ColorConstant.kistlerBrandBorder),
+                        alignLabelWithHint: true,
 
-                      //  focusedBorder: OutlineInputBorder()
+                        focusColor: ColorConstant.kistlerBrandGreen,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: ColorConstant.kistlerBrandGreen,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: ColorConstant.kistlerBrandGreen),
+                        ),
+
+                        //  focusedBorder: OutlineInputBorder()
+                      ),
+                      validator: (value) {
+                        if (value != null &&
+                            value.isNotEmpty &&
+                            value.length > 8) {
+                          return null;
+                        } else {
+                          return "Invalid passwoed";
+                        }
+                      },
                     ),
                   ),
                 ),
@@ -320,32 +378,56 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
           SizedBox(
             height: 30,
           ),
-          InkWell(
-            onTap: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfilScreen()),
-                  (route) => false);
-            },
-            child: Container(
-              height: 50,
-              width: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: ColorConstant.kistlerBrandGreen),
-                color: ColorConstant.kistlerBrandGreen,
-              ),
-              child: Center(
-                child: Text(
-                  LocaleKeys.Update.tr(),
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+          provider.isLoading
+              ? ReusableLoadingIndicator()
+              : InkWell(
+                  onTap: () {
+                    //validating input fields
+                    if (userIdFormKey.currentState!.validate() &&
+                        passwordFormKey.currentState!.validate()) {
+                      //calling api to update profile data
+                      Provider.of<ProfileUpdateScreenController>(context,
+                              listen: false)
+                          .onProfileUpdate(language: context.locale)
+                          .then((value) {
+                        if (value) {
+                          AppUtils.oneTimeSnackBar(
+                              "Profile updated successfully",
+                              context: context,
+                              bgColor: ColorConstant.kistlerBrandGreen);
+                          // calling api to update user  data on profile screen
+                          Provider.of<ProfileScreenController>(context,
+                                  listen: false)
+                              .getUserData(language: context.locale);
+                          Navigator.pop(context);
+                        } else {
+                          // showing error message if failed to update data
+                          AppUtils.oneTimeSnackBar(provider.errorMessage,
+                              context: context);
+                        }
+                      });
+                    }
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border:
+                          Border.all(color: ColorConstant.kistlerBrandGreen),
+                      color: ColorConstant.kistlerBrandGreen,
+                    ),
+                    child: Center(
+                      child: Text(
+                        LocaleKeys.Update.tr(),
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
           SizedBox(
             height: 50,
           ),
