@@ -8,6 +8,7 @@ class ProfileScreenServices {
   Future<APIResponse> getUserProfileDetails({required Locale language}) async {
     // to get user id save in shared prefrence
     final userId = await AppUtils.getUserId();
+    print((userId.toString()) + "userImage2");
     try {
       print("languagecode ${language.languageCode}");
       final APIResponse response = await ApiHelper.getData(

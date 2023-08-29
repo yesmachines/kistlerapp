@@ -12,15 +12,18 @@ class ProfileScreenController extends ChangeNotifier {
     notifyListeners();
 
     try {
+      print((userData?.imageUrl.toString() ?? "") + "userImage1");
       // need to update values from  user input
       final fetchedData = await ProfileScreenServices()
           .getUserProfileDetails(language: language);
       if (fetchedData.error != true) {
         UserProfileResModel resData = fetchedData.data;
+
         userData = resData.profile;
 
         print(resData);
 
+        print((userData?.imageUrl.toString() ?? "") + "userImage");
         isLoading = false;
         notifyListeners();
         return true;
