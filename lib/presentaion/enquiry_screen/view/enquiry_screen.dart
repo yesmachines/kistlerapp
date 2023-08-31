@@ -4,7 +4,11 @@ import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
+import 'package:kistler/presentaion/enquiry_screen/controller/enquiryScreenController.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/app_utils/app_utils.dart';
+import '../../../global_widgets/reusable_loading_widget.dart';
 import '../../../global_widgets/textfield_refactor.dart';
 
 class Enquirycreen extends StatefulWidget {
@@ -85,6 +89,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
           false; //if showDialouge had returned null, then return false
     }
 
+    final provider = Provider.of<EnquiryScreenController>(context);
     return Scaffold(
       appBar: CustomAppBar(languageButtonVisibility: false),
       body: SingleChildScrollView(
@@ -187,19 +192,49 @@ class _EnquirycreenState extends State<Enquirycreen> {
               SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll(ColorConstant.kistlerBrandGreen),
-                ),
-                onPressed: () {
-                  showEnquirySumitPopup();
-                },
-                child: Text(
-                  LocaleKeys.submit.tr(),
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                ),
-              ),
+              provider.isLoading
+                  ? ReusableLoadingIndicator()
+                  : ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            ColorConstant.kistlerBrandGreen),
+                      ),
+                      onPressed: () {
+                        Provider.of<EnquiryScreenController>(context,
+                                listen: false)
+                            .onEnquirySend(
+                                language: context.locale,
+                                modelName: widget.productName,
+                                name: companyNameController.text,
+                                email: emailAddressController.text,
+                                phoneNumber: contactNumberController.text)
+                            .then((value) {
+                          if (value) {
+                            AppUtils.oneTimeSnackBar(
+                                "Profile updated successfully",
+                                context: context,
+                                bgColor: ColorConstant.kistlerBrandGreen);
+                            // calling api to update user  data on profile screen
+                            Provider.of<EnquiryScreenController>(context,
+                                    listen: false)
+                                .onEnquirySend(
+                              language: context.locale,
+                            );
+                            Navigator.pop(context);
+                          } else {
+                            // showing error message if failed to update data
+                            AppUtils.oneTimeSnackBar(provider.errorMessage,
+                                context: context);
+                          }
+                        });
+                        // showEnquirySumitPopup();
+                      },
+                      child: Text(
+                        LocaleKeys.submit.tr(),
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                    ),
               SizedBox(
                 height: 20,
               ),
