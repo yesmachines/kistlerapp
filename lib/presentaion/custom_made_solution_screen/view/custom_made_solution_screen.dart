@@ -2,7 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/presentaion/custom_made_solution_screen/controller/custom_made_screen_controller.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/app_utils/app_utils.dart';
 import '../../../global_widgets/search_bar.dart';
 import '../../../global_widgets/textfield_refactor.dart';
 
@@ -93,6 +96,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
           false; //if showDialouge had returned null, then return false
     }
 
+    final provider = Provider.of<CustomMadeScreenController>(context);
     return Column(
       children: [
         // Container(
@@ -189,7 +193,38 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                       backgroundColor: ColorConstant.kistlerBrandGreen,
                     ),
                     onPressed: () {
-                      customMadeSumitPopup();
+                      Provider.of<CustomMadeScreenController>(context,
+                              listen: false)
+                          .onCustomMade(
+                        language: context.locale,
+                        name: contactNameController.text,
+                        companyName: companyNameController.text,
+                        email: emailAddressController.text,
+                        phoneNumber: contactNumbercontroller.text,
+                        country: countryNameController.text,
+                        description: descriptionController.text,
+                        productName: productNameController.text,
+                      )
+                          .then((value) {
+                        if (value) {
+                          AppUtils.oneTimeSnackBar(
+                              "Thank you for your interest. We will contact you!!!",
+                              context: context,
+                              bgColor: ColorConstant.kistlerBrandGreen);
+                          // calling api to update user  data on profile screen
+                          Provider.of<CustomMadeScreenController>(context,
+                                  listen: false)
+                              .onCustomMade(
+                            language: context.locale,
+                          );
+                          Navigator.pop(context);
+                        } else {
+                          // showing error message if failed to update data
+                          AppUtils.oneTimeSnackBar(provider.errorMessage,
+                              context: context);
+                        }
+                      });
+                      // customMadeSumitPopup();
                     },
                     child: Text(
                       //  LocaleKeys.submit.tr(),

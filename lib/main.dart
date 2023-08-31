@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kistler/generated/codegen_loader.g.dart';
+import 'package:kistler/presentaion/custom_made_solution_screen/controller/custom_made_screen_controller.dart';
+import 'package:kistler/presentaion/custom_made_solution_screen/view/custom_made_solution_screen.dart';
 import 'package:kistler/presentaion/enquiry_screen/controller/enquiryScreenController.dart';
 import 'package:kistler/presentaion/login_screen/controller/login_screen_controller.dart';
 import 'package:kistler/presentaion/profile_update_screen/controller/profile_update_screen_controller.dart';
@@ -55,6 +57,8 @@ class MyApp extends StatelessWidget {
             create: (context) => ProductDetailsScreenController()),
         ChangeNotifierProvider(create: (context) => PriceScreenController()),
         ChangeNotifierProvider(create: (context) => EnquiryScreenController()),
+        ChangeNotifierProvider(
+            create: (context) => CustomMadeScreenController()),
       ],
       child: MaterialApp(
         theme: ThemeData(
