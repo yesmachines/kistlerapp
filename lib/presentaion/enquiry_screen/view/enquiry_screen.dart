@@ -211,7 +211,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
                             .then((value) {
                           if (value) {
                             AppUtils.oneTimeSnackBar(
-                                "Profile updated successfully",
+                                "Thank you for your interest. We will contact you!!!",
                                 context: context,
                                 bgColor: ColorConstant.kistlerBrandGreen);
                             // calling api to update user  data on profile screen

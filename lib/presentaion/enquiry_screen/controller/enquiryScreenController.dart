@@ -20,7 +20,7 @@ class EnquiryScreenController extends ChangeNotifier {
 
     try {
       final fetchedData = await EnquiryScreenServices().sendEnquiry(body: {
-        "model": modelName,
+        // "model": modelName,
         "name": name,
         "email": email,
         "phone": phoneNumber,
