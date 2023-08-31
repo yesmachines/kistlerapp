@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,7 +10,6 @@ import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/global_widgets/textfield_refactor.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
-import 'package:kistler/presentaion/profile_screen/view/profile_screen.dart';
 import 'package:kistler/presentaion/profile_update_screen/controller/profile_update_screen_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -26,12 +27,12 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
   TextEditingController _designationNameController = TextEditingController();
   TextEditingController _contactNumberController = TextEditingController();
   TextEditingController _emailAddressController = TextEditingController();
-  TextEditingController _userIdController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _PassController = TextEditingController();
+  TextEditingController _cnfrmPasswordController = TextEditingController();
   bool _isPasswordVisible = false;
 
-  final userIdFormKey = GlobalKey<FormState>();
-  final passwordFormKey = GlobalKey<FormState>();
+  final passFormKey = GlobalKey<FormState>();
+  final cnfrmPasswordFormKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -41,8 +42,8 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
     _designationNameController.dispose();
     _contactNumberController.dispose();
     _emailAddressController.dispose();
-    _userIdController.dispose();
-    _passwordController.dispose();
+    _PassController.dispose();
+    _cnfrmPasswordController.dispose();
     super.dispose();
   }
 
@@ -254,22 +255,24 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 SizedBox(
                   width: 120,
                   child: Text(
-                    LocaleKeys.user_id.tr(),
+                    LocaleKeys.password.tr(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(width: 15),
                 Expanded(
                   child: TextfieldRefactor(
-                    formKey: userIdFormKey,
-                    controller: _userIdController,
+                    formKey: passFormKey,
+                    controller: _PassController,
                     name: "",
                     length: 1,
                     validator: (value) {
-                      if (value != null && value.isNotEmpty) {
+                      if (value != null &&
+                          value.isNotEmpty &&
+                          value.length >= 8) {
                         return null;
                       } else {
-                        return "Enter a valid data";
+                        return "Enter a valid password";
                       }
                     },
                   ),
@@ -291,9 +294,9 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 SizedBox(width: 15),
                 Expanded(
                   child: Form(
-                    key: passwordFormKey,
+                    key: cnfrmPasswordFormKey,
                     child: TextFormField(
-                      controller: _passwordController,
+                      controller: _cnfrmPasswordController,
                       obscureText: !_isPasswordVisible,
                       decoration: InputDecoration(
                         //  isDense: true,
@@ -335,7 +338,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                       validator: (value) {
                         if (value != null &&
                             value.isNotEmpty &&
-                            value.length > 8) {
+                            value.length >= 8) {
                           return null;
                         } else {
                           return "Invalid passwoed";
@@ -382,13 +385,47 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
               ? ReusableLoadingIndicator()
               : InkWell(
                   onTap: () {
-                    //validating input fields
-                    if (userIdFormKey.currentState!.validate() &&
-                        passwordFormKey.currentState!.validate()) {
+                    if (_PassController.text.isNotEmpty ||
+                        _cnfrmPasswordController.text.isNotEmpty) {
+                      //validating input fields
+                      if (passFormKey.currentState!.validate() &&
+                          cnfrmPasswordFormKey.currentState!.validate()) {
+                        //calling api to update profile data
+                        Provider.of<ProfileUpdateScreenController>(context,
+                                listen: false)
+                            .onProfileUpdate(language: context.locale)
+                            .then((value) {
+                          if (value) {
+                            AppUtils.oneTimeSnackBar(
+                                "Profile updated successfully",
+                                context: context,
+                                bgColor: ColorConstant.kistlerBrandGreen);
+                            // calling api to update user  data on profile screen
+                            Provider.of<ProfileScreenController>(context,
+                                    listen: false)
+                                .getUserData(language: context.locale);
+                            Navigator.pop(context);
+                          } else {
+                            // showing error message if failed to update data
+                            AppUtils.oneTimeSnackBar(provider.errorMessage,
+                                context: context);
+                          }
+                        });
+                      }
+                    } else {
                       //calling api to update profile data
                       Provider.of<ProfileUpdateScreenController>(context,
                               listen: false)
-                          .onProfileUpdate(language: context.locale)
+                          .onProfileUpdate(
+                              language: context.locale,
+                              name: _firstNameController.text,
+                              email: _emailAddressController.text,
+                              designation: _designationNameController.text,
+                              profileiImage: File(""),
+                              qrImage: File(""),
+                              password: _PassController.text,
+                              confirmPassword: _cnfrmPasswordController.text,
+                              phoneNumber: _contactNumberController.text)
                           .then((value) {
                         if (value) {
                           AppUtils.oneTimeSnackBar(

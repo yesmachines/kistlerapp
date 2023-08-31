@@ -9,6 +9,7 @@ import 'package:kistler/presentaion/splash_Screen/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'presentaion/categories_screen/controller/categories_screen_controller.dart';
+import 'presentaion/price_screen/controller/price_screen_controller.dart';
 import 'presentaion/product_details_screen/controller/product_details_screen_controller.dart';
 import 'presentaion/profile_screen/controller/profile_screen_controller.dart';
 
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
             create: (context) => ProfileUpdateScreenController()),
         ChangeNotifierProvider(
             create: (context) => ProductDetailsScreenController()),
+        ChangeNotifierProvider(create: (context) => PriceScreenController()),
       ],
       child: MaterialApp(
         theme: ThemeData(

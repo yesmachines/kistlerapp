@@ -77,5 +77,9 @@ abstract class  LocaleKeys {
   static const Update = 'Update';
   static const cancel = 'cancel';
   static const send = 'send';
+  static const confirm_password = 'confirm_password';
+  static const change_password = 'change_password';
+  static const full_name = 'full_name';
+  static const extra_fittings = 'extra_fittings';
 
 }

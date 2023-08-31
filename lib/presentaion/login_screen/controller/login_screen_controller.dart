@@ -24,7 +24,7 @@ class LoginScreenController extends ChangeNotifier {
 
     try {
       // need to update values from  user input
-      final fetchedData = await LoginScreenServides().onLogin(body: {
+      final fetchedData = await LoginScreenServices().onLogin(body: {
         "email": email,
         "password": password,
       }, language: language);

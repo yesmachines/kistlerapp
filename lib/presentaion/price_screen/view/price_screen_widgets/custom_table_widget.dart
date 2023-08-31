@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/repository/api/price_screen/models/price_details_res_model.dart';
 
-class PriceScreenTable extends StatefulWidget {
-  final List<Map<dynamic, dynamic>> data;
-  const PriceScreenTable({super.key, required this.data});
+class CustomTableWidget extends StatefulWidget {
+  final List<ItemModel> dataList;
+  const CustomTableWidget({super.key, required this.dataList});
 
   @override
-  State<PriceScreenTable> createState() => _PriceScreenTableState();
+  State<CustomTableWidget> createState() => _CustomTableWidgetState();
 }
 
-class _PriceScreenTableState extends State<PriceScreenTable> {
+class _CustomTableWidgetState extends State<CustomTableWidget> {
   bool _isChecked = false;
   int selectedNumber = 1;
 
@@ -71,13 +72,13 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
               ),
             ],
           ),
-          for (var row in widget.data)
+          for (int index = 0; index < widget.dataList.length; index++)
             TableRow(
               children: [
                 TableCell(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text(row['no'], textAlign: TextAlign.center),
+                    child: Text(index.toString(), textAlign: TextAlign.center),
                   ),
                 ),
                 TableCell(
@@ -85,24 +86,16 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
                     padding: EdgeInsets.all(8.0),
                     child: SizedBox(
                         width: 50,
-                        child: Text(row['name'], textAlign: TextAlign.center)),
+                        child: Text(widget.dataList[index].title ?? "N/a",
+                            textAlign: TextAlign.center)),
                   ),
                 ),
                 TableCell(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.euro,
-                          size: 13,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(row['price'], textAlign: TextAlign.center),
-                      ],
-                    ),
+                    child: Text(
+                        widget.dataList[index].price?.toString() ?? "N/a",
+                        textAlign: TextAlign.center),
                   ),
                 ),
                 TableCell(
@@ -124,3 +117,37 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
     );
   }
 }
+
+// import 'package:flutter/material.dart';
+
+// class CustomTableWidgetWithCheckBox extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder(
+//       shrinkWrap: true,
+//       physics: NeverScrollableScrollPhysics(),
+//       itemCount: 4, // Number of rows
+//       itemBuilder: (context, rowIndex) {
+//         return Container(
+//           decoration: BoxDecoration(
+//             border: Border.all(width: 1.0, color: Colors.grey),
+//           ),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: <Widget>[
+//               for (int i = 1; i <= 4; i++)
+//                 Container(
+//                   width: 70, // Adjust the width as needed
+//                   padding: EdgeInsets.all(8.0),
+//                   child: Text(
+//                     'Row ${rowIndex + 1}, Col $i',
+//                     textAlign: TextAlign.center,
+//                   ),
+//                 ),
+//             ],
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }

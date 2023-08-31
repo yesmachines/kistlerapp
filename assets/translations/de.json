@@ -74,5 +74,9 @@
     "QR": "Laden Sie Ihren QR-Code hier hoch",
     "Update": "Aktualisieren",
     "cancel": "Abbrechen",
-    "send": "Senden"
+    "send": "Senden",
+    "confirm_password": "Kennwort Bestätigen",
+    "change_password": "Kennwort ändern",
+    "full_name": "Vollständiger Name",
+    "extra_fittings": "Zusätzliche Ausstattung"
 }

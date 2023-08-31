@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/repository/api/product_details_screen/model/product_details_res_model.dart';
 
 class AccessoriesContainer extends StatelessWidget {
@@ -8,16 +9,22 @@ class AccessoriesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all()),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(height: 10),
-            Text(
-                "${accessoryData?.tAccessTitle ?? "N/a"} ${accessoryData?.tAccessDescription ?? "N/a"}"),
-            SizedBox(height: 10),
+      width: double.infinity,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          boxShadow: [
+            // BoxShadow(
+            //     blurRadius: 6,
+            //     color: ColorConstant.kistlerTextBlack.withOpacity(.08),
+            //     offset: Offset(0, 6))
           ],
+          border: Border.all(),
+          color: ColorConstant.kistlerWhite),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        child: Text(
+          "${accessoryData?.tAccessTitle ?? "N/a"} ${accessoryData?.tAccessDescription ?? "N/a"}",
+          textAlign: TextAlign.start,
         ),
       ),
     );

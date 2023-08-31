@@ -8,7 +8,7 @@ String productDetailsResModelToJson(ProductDetailsResModel data) =>
 
 class ProductDetailsResModel {
   SpecDataArr? specDataArr;
-  List<dynamic>? productTechnicalDiagrams;
+  List<ProductTechnicalDiagram>? productTechnicalDiagrams;
   Products? products;
   List<ProductImage>? productImages;
   List<ProductSpecification>? productSpecifications;
@@ -40,8 +40,9 @@ class ProductDetailsResModel {
             : SpecDataArr.fromJson(json["spec_data_arr"]),
         productTechnicalDiagrams: json["product_technical_diagrams"] == null
             ? []
-            : List<dynamic>.from(
-                json["product_technical_diagrams"]!.map((x) => x)),
+            : List<ProductTechnicalDiagram>.from(
+                json["product_technical_diagrams"]!
+                    .map((x) => ProductTechnicalDiagram.fromJson(x))),
         products: json["products"] == null
             ? null
             : Products.fromJson(json["products"]),
@@ -83,7 +84,8 @@ class ProductDetailsResModel {
         "spec_data_arr": specDataArr,
         "product_technical_diagrams": productTechnicalDiagrams == null
             ? []
-            : List<dynamic>.from(productTechnicalDiagrams!.map((x) => x)),
+            : List<dynamic>.from(
+                productTechnicalDiagrams!.map((x) => x.toJson())),
         "products": products?.toJson(),
         "product_images": productImages == null
             ? []
@@ -488,5 +490,74 @@ class ProductAccessory {
         "t_access_title": tAccessTitle,
         "t_access_description": tAccessDescription,
         "t_access_image_alt": tAccessImageAlt,
+      };
+}
+
+class ProductTechnicalDiagram {
+  String? ff;
+  String? skdjos;
+  int? id;
+  int? prodImageId;
+  int? languageId;
+  int? productId;
+  String? imageUrl;
+  String? imageType;
+  String? title;
+  int? priority;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  String? tImageAlt;
+
+  ProductTechnicalDiagram({
+    this.ff,
+    this.skdjos,
+    this.id,
+    this.prodImageId,
+    this.languageId,
+    this.productId,
+    this.imageUrl,
+    this.imageType,
+    this.title,
+    this.priority,
+    this.createdAt,
+    this.updatedAt,
+    this.tImageAlt,
+  });
+
+  factory ProductTechnicalDiagram.fromJson(Map<String, dynamic> json) =>
+      ProductTechnicalDiagram(
+        ff: json["ff"],
+        skdjos: json["skdjos"],
+        id: json["id"],
+        prodImageId: json["prod_image_id"],
+        languageId: json["language_id"],
+        productId: json["product_id"],
+        imageUrl: json["image_url"],
+        imageType: json["image_type"],
+        title: json["title"],
+        priority: json["priority"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        tImageAlt: json["t_image_alt"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "ff": ff,
+        "skdjos": skdjos,
+        "id": id,
+        "prod_image_id": prodImageId,
+        "language_id": languageId,
+        "product_id": productId,
+        "image_url": imageUrl,
+        "image_type": imageType,
+        "title": title,
+        "priority": priority,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "t_image_alt": tImageAlt,
       };
 }
