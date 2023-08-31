@@ -74,5 +74,9 @@
     "QR": "Upload your QR here",
     "Update": "Update",
     "cancel": "Cancel",
-    "send": "Send"
+    "send": "Send",
+    "confirm_password": "Confirm password",
+    "change_password": "Change Password",
+    "full_name": "Full Name",
+    "extra_fittings": "Extra Fittings"
 }

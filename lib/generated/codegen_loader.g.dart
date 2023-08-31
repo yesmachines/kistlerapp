@@ -90,7 +90,11 @@ class CodegenLoader extends AssetLoader{
   "QR": "Laden Sie Ihren QR-Code hier hoch",
   "Update": "Aktualisieren",
   "cancel": "Abbrechen",
-  "send": "Senden"
+  "send": "Senden",
+  "confirm_password": "Kennwort Bestätigen",
+  "change_password": "Kennwort ändern",
+  "full_name": "Vollständiger Name",
+  "extra_fittings": "Zusätzliche Ausstattung"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -168,7 +172,11 @@ static const Map<String,dynamic> en = {
   "QR": "Upload your QR here",
   "Update": "Update",
   "cancel": "Cancel",
-  "send": "Send"
+  "send": "Send",
+  "confirm_password": "Confirm password",
+  "change_password": "Change Password",
+  "full_name": "Full Name",
+  "extra_fittings": "Extra Fittings"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

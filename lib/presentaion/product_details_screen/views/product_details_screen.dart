@@ -206,7 +206,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                provider.productDetails?.products?.tsubtite ??
+                                provider.productDetails?.categoriesName
+                                        ?.categoryTitle ??
                                     "",
                                 style: TextStyle(
                                     fontSize: 12,
@@ -250,7 +251,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => MyTable()));
+                                            builder: (context) => PriceScreen(
+                                                  productId: widget.productId,
+                                                )));
                                   },
                                   child: Container(
                                     height: 45,
@@ -482,7 +485,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             SizedBox(
                               height: 20,
                             ),
-                            TechnicalDiagram(),
+                            TechnicalDiagram(
+                                imageList: provider.productDetails
+                                        ?.productTechnicalDiagrams ??
+                                    []),
                             SizedBox(
                               height: 20,
                             ),
@@ -515,20 +521,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         (BuildContext context, int index) {
                                       return Padding(
                                         padding:
-                                            const EdgeInsets.only(bottom: 5),
-                                        child: Card(
-                                          child: Container(
-                                            width:
-                                                150, // Adjust the width as needed
-                                            child: Center(
-                                              child: AccessoriesContainer(
-                                                  accessoryData: provider
-                                                          .productDetails
-                                                          ?.productAccessories?[
-                                                      index]),
-                                            ),
-                                          ),
-                                        ),
+                                            const EdgeInsets.only(bottom: 10),
+                                        child: AccessoriesContainer(
+                                            accessoryData: provider
+                                                .productDetails
+                                                ?.productAccessories?[index]),
                                       );
                                     },
                                   )

@@ -1,21 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
-import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/tables.dart';
+import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/custom_table_widget.dart';
+import 'package:kistler/repository/api/price_screen/models/price_details_res_model.dart';
 
 import '../../../../generated/locale_keys.g.dart';
 
 class ExpansionTileRefactor extends StatefulWidget {
-  final List<Map<dynamic, dynamic>> data;
-  final List<Map<dynamic, dynamic>> assdata;
+  final List<ItemModel> extrasList;
+  final List<ItemModel> accessoriesList;
   final String tilenumber;
-  final String tileName;
+  final ProductModels productDetails;
   const ExpansionTileRefactor(
       {super.key,
-      required this.data,
-      required this.assdata,
+      required this.extrasList,
+      required this.accessoriesList,
       required this.tilenumber,
-      required this.tileName});
+      required this.productDetails});
 
   @override
   State<ExpansionTileRefactor> createState() => _ExpansionTileRefactorState();
@@ -36,7 +37,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
         textColor: ColorConstant.kistlerWhite,
         iconColor: ColorConstant.kistlerWhite,
         title: Text(
-          widget.tileName,
+          widget.productDetails.title ?? "N/a",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
         leading: Text(widget.tilenumber),
@@ -59,7 +60,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                       Row(
                         children: [
                           Text(
-                            "\$ 3500",
+                            "€ ${widget.productDetails.price?.toStringAsFixed(2) ?? "N/a"}",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
@@ -82,36 +83,49 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        LocaleKeys.product_qty.tr(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 14),
-                      ),
-                    ],
-                  ),
+                  child: widget.extrasList.isNotEmpty
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              LocaleKeys.accessories.tr(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14),
+                            ),
+                          ],
+                        )
+                      : SizedBox(),
                 ),
                 SizedBox(height: 15),
-                PriceScreenTable(
-                  data: widget.data,
-                ),
+                widget.extrasList.isNotEmpty
+                    ? CustomTableWidget(
+                        dataList: widget.extrasList,
+                      )
+                    : SizedBox(),
                 SizedBox(
                   height: 18,
                 ),
-                Text(
-                  LocaleKeys.accessories.tr(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
+                widget.accessoriesList.isNotEmpty
+                    ? Text(
+                        LocaleKeys.extra_fittings.tr(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      )
+                    : SizedBox(),
                 SizedBox(
                   height: 18,
                 ),
-                PriceScreenTable(
-                  data: widget.assdata,
-                ),
+                widget.accessoriesList.isNotEmpty
+                    ? CustomTableWidget(
+                        dataList: widget.accessoriesList,
+                      )
+                    : SizedBox(),
               ],
             ),
+          ),
+          Container(
+            color: ColorConstant.kistlerWhite,
+            height: 18,
           ),
         ],
       ),

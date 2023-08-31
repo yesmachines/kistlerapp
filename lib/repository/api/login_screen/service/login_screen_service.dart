@@ -4,7 +4,7 @@ import 'package:kistler/repository/helper/api_response.dart';
 import '../../../helper/api_helper.dart';
 import '../models/login_res_model.dart';
 
-class LoginScreenServides {
+class LoginScreenServices {
   Future<APIResponse> onLogin(
       {required Map<String, dynamic> body, required Locale language}) async {
     try {
