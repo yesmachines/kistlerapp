@@ -21,9 +21,7 @@ class ProfileUpdateScreen extends StatefulWidget {
 }
 
 class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
-  TextEditingController _firstNameController = TextEditingController();
-  TextEditingController _midddleNameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _fullNameController = TextEditingController();
   TextEditingController _designationNameController = TextEditingController();
   TextEditingController _contactNumberController = TextEditingController();
   TextEditingController _emailAddressController = TextEditingController();
@@ -36,9 +34,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
 
   @override
   void dispose() {
-    _firstNameController.dispose();
-    _midddleNameController.dispose();
-    _lastNameController.dispose();
+    _fullNameController.dispose();
     _designationNameController.dispose();
     _contactNumberController.dispose();
     _emailAddressController.dispose();
@@ -127,56 +123,56 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 SizedBox(
                   width: 120,
                   child: Text(
-                    LocaleKeys.First_Name.tr(),
+                    LocaleKeys.full_name.tr(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(width: 15),
                 Expanded(
                   child: TextfieldRefactor(
-                      controller: _firstNameController, name: "", length: 1),
+                      controller: _fullNameController, name: "", length: 1),
                 ),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: Text(
-                    LocaleKeys.Middle_Name.tr(),
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(width: 15),
-                Expanded(
-                  child: TextfieldRefactor(
-                      controller: _midddleNameController, name: "", length: 1),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: Text(
-                    LocaleKeys.Last_Name.tr(),
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(width: 15),
-                Expanded(
-                  child: TextfieldRefactor(
-                      controller: _lastNameController, name: "", length: 1),
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          //   child: Row(
+          //     children: [
+          //       SizedBox(
+          //         width: 120,
+          //         child: Text(
+          //           LocaleKeys.Middle_Name.tr(),
+          //           style: TextStyle(fontWeight: FontWeight.bold),
+          //         ),
+          //       ),
+          //       SizedBox(width: 15),
+          //       Expanded(
+          //         child: TextfieldRefactor(
+          //             controller: _midddleNameController, name: "", length: 1),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          //   child: Row(
+          //     children: [
+          //       SizedBox(
+          //         width: 120,
+          //         child: Text(
+          //           LocaleKeys.Last_Name.tr(),
+          //           style: TextStyle(fontWeight: FontWeight.bold),
+          //         ),
+          //       ),
+          //       SizedBox(width: 15),
+          //       Expanded(
+          //         child: TextfieldRefactor(
+          //             controller: _lastNameController, name: "", length: 1),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Row(
@@ -242,113 +238,32 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             height: 30,
           ),
           Text(
-            LocaleKeys.Account_Details.tr(),
+            LocaleKeys.change_password.tr(),
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 30,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: Text(
-                    LocaleKeys.password.tr(),
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(width: 15),
-                Expanded(
-                  child: TextfieldRefactor(
-                    formKey: passFormKey,
-                    controller: _PassController,
-                    name: "",
-                    length: 1,
-                    validator: (value) {
-                      if (value != null &&
-                          value.isNotEmpty &&
-                          value.length >= 8) {
-                        return null;
-                      } else {
-                        return "Enter a valid password";
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
+
+          CustomPasswordTextField(
+            formKey: passFormKey,
+            controller: _PassController,
+            obscureText: _isPasswordVisible,
+            onPassVisibilityPressed: () {
+              setState(() {
+                _isPasswordVisible = !_isPasswordVisible;
+              });
+            },
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: Text(
-                    LocaleKeys.password.tr(),
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(width: 15),
-                Expanded(
-                  child: Form(
-                    key: cnfrmPasswordFormKey,
-                    child: TextFormField(
-                      controller: _cnfrmPasswordController,
-                      obscureText: !_isPasswordVisible,
-                      decoration: InputDecoration(
-                        //  isDense: true,
-                        contentPadding: EdgeInsets.all(15),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: ColorConstant.kistlerBrandGreen),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: ColorConstant.kistlerBrandGreen)),
-
-                        labelStyle:
-                            TextStyle(color: ColorConstant.kistlerBrandBorder),
-                        alignLabelWithHint: true,
-
-                        focusColor: ColorConstant.kistlerBrandGreen,
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: ColorConstant.kistlerBrandGreen,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
-                            });
-                          },
-                        ),
-
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: ColorConstant.kistlerBrandGreen),
-                        ),
-
-                        //  focusedBorder: OutlineInputBorder()
-                      ),
-                      validator: (value) {
-                        if (value != null &&
-                            value.isNotEmpty &&
-                            value.length >= 8) {
-                          return null;
-                        } else {
-                          return "Invalid passwoed";
-                        }
-                      },
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          CustomPasswordTextField(
+            formKey: cnfrmPasswordFormKey,
+            obscureText: _isPasswordVisible,
+            controller: _cnfrmPasswordController,
+            onPassVisibilityPressed: () {
+              setState(() {
+                _isPasswordVisible = !_isPasswordVisible;
+              });
+            },
           ),
           SizedBox(
             height: 20,
@@ -418,7 +333,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                               listen: false)
                           .onProfileUpdate(
                               language: context.locale,
-                              name: _firstNameController.text,
+                              fullName: _fullNameController.text,
                               email: _emailAddressController.text,
                               designation: _designationNameController.text,
                               profileiImage: File(""),
@@ -469,6 +384,87 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             height: 50,
           ),
         ]),
+      ),
+    );
+  }
+}
+
+class CustomPasswordTextField extends StatelessWidget {
+  const CustomPasswordTextField({
+    super.key,
+    this.controller,
+    this.formKey,
+    this.obscureText = false,
+    this.onPassVisibilityPressed,
+  });
+
+  final TextEditingController? controller;
+  final Key? formKey;
+  final bool obscureText;
+  final VoidCallback? onPassVisibilityPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 120,
+            child: Text(
+              LocaleKeys.password.tr(),
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(width: 15),
+          Expanded(
+            child: Form(
+              key: formKey,
+              child: TextFormField(
+                controller: controller,
+                obscureText: obscureText,
+                decoration: InputDecoration(
+                  //  isDense: true,
+                  contentPadding: EdgeInsets.all(15),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: ColorConstant.kistlerBrandGreen),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorConstant.kistlerBrandGreen)),
+
+                  labelStyle:
+                      TextStyle(color: ColorConstant.kistlerBrandBorder),
+                  alignLabelWithHint: true,
+
+                  focusColor: ColorConstant.kistlerBrandGreen,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: ColorConstant.kistlerBrandGreen,
+                    ),
+                    onPressed: onPassVisibilityPressed,
+                  ),
+
+                  border: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: ColorConstant.kistlerBrandGreen),
+                  ),
+
+                  //  focusedBorder: OutlineInputBorder()
+                ),
+                validator: (value) {
+                  if (value != null && value.isNotEmpty && value.length >= 8) {
+                    return null;
+                  } else {
+                    return "Invalid passwoed";
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

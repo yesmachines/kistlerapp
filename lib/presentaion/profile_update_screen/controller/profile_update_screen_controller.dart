@@ -11,7 +11,7 @@ class ProfileUpdateScreenController extends ChangeNotifier {
   // to Fetch the Course demo videos
 
   Future<bool> onProfileUpdate(
-      {String? name,
+      {String? fullName,
       String? email,
       String? password,
       String? confirmPassword,
@@ -27,13 +27,13 @@ class ProfileUpdateScreenController extends ChangeNotifier {
       // need to update values from  user input
       final fetchedData =
           await ProfileUpdateScreenServices().updateProfile(body: {
-        "name": name,
+        "name": fullName,
         "email": email,
         "password": password,
         "confirm_password": confirmPassword,
         "phone": phoneNumber,
-        "image_url": profileiImage,
-        "qr_code": qrImage,
+        // "image_url": profileiImage,
+        // "qr_code": qrImage,
         "designation": designation
       }, language: language);
       if (fetchedData.error != true) {
