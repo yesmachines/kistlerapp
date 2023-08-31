@@ -98,7 +98,27 @@ class ProfileCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: Image.asset("assets/images/linkedin.png")),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "felix Kistler",
+                        style: TextStyle(
+                            color: ColorConstant.kistlerBrandGreen,
+                            fontSize: 10),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 22,
                   ),
                   Row(
                     children: [
@@ -163,10 +183,6 @@ class ProfileCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                          height: 25,
-                          width: 25,
-                          child: Image.asset("assets/images/linkedin.png"))
                     ],
                   ),
                   SizedBox(
