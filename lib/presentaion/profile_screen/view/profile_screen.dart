@@ -75,10 +75,15 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                     borderRadius: BorderRadius.circular(200),
                                     child: SizedBox(
                                       height: 200,
-                                      child: CommonImageView(
-                                        url: provider.userData?.imageUrl,
-                                        fit: BoxFit.fill,
-                                      ),
+                                      child: provider.isLoading
+                                          ? Center(
+                                              child: CircularProgressIndicator(
+                                                color: ColorConstant
+                                                    .kistlerBrandGreen,
+                                              ),
+                                            )
+                                          : Image.network(
+                                              "${provider.userData?.imageUrl}"),
                                     ),
                                   ),
                                 ),

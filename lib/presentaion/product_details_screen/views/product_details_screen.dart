@@ -52,52 +52,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   int selectedNumber = 1;
 
-  // final List<Map<String, dynamic>> data = [
-  //   {
-  //     "no": "SCM300",
-  //     "name": "1",
-  //     "price": "12",
-  //     "qty": "32",
-  //     "select": "22",
-  //     "cutting": "22"
-  //   },
-  //   {
-  //     "no": "SCM400",
-  //     "name": "1",
-  //     "price": "30",
-  //     "qty": "6",
-  //     "select": "33",
-  //     "cutting": "22"
-  //   },
-  //   {
-  //     "no": "SCM630",
-  //     "name": "1",
-  //     "price": "18",
-  //     "qty": "22",
-  //     "select": "44",
-  //     "cutting": "22"
-  //   },
-
-  //   // Add more rows as needed
-  // ];
-
-  // List<String> title = [
-  //   "no",
-  //   "name",
-  //   "price",
-  //   "qty",
-  //   "select",
-  //   "cutting",
-  // ];
-  // List<String> title = [
-  //   "specification",
-  //   "data",
-  //   "value",
-  //   "qualitu",
-  //   "sdhh",
-  //   "alksdok",
-  // ];
-
   _launchURL() async {
     if (await canLaunch(_linkUrl)) {
       await launch(_linkUrl);
@@ -224,8 +178,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                Enquirycreen()));
+                                            builder: (context) => Enquirycreen(
+                                                  url: provider
+                                                          .productDetails
+                                                          ?.products
+                                                          ?.defaultImage ??
+                                                      "",
+                                                  productName: provider
+                                                          .productDetails
+                                                          ?.products
+                                                          ?.ttitle ??
+                                                      "",
+                                                )));
                                   },
                                   child: Container(
                                     height: 45,

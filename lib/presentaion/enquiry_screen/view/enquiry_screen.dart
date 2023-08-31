@@ -2,13 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
-import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 import '../../../global_widgets/textfield_refactor.dart';
 
 class Enquirycreen extends StatefulWidget {
-  const Enquirycreen({super.key});
+  final String url;
+  final String productName;
+  const Enquirycreen({super.key, required this.url, required this.productName});
 
   @override
   State<Enquirycreen> createState() => _EnquirycreenState();
@@ -101,11 +103,9 @@ class _EnquirycreenState extends State<Enquirycreen> {
                     height: 180,
                     width: 180,
                     child: Center(
-                      child: Image.asset(
-                        "assets/images/imageee.jpeg",
-                        fit: BoxFit.fitWidth,
-                      ),
-                    ),
+                        child: CommonImageView(
+                      url: widget.url,
+                    )),
                   ),
                 ),
               ),
@@ -115,7 +115,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
               SizedBox(
                 width: 300,
                 child: Text(
-                  "Programmable Saddle Cutting Machines - SCM Series",
+                  widget.productName,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 16,
@@ -126,28 +126,45 @@ class _EnquirycreenState extends State<Enquirycreen> {
               SizedBox(
                 height: 10,
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "PLC-Controlled",
-                  style: TextStyle(
-                      fontSize: 14, color: ColorConstant.kistlerTextColor),
+              // Align(
+              //   alignment: Alignment.center,
+              //   child: Text(
+              //     "PLC-Controlled",
+              //     style: TextStyle(
+              //         fontSize: 14, color: ColorConstant.kistlerTextColor),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 18,
+              // ),
+
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  //  isDense: true,
+                  contentPadding: EdgeInsets.all(15),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorConstant.kistlerBrandGreen),
+                      borderRadius: BorderRadius.circular(6)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorConstant.kistlerBrandGreen)),
+                  hintText: widget.productName,
+                  enabled: false,
+
+                  labelStyle: TextStyle(color: ColorConstant.kistlerBrandGreen),
+                  border: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: ColorConstant.kistlerBrandGreen),
+                  ),
+                  //  focusedBorder: OutlineInputBorder()
                 ),
               ),
               SizedBox(
-                height: 18,
-              ),
-              Container(
-                height: 35,
-                width: 200,
-                decoration: BoxDecoration(border: Border.all()),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(child: Text(LocaleKeys.select_model.tr())),
-                ),
-              ),
-              SizedBox(
-                height: 30,
+                height: 20,
               ),
               TextfieldRefactor(
                   controller: companyNameController,

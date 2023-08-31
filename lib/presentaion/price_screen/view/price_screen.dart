@@ -18,12 +18,12 @@ class _MyTableState extends State<MyTable> {
       "no": "1",
       "name":
           "Extra charge for 3rd controlled axis (allows beveling of end cuts), part no. 808800",
-      "price": "\$10000",
+      "price": "10000",
       "select": false
     },
-    {"no": "2", "name": "Jane", "price": "\$10000", "select": true},
-    {"no": "3", "name": "Alex", "price": "\$10000", "select": true},
-    {"no": "3", "name": "Alex", "price": "\$10000", "select": false},
+    {"no": "2", "name": "Jane", "price": "10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "10000", "select": false},
     // Add more rows as needed
   ];
   final List<Map<dynamic, dynamic>> assData = [
@@ -33,9 +33,9 @@ class _MyTableState extends State<MyTable> {
       "price": "\$10000",
       "select": false
     },
-    {"no": "2", "name": "Jane", "price": "\$10000", "select": true},
-    {"no": "3", "name": "Alex", "price": "\$10000", "select": true},
-    {"no": "3", "name": "Alex", "price": "\$10000", "select": false},
+    {"no": "2", "name": "Jane", "price": "10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "10000", "select": true},
+    {"no": "3", "name": "Alex", "price": "10000", "select": false},
     // Add more rows as needed
   ];
 
@@ -136,13 +136,14 @@ class _MyTableState extends State<MyTable> {
               color: ColorConstant.kistlerBrandGreen,
             ),
             child: Center(
-                child: Text(
-              LocaleKeys.add_to_quote.tr(),
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: ColorConstant.kistlerWhite),
-            )),
+              child: Text(
+                LocaleKeys.add_to_quote.tr(),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: ColorConstant.kistlerWhite),
+              ),
+            ),
           ),
         ),
       ),

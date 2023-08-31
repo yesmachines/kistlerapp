@@ -29,7 +29,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ExpansionTile(
-        backgroundColor: ColorConstant.kistlerBrandGreen,
+        backgroundColor: Color.fromARGB(255, 127, 193, 155),
         collapsedBackgroundColor: ColorConstant.kistlerBrandGreen,
         collapsedTextColor: ColorConstant.kistlerWhite,
         collapsedIconColor: ColorConstant.kistlerWhite,
@@ -45,6 +45,20 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
             color: ColorConstant.kistlerWhite,
             child: Column(
               children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      "Basic machine with four quadrant control and reinforced drive for automatic welding. Designed for diameters from 25 mm up to 1000 mm. Height adjustment of the clamping arm is carried out by electric motor. Commands for rotary movement are set at an remote hand pendant Part number 800 601",
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
@@ -58,10 +72,21 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                       ),
                       Row(
                         children: [
-                          Text(
-                            "\$ 3500",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.euro,
+                                size: 20,
+                              ),
+                              SizedBox(
+                                width: 7,
+                              ),
+                              Text(
+                                "3500",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ],
                           ),
                           const SizedBox(
                             width: 10,

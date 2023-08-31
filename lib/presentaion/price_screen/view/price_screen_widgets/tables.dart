@@ -91,7 +91,18 @@ class _PriceScreenTableState extends State<PriceScreenTable> {
                 TableCell(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text(row['price'], textAlign: TextAlign.center),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.euro,
+                          size: 13,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(row['price'], textAlign: TextAlign.center),
+                      ],
+                    ),
                   ),
                 ),
                 TableCell(
