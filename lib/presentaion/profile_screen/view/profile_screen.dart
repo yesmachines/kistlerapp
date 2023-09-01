@@ -31,6 +31,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
     final provider = Provider.of<ProfileScreenController>(context);
 
     return Scaffold(
+      backgroundColor: ColorConstant.kistlerWhite,
       body: provider.isLoading
           ? ReusableLoadingIndicator()
           : SingleChildScrollView(
@@ -67,37 +68,36 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                   width: 20,
                                 ),
 
-                                CircleAvatar(
-                                  backgroundColor:
-                                      ColorConstant.kistlerBrandGreen,
-                                  radius: 102,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(200),
-                                    child: SizedBox(
-                                      height: 200,
-                                      child: provider.isLoading
-                                          ? Center(
-                                              child: CircularProgressIndicator(
-                                                color: ColorConstant
-                                                    .kistlerBrandGreen,
-                                              ),
-                                            )
-                                          : Image.network(
-                                              "${provider.userData?.imageUrl}"),
-                                    ),
-                                  ),
-                                ),
                                 // CircleAvatar(
-                                //   radius: 75,
                                 //   backgroundColor:
                                 //       ColorConstant.kistlerBrandGreen,
-                                //   child: CircleAvatar(
-                                //       backgroundColor:
-                                //           ColorConstant.kistlerWhite,
-                                //       radius: 72,
-                                //       backgroundImage: NetworkImage( ??
-                                //           "")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
+                                //   radius: 102,
+                                //   child: ClipRRect(
+                                //     borderRadius: BorderRadius.circular(10000),
+                                //     child: SizedBox(
+                                //       height: 200,
+                                //       width: 200,
+                                //       child: Center(
+                                //         child: CommonImageView(
+                                //           url: provider.userData?.imageUrl,
+                                //           fit: BoxFit.fill,
+                                //         ),
+                                //       ),
+                                //     ),
+                                //   ),
                                 // ),
+                                CircleAvatar(
+                                  radius: 75,
+                                  backgroundColor:
+                                      ColorConstant.kistlerBrandGreen,
+                                  child: CircleAvatar(
+                                      backgroundColor:
+                                          ColorConstant.kistlerWhite,
+                                      radius: 72,
+                                      backgroundImage: NetworkImage(provider
+                                              .userData?.imageUrl ??
+                                          "https://www.acubeias.com/upload/webcontent/no-img.png")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
+                                ),
                                 SizedBox(
                                   width: 20,
                                 ),
@@ -125,7 +125,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                             color: ColorConstant.kistlerBrandGreen),
                       ),
                       Text(
-                        provider.userData?.name ?? "N/a",
+                        provider.userData?.designation ?? "N/a",
                         style: TextStyle(
                           fontSize: 12,
                           letterSpacing: 1,
@@ -221,9 +221,9 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   Container(
                     height: 200,
                     width: 200,
-                    color: ColorConstant.kistlerBrandGreen,
-                    child: Image.asset(
-                      "assets/images/QR1.png",
+                    // color: ColorConstant.kistlerWhite,
+                    child: Image.network(
+                      provider.userData?.qrCode ?? "",
                       fit: BoxFit.cover,
                     ),
                   ),
