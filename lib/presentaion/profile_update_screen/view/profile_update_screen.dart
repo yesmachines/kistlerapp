@@ -7,6 +7,7 @@ import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
+import 'package:kistler/global_widgets/custom_password_text_field.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/global_widgets/textfield_refactor.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
@@ -27,7 +28,19 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
   TextEditingController _emailAddressController = TextEditingController();
   TextEditingController _PassController = TextEditingController();
   TextEditingController _cnfrmPasswordController = TextEditingController();
-  bool _isPasswordVisible = false;
+  TextEditingController _linkedinController = TextEditingController();
+  @override
+  void initState() {
+    final profileData =
+        Provider.of<ProfileScreenController>(context, listen: false);
+
+    _designationNameController.text = profileData.userData?.designation ?? "";
+    _fullNameController.text = profileData.userData?.name ?? "";
+    _contactNumberController.text = profileData.userData?.phone ?? "";
+    _emailAddressController.text = profileData.userData?.email ?? "";
+    _linkedinController.text = profileData.userData?.linkedin ?? "";
+    super.initState();
+  }
 
   final passFormKey = GlobalKey<FormState>();
   final cnfrmPasswordFormKey = GlobalKey<FormState>();
@@ -40,15 +53,16 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
     _emailAddressController.dispose();
     _PassController.dispose();
     _cnfrmPasswordController.dispose();
+    _linkedinController.dispose();
     super.dispose();
   }
 
   final picker = ImagePicker();
 
-  void _showBottomSheet(BuildContext context) {
+  void _showBottomSheet(BuildContext ctx) {
     showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
+      context: ctx,
+      builder: (BuildContext ctx) {
         return Container(
           padding: EdgeInsets.all(16.0),
           child: Column(
@@ -57,12 +71,26 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
               ListTile(
                 leading: Icon(Icons.camera),
                 title: Text('Camera'),
-                onTap: () async {},
+                onTap: () {
+                  Provider.of<ProfileUpdateScreenController>(context,
+                          listen: false)
+                      .selectProfileImge(
+                          source: ImageSource.camera, context: context);
+
+                  Navigator.pop(ctx);
+                },
               ),
               ListTile(
                 leading: Icon(Icons.photo),
                 title: Text('Gallery'),
-                onTap: () async {},
+                onTap: () {
+                  Provider.of<ProfileUpdateScreenController>(context,
+                          listen: false)
+                      .selectProfileImge(
+                          source: ImageSource.gallery, context: context);
+
+                  Navigator.pop(ctx);
+                },
               ),
             ],
           ),
@@ -73,6 +101,14 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final profileData =
+        Provider.of<ProfileScreenController>(context, listen: false);
+
+    // _designationNameController.text = profileData.userData?.designation ?? "";
+    // _fullNameController.text = profileData.userData?.name ?? "";
+    // _contactNumberController.text = profileData.userData?.phone ?? "";
+    // _emailAddressController.text = profileData.userData?.email ?? "";
+    // _linkedinController.text = profileData.userData?.linkedin ?? "";
     final provider = Provider.of<ProfileUpdateScreenController>(context);
     return Scaffold(
       appBar: CustomAppBar(),
@@ -93,7 +129,9 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                   backgroundColor: ColorConstant.kistlerBrandGreen,
                   child: CircleAvatar(
                     radius: 58,
-                    backgroundImage: AssetImage("assets/images/dp.png"),
+                    backgroundImage: provider.profileImgeFile == null
+                        ? AssetImage("assets/images/dp.png") as ImageProvider
+                        : FileImage(provider.profileImgeFile!),
                   ),
                 ),
                 SizedBox(
@@ -234,6 +272,25 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 120,
+                  child: Text(
+                    "LinkedIn",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(width: 15),
+                Expanded(
+                  child: TextfieldRefactor(
+                      controller: _linkedinController, name: "", length: 1),
+                ),
+              ],
+            ),
+          ),
           SizedBox(
             height: 30,
           ),
@@ -248,20 +305,24 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
           CustomPasswordTextField(
             formKey: passFormKey,
             controller: _PassController,
-            obscureText: _isPasswordVisible,
+            obscureText: provider.isPasswordVissible,
             onPassVisibilityPressed: () {
               setState(() {
-                _isPasswordVisible = !_isPasswordVisible;
+                Provider.of<ProfileUpdateScreenController>(context,
+                        listen: false)
+                    .onPasswordVisibilityPressed();
               });
             },
           ),
           CustomPasswordTextField(
             formKey: cnfrmPasswordFormKey,
-            obscureText: _isPasswordVisible,
+            obscureText: provider.isConfirmPasswordVisible,
             controller: _cnfrmPasswordController,
             onPassVisibilityPressed: () {
               setState(() {
-                _isPasswordVisible = !_isPasswordVisible;
+                Provider.of<ProfileUpdateScreenController>(context,
+                        listen: false)
+                    .onConfirmPasswordVisibilityPressed();
               });
             },
           ),
@@ -269,7 +330,11 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             height: 20,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () async {
+              await Provider.of<ProfileUpdateScreenController>(context,
+                      listen: false)
+                  .selectQrImage(source: ImageSource.gallery, context: context);
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
@@ -308,7 +373,17 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                         //calling api to update profile data
                         Provider.of<ProfileUpdateScreenController>(context,
                                 listen: false)
-                            .onProfileUpdate(language: context.locale)
+                            .onProfileUpdate(
+                                linkedin: _linkedinController.text,
+                                language: context.locale,
+                                fullName: _fullNameController.text,
+                                email: _emailAddressController.text,
+                                designation: _designationNameController.text,
+                                profileiImage: provider.profileImgeFile,
+                                qrImage: provider.qrImgeFile,
+                                password: _PassController.text,
+                                confirmPassword: _cnfrmPasswordController.text,
+                                phoneNumber: _contactNumberController.text)
                             .then((value) {
                           if (value) {
                             AppUtils.oneTimeSnackBar(
@@ -332,12 +407,13 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                       Provider.of<ProfileUpdateScreenController>(context,
                               listen: false)
                           .onProfileUpdate(
+                              linkedin: _linkedinController.text,
                               language: context.locale,
                               fullName: _fullNameController.text,
                               email: _emailAddressController.text,
                               designation: _designationNameController.text,
-                              profileiImage: File(""),
-                              qrImage: File(""),
+                              profileiImage: provider.profileImgeFile,
+                              qrImage: provider.qrImgeFile,
                               password: _PassController.text,
                               confirmPassword: _cnfrmPasswordController.text,
                               phoneNumber: _contactNumberController.text)
@@ -384,87 +460,6 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             height: 50,
           ),
         ]),
-      ),
-    );
-  }
-}
-
-class CustomPasswordTextField extends StatelessWidget {
-  const CustomPasswordTextField({
-    super.key,
-    this.controller,
-    this.formKey,
-    this.obscureText = false,
-    this.onPassVisibilityPressed,
-  });
-
-  final TextEditingController? controller;
-  final Key? formKey;
-  final bool obscureText;
-  final VoidCallback? onPassVisibilityPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 120,
-            child: Text(
-              LocaleKeys.password.tr(),
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          SizedBox(width: 15),
-          Expanded(
-            child: Form(
-              key: formKey,
-              child: TextFormField(
-                controller: controller,
-                obscureText: obscureText,
-                decoration: InputDecoration(
-                  //  isDense: true,
-                  contentPadding: EdgeInsets.all(15),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorConstant.kistlerBrandGreen),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: ColorConstant.kistlerBrandGreen)),
-
-                  labelStyle:
-                      TextStyle(color: ColorConstant.kistlerBrandBorder),
-                  alignLabelWithHint: true,
-
-                  focusColor: ColorConstant.kistlerBrandGreen,
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      obscureText ? Icons.visibility : Icons.visibility_off,
-                      color: ColorConstant.kistlerBrandGreen,
-                    ),
-                    onPressed: onPassVisibilityPressed,
-                  ),
-
-                  border: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorConstant.kistlerBrandGreen),
-                  ),
-
-                  //  focusedBorder: OutlineInputBorder()
-                ),
-                validator: (value) {
-                  if (value != null && value.isNotEmpty && value.length >= 8) {
-                    return null;
-                  } else {
-                    return "Invalid passwoed";
-                  }
-                },
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

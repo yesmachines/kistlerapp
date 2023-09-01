@@ -37,12 +37,18 @@ class Profile {
   String? email;
   String? phone;
   String? imageUrl;
+  dynamic designation;
+  String? qrCode;
+  String? linkedin;
 
   Profile({
     this.name,
     this.email,
     this.phone,
     this.imageUrl,
+    this.designation,
+    this.qrCode,
+    this.linkedin,
   });
 
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
@@ -50,6 +56,9 @@ class Profile {
         email: json["email"],
         phone: json["phone"],
         imageUrl: json["image_url"],
+        designation: json["designation"],
+        qrCode: json["qr_code"],
+        linkedin: json["linkedin"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,5 +66,8 @@ class Profile {
         "email": email,
         "phone": phone,
         "image_url": imageUrl,
+        "designation": designation,
+        "qr_code": qrCode,
+        "linkedin": linkedin,
       };
 }
