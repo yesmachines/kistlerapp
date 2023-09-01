@@ -26,16 +26,14 @@ class ProductContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 5,
-              ),
+              SizedBox(),
               Container(
                 //TODO: need to be updated with no image
-                width: 80,
+                width: 70,
                 child: Container(
                   height: 25,
                   child: CommonImageView(
-                    fit: BoxFit.contain,
+                    fit: BoxFit.fitWidth,
                     url: productData.brandImage,
                   ),
                 ),
@@ -45,9 +43,9 @@ class ProductContainer extends StatelessWidget {
                   height: 100,
                   child: Container(
                     //TODO: need to be updated with no image
-                    width: 80,
+
                     child: CommonImageView(
-                      fit: BoxFit.contain,
+                      fit: BoxFit.fitWidth,
                       url: productData.defaultImage,
                     ),
                   ),

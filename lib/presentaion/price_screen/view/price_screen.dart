@@ -29,32 +29,6 @@ class _PriceScreenState extends State<PriceScreen> {
     super.initState();
   }
 
-  // final List<Map<dynamic, dynamic>> data = [
-  //   {
-  //     "no": "1",
-  //     "name":
-  //         "Extra charge for 3rd controlled axis (allows beveling of end cuts), part no. 808800",
-  //     "price": "\$10000",
-  //     "select": false
-  //   },
-  //   {"no": "2", "name": "Jane", "price": "\$10000", "select": true},
-  //   {"no": "3", "name": "Alex", "price": "\$10000", "select": true},
-  //   {"no": "3", "name": "Alex", "price": "\$10000", "select": false},
-  //   // Add more rows as needed
-  // ];
-  // final List<Map<dynamic, dynamic>> assData = [
-  //   {
-  //     "no": "1",
-  //     "name": "Extra charge for 3rd cuts), part no. 808800",
-  //     "price": "\$10000",
-  //     "select": false
-  //   },
-  //   {"no": "2", "name": "Jane", "price": "\$10000", "select": true},
-  //   {"no": "3", "name": "Alex", "price": "\$10000", "select": true},
-  //   {"no": "3", "name": "Alex", "price": "\$10000", "select": false},
-  //   // Add more rows as needed
-  // ];
-
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PriceScreenController>(context);
@@ -76,10 +50,6 @@ class _PriceScreenState extends State<PriceScreen> {
                         fit: BoxFit.fill,
                         url: provider.prosuctDetails?.defaultImage,
                       ),
-                      // Image.asset(
-                      //   "assets/images/imageee.jpeg",
-                      //   fit: BoxFit.fitWidth,
-                      // ),
                     ),
                   ),
                 ),

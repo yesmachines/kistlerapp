@@ -94,7 +94,7 @@ class _CustomTableWidgetState extends State<CustomTableWidget> {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                        widget.dataList[index].price?.toString() ?? "N/a",
+                        "€ ${widget.dataList[index].price?.toString() ?? "N/a"}",
                         textAlign: TextAlign.center),
                   ),
                 ),
