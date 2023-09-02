@@ -10,13 +10,16 @@ class ExpansionTileRefactor extends StatefulWidget {
   final List<ItemModel> extrasList;
   final List<ItemModel> accessoriesList;
   final String tilenumber;
+  final String modelDescription;
+
   final ProductModels productDetails;
   const ExpansionTileRefactor(
       {super.key,
       required this.extrasList,
       required this.accessoriesList,
       required this.tilenumber,
-      required this.productDetails});
+      required this.productDetails,
+      required this.modelDescription});
 
   @override
   State<ExpansionTileRefactor> createState() => _ExpansionTileRefactorState();
@@ -55,7 +58,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                   child: SizedBox(
                     width: double.infinity,
                     child: Text(
-                      "Basic machine with four quadrant control and reinforced drive for automatic welding. Designed for diameters from 25 mm up to 1000 mm. Height adjustment of the clamping arm is carried out by electric motor. Commands for rotary movement are set at an remote hand pendant Part number 800 601",
+                      widget.modelDescription,
                       textAlign: TextAlign.justify,
                     ),
                   ),

@@ -3,7 +3,8 @@ import 'package:kistler/repository/api/profile_screen/model/user_profile_res_mod
 import 'package:kistler/repository/api/profile_screen/service/user_profile_screen_service.dart';
 
 class ProfileScreenController extends ChangeNotifier {
-  bool isLoading = false;
+  // to make it default loading
+  bool isLoading = true;
 
   Profile? userData;
 

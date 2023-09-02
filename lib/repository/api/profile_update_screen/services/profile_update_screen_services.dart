@@ -44,8 +44,8 @@ class ProfileUpdateScreenServices {
         request.fields['linkedin'] = linkedin;
       }
       if (password != null && confirmPassword != null) {
-        request.fields['confirm_password'] = password;
-        request.fields['password'] = confirmPassword;
+        request.fields['confirm_password'] = confirmPassword;
+        request.fields['password'] = password;
       }
 
       // Add image files to the request body

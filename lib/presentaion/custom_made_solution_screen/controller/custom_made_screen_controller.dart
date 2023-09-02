@@ -5,7 +5,7 @@ class CustomMadeScreenController extends ChangeNotifier {
   bool isLoading = false;
   String? errorMessage;
 
-  Future<bool> onCustomMade(
+  Future<bool> sendCustomEnquiry(
       {String? name,
       String? email,
       String? phoneNumber,

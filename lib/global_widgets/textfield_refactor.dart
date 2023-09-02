@@ -3,7 +3,7 @@ import 'package:kistler/core/constants.dart/color.dart';
 
 class TextfieldRefactor extends StatelessWidget {
   final String name;
-  final int length;
+  final int? maxLines;
   final Key? formKey;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -11,7 +11,7 @@ class TextfieldRefactor extends StatelessWidget {
   const TextfieldRefactor(
       {super.key,
       required this.name,
-      required this.length,
+      this.maxLines = 1,
       this.formKey,
       required this.controller,
       this.validator});
@@ -37,7 +37,7 @@ class TextfieldRefactor extends StatelessWidget {
           ),
           //  focusedBorder: OutlineInputBorder()
         ),
-        maxLines: length,
+        maxLines: maxLines,
         validator: validator,
       ),
     );

@@ -52,6 +52,9 @@ class ProductModels {
   int? id;
   String? title;
   int? price;
+  String? description;
+  bool isSelected;
+  int quantity;
   List<ItemModel>? accessoriesList;
   List<ItemModel>? extrasList;
 
@@ -59,6 +62,9 @@ class ProductModels {
     this.id,
     this.title,
     this.price,
+    this.description,
+    this.isSelected = false,
+    this.quantity = 0,
     this.accessoriesList,
     this.extrasList,
   });
@@ -67,6 +73,7 @@ class ProductModels {
         id: json["id"],
         title: json["title"],
         price: json["price"],
+        description: json["description"],
         accessoriesList: json["price_accessories"] == null
             ? []
             : List<ItemModel>.from(
@@ -81,6 +88,7 @@ class ProductModels {
         "id": id,
         "title": title,
         "price": price,
+        "description": description,
         "price_accessories": accessoriesList == null
             ? []
             : List<dynamic>.from(accessoriesList!.map((x) => x.toJson())),
@@ -95,12 +103,16 @@ class ItemModel {
   String? title;
   int? price;
   int? status;
+  bool isSelected;
+  int quantity;
 
   ItemModel({
     this.id,
     this.title,
     this.price,
     this.status,
+    this.isSelected = false,
+    this.quantity = 0,
   });
 
   factory ItemModel.fromJson(Map<String, dynamic> json) => ItemModel(

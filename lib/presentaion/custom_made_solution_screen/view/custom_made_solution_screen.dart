@@ -18,6 +18,23 @@ class CustomMadeSolutionScreen extends StatefulWidget {
 }
 
 class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
+  // @override
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+
+  //   });
+  //   super.initState();
+
+  // }
+
+  final companyNameFormKey = GlobalKey<FormState>();
+  final contactNumberFormKey = GlobalKey<FormState>();
+  final emailAddressFormKey = GlobalKey<FormState>();
+  final contactNameFormKey = GlobalKey<FormState>();
+  final productNameFormKey = GlobalKey<FormState>();
+  final descriptionFormKey = GlobalKey<FormState>();
+  final countryNameFormKey = GlobalKey<FormState>();
+
   TextEditingController companyNameController = TextEditingController();
   TextEditingController contactNumbercontroller = TextEditingController();
   TextEditingController emailAddressController = TextEditingController();
@@ -152,39 +169,104 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    controller: companyNameController,
-                    name: LocaleKeys.conpany_name.tr(),
-                    length: 1),
+                  formKey: companyNameFormKey,
+                  controller: companyNameController,
+                  name: LocaleKeys.conpany_name.tr(),
+                  maxLines: 1,
+                  validator: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      return null;
+                    } else {
+                      return "Enter your company name";
+                    }
+                  },
+                ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    controller: contactNameController,
-                    name: LocaleKeys.contact_name.tr(),
-                    length: 1),
+                  formKey: contactNameFormKey,
+                  controller: contactNameController,
+                  name: LocaleKeys.contact_name.tr(),
+                  maxLines: 1,
+                  validator: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      return null;
+                    } else {
+                      return "Enter your name ";
+                    }
+                  },
+                ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    controller: emailAddressController,
-                    name: LocaleKeys.email_address.tr(),
-                    length: 1),
+                  formKey: emailAddressFormKey,
+                  controller: emailAddressController,
+                  name: LocaleKeys.email_address.tr(),
+                  maxLines: 1,
+                  validator: (value) {
+                    if (value != null &&
+                        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                      return null;
+                    } else {
+                      return "Enter a valid email address";
+                    }
+                  },
+                ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    controller: contactNumbercontroller,
-                    name: LocaleKeys.contact_number.tr(),
-                    length: 1),
+                  formKey: contactNumberFormKey,
+                  controller: contactNumbercontroller,
+                  name: LocaleKeys.contact_number.tr(),
+                  maxLines: 1,
+                  validator: (value) {
+                    if (value != null &&
+                        RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
+                      return null;
+                    } else {
+                      return "Enter a valid Contact number";
+                    }
+                  },
+                ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    controller: countryNameController,
-                    name: LocaleKeys.country_name.tr(),
-                    length: 1),
+                  formKey: countryNameFormKey,
+                  controller: countryNameController,
+                  name: LocaleKeys.country_name.tr(),
+                  maxLines: 1,
+                  validator: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      return null;
+                    } else {
+                      return "Enter your county";
+                    }
+                  },
+                ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
-                    controller: productNameController,
-                    name: LocaleKeys.product_name.tr(),
-                    length: 1),
+                  formKey: productNameFormKey,
+                  controller: productNameController,
+                  name: LocaleKeys.product_name.tr(),
+                  maxLines: 1,
+                  validator: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      return null;
+                    } else {
+                      return "Enter a product name"; // todo: translation pending
+                    }
+                  },
+                ),
                 SizedBox(height: 10),
                 TextfieldRefactor(
+                  formKey: descriptionFormKey,
                   controller: descriptionController,
                   name: LocaleKeys.description.tr(),
-                  length: 5,
+                  maxLines: 5,
+                  validator: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      return null;
+                    } else {
+                      return "Enter description";
+                    }
+                  },
                 ),
                 SizedBox(height: 25),
                 Center(
@@ -192,39 +274,43 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: ColorConstant.kistlerBrandGreen,
                     ),
-                    onPressed: () {
-                      Provider.of<CustomMadeScreenController>(context,
-                              listen: false)
-                          .onCustomMade(
-                        language: context.locale,
-                        name: contactNameController.text,
-                        companyName: companyNameController.text,
-                        email: emailAddressController.text,
-                        phoneNumber: contactNumbercontroller.text,
-                        country: countryNameController.text,
-                        description: descriptionController.text,
-                        productName: productNameController.text,
-                      )
-                          .then((value) {
-                        if (value) {
-                          AppUtils.oneTimeSnackBar(
-                              "Thank you for your interest. We will contact you!!!",
-                              context: context,
-                              bgColor: ColorConstant.kistlerBrandGreen);
-                          // calling api to update user  data on profile screen
-                          Provider.of<CustomMadeScreenController>(context,
-                                  listen: false)
-                              .onCustomMade(
-                            language: context.locale,
-                          );
-                          Navigator.pop(context);
-                        } else {
-                          // showing error message if failed to update data
-                          AppUtils.oneTimeSnackBar(provider.errorMessage,
-                              context: context);
-                        }
-                      });
-                      // customMadeSumitPopup();
+                    onPressed: () async {
+                      if (companyNameFormKey.currentState!.validate() &&
+                          contactNameFormKey.currentState!.validate() &&
+                          emailAddressFormKey.currentState!.validate() &&
+                          contactNumberFormKey.currentState!.validate() &&
+                          productNameFormKey.currentState!.validate() &&
+                          countryNameFormKey.currentState!.validate() &&
+                          descriptionFormKey.currentState!.validate()) {
+                        await Provider.of<CustomMadeScreenController>(context,
+                                listen: false)
+                            .sendCustomEnquiry(
+                          language: context.locale,
+                          name: contactNameController.text,
+                          companyName: companyNameController.text,
+                          email: emailAddressController.text,
+                          phoneNumber: contactNumbercontroller.text,
+                          country: countryNameController.text,
+                          description: descriptionController.text,
+                          productName: productNameController.text,
+                        )
+                            .then((value) {
+                          if (value) {
+                            customMadeSumitPopup();
+                            // AppUtils.oneTimeSnackBar(
+                            //     "Thank you for your interest. We will contact you!!!",
+                            //     context: context,
+                            //     bgColor: ColorConstant.kistlerBrandGreen);
+                            // calling api to update user  data on profile screen
+
+                            // Navigator.pop(context);
+                          } else {
+                            // showing error message if failed to update data
+                            AppUtils.oneTimeSnackBar(provider.errorMessage,
+                                context: context);
+                          }
+                        });
+                      }
                     },
                     child: Text(
                       //  LocaleKeys.submit.tr(),

@@ -190,7 +190,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
                 formKey: companyNameFormKey,
                 controller: companyNameController,
                 name: LocaleKeys.conpany_name.tr(),
-                length: 1,
+                maxLines: 1,
                 validator: (value) {
                   if (value != null && value.isNotEmpty) {
                     return null;
@@ -205,7 +205,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
               TextfieldRefactor(
                   controller: emailAddressController,
                   name: LocaleKeys.email_address.tr(),
-                  length: 1,
+                  maxLines: 1,
                   formKey: emailFormKey,
                   validator: (value) {
                     if (value != null &&
@@ -223,7 +223,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
                   formKey: phoneNoFormKey,
                   controller: contactNumberController,
                   name: LocaleKeys.contact_number.tr(),
-                  length: 1,
+                  maxLines: 1,
                   validator: (value) {
                     if (value != null &&
                         RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
@@ -259,12 +259,13 @@ class _EnquirycreenState extends State<Enquirycreen> {
                                   phoneNumber: contactNumberController.text)
                               .then((value) {
                             if (value) {
-                              AppUtils.oneTimeSnackBar(
-                                  "Thank you for your interest. We will contact you!!!",
-                                  context: context,
-                                  bgColor: ColorConstant.kistlerBrandGreen);
+                              showEnquirySumitPopup();
+                              // AppUtils.oneTimeSnackBar(
+                              //     "Thank you for your interest. We will contact you!!!",
+                              //     context: context,
+                              //     bgColor: ColorConstant.kistlerBrandGreen);
 
-                              Navigator.pop(context);
+                              // Navigator.pop(context);
                             } else {
                               // showing error message if failed to update data
                               AppUtils.oneTimeSnackBar(provider.errorMessage,
@@ -272,8 +273,6 @@ class _EnquirycreenState extends State<Enquirycreen> {
                             }
                           });
                         }
-
-                        // showEnquirySumitPopup();
                       },
                       child: Text(
                         LocaleKeys.submit.tr(),

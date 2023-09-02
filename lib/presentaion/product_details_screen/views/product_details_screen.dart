@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kistler/core/image_constant/images.dart';
 
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/Drawer.dart';
@@ -109,18 +110,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 SizedBox(
                                   height: 240,
                                   child: Container(
-                                    height: 240,
-                                    width:
-                                        MediaQuery.of(context).size.width * 75,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(12),
-                                      child: CommonImageView(
-                                        fit: BoxFit.contain,
-                                        url: provider.productDetails?.products
-                                            ?.defaultImage,
-                                      ),
-                                    ),
-                                  ),
+                                      height: 240,
+                                      width: MediaQuery.of(context).size.width *
+                                          75,
+                                      child: provider.setDefaultImage != null
+                                          ? Padding(
+                                              padding: const EdgeInsets.all(12),
+                                              child: CommonImageView(
+                                                fit: BoxFit.contain,
+                                                url: provider.setDefaultImage,
+                                              ),
+                                            )
+                                          : Image.asset(
+                                              ImageConstant.assetNotfound)),
                                 ),
                                 Container(
                                     height: 30,

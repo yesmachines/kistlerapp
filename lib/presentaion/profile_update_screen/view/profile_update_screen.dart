@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/global_widgets/custom_password_text_field.dart';
@@ -54,6 +53,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
     _PassController.dispose();
     _cnfrmPasswordController.dispose();
     _linkedinController.dispose();
+
     super.dispose();
   }
 
@@ -121,34 +121,41 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             onTap: () {
               _showBottomSheet(context);
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 60,
-                  backgroundColor: ColorConstant.kistlerBrandGreen,
-                  child: CircleAvatar(
-                    radius: 58,
-                    backgroundImage: provider.profileImgeFile == null
-                        ? AssetImage("assets/images/dp.png") as ImageProvider
-                        : FileImage(provider.profileImgeFile!),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 60,
+                    backgroundColor: ColorConstant.kistlerBrandGreen,
+                    child: CircleAvatar(
+                      backgroundColor: ColorConstant.kistlerWhite,
+                      radius: 58,
+                      backgroundImage: provider.profileImgeFile == null
+                          ? (profileData.userData?.imageUrl == null
+                              ? AssetImage(ImageConstant.assetNotfound)
+                              : NetworkImage(profileData.userData!.imageUrl!)
+                                  as ImageProvider)
+                          : FileImage(provider.profileImgeFile!),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(Icons.add_photo_alternate,
-                    color: ColorConstant.kistlerBrandGreen),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  LocaleKeys.change_dp.tr(),
-                  style: TextStyle(
-                    color: ColorConstant.kistlerBrandGreen,
+                  SizedBox(
+                    width: 10,
                   ),
-                )
-              ],
+                  Icon(Icons.add_photo_alternate,
+                      color: ColorConstant.kistlerBrandGreen),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    LocaleKeys.change_dp.tr(),
+                    style: TextStyle(
+                      color: ColorConstant.kistlerBrandGreen,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           SizedBox(
@@ -168,7 +175,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 SizedBox(width: 15),
                 Expanded(
                   child: TextfieldRefactor(
-                      controller: _fullNameController, name: "", length: 1),
+                      controller: _fullNameController, name: "", maxLines: 1),
                 ),
               ],
             ),
@@ -227,7 +234,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                   child: TextfieldRefactor(
                       controller: _designationNameController,
                       name: "",
-                      length: 2),
+                      maxLines: 1),
                 ),
               ],
             ),
@@ -248,7 +255,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                   child: TextfieldRefactor(
                       controller: _contactNumberController,
                       name: "",
-                      length: 1),
+                      maxLines: 1),
                 ),
               ],
             ),
@@ -267,7 +274,9 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 SizedBox(width: 15),
                 Expanded(
                   child: TextfieldRefactor(
-                      controller: _emailAddressController, name: "", length: 1),
+                      controller: _emailAddressController,
+                      name: "",
+                      maxLines: 1),
                 ),
               ],
             ),
@@ -286,7 +295,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 SizedBox(width: 15),
                 Expanded(
                   child: TextfieldRefactor(
-                      controller: _linkedinController, name: "", length: 1),
+                      controller: _linkedinController, name: "", maxLines: 1),
                 ),
               ],
             ),
@@ -341,7 +350,9 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: ColorConstant.kistlerBrandGreen.withOpacity(.09),
+                  color: provider.qrImgeFile == null
+                      ? ColorConstant.kistlerBrandGreen.withOpacity(.09)
+                      : ColorConstant.kistlerBrandGreen.withOpacity(.5),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -351,7 +362,9 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                       width: 10,
                     ),
                     Text(
-                      LocaleKeys.QR.tr(),
+                      provider.qrImgeFile == null
+                          ? LocaleKeys.QR.tr()
+                          : "File uploaded",
                     ),
                   ],
                 ),

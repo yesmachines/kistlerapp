@@ -1,17 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/profile_card.dart';
 
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/widgets/logout_confirm_popup.dart';
 import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
-import 'package:kistler/repository/api/login_screen/models/login_res_model.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ProfilScreen extends StatefulWidget {
   const ProfilScreen({super.key});
@@ -22,8 +21,8 @@ class ProfilScreen extends StatefulWidget {
 class _ProfilScreenState extends State<ProfilScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<ProfileScreenController>(context, listen: false)
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Provider.of<ProfileScreenController>(context, listen: false)
           .getUserData(language: context.locale);
     });
     super.initState();
@@ -70,37 +69,37 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                 SizedBox(
                                   width: 20,
                                 ),
-
+                                Container(
+                                  height: 150,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                      color: ColorConstant.kistlerBrandGreen,
+                                      shape: BoxShape.circle),
+                                  child: provider.userData?.imageUrl != null
+                                      ? ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(300.0),
+                                          child: CommonImageView(
+                                            fit: BoxFit.cover,
+                                            url: provider.userData?.imageUrl
+                                                .toString(),
+                                          ),
+                                        )
+                                      : Image.asset(
+                                          ImageConstant.assetNotfound),
+                                ),
                                 // CircleAvatar(
+                                //   radius: 75,
                                 //   backgroundColor:
                                 //       ColorConstant.kistlerBrandGreen,
-                                //   radius: 102,
-                                //   child: ClipRRect(
-                                //     borderRadius: BorderRadius.circular(10000),
-                                //     child: SizedBox(
-                                //       height: 200,
-                                //       width: 200,
-                                //       child: Center(
-                                //         child: CommonImageView(
-                                //           url: provider.userData?.imageUrl,
-                                //           fit: BoxFit.fill,
-                                //         ),
-                                //       ),
-                                //     ),
-                                //   ),
+                                //   child: CircleAvatar(
+                                //       backgroundColor:
+                                //           ColorConstant.kistlerWhite,
+                                //       radius: 72,
+                                //       backgroundImage: NetworkImage(provider
+                                //               .userData?.imageUrl ??
+                                //           "https://www.acubeias.com/upload/webcontent/no-img.png")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
                                 // ),
-                                CircleAvatar(
-                                  radius: 75,
-                                  backgroundColor:
-                                      ColorConstant.kistlerBrandGreen,
-                                  child: CircleAvatar(
-                                      backgroundColor:
-                                          ColorConstant.kistlerWhite,
-                                      radius: 72,
-                                      backgroundImage: NetworkImage(provider
-                                              .userData?.imageUrl ??
-                                          "https://www.acubeias.com/upload/webcontent/no-img.png")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
-                                ),
                                 SizedBox(
                                   width: 20,
                                 ),
@@ -147,44 +146,44 @@ class _ProfilScreenState extends State<ProfilScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            launch('tel:${provider.userData?.phone}');
-                          },
-                          child: Text("tap to call")),
-                      Container(
-                        width: MediaQuery.of(context).size.width * .80,
-                        padding: EdgeInsets.only(
-                            left: 10, right: 10, top: 15, bottom: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(2.0, 2.0),
-                              blurRadius: 4.0,
-                              spreadRadius: 0.0,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(
-                              Icons.phone,
-                              color: ColorConstant.kistlerBrandGreen,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              provider.userData?.phone ?? "N/a",
-                              style: TextStyle(
-                                fontSize: 14,
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w500,
+                      InkWell(
+                        onTap: () {
+                          // launch('tel:${provider.userData?.phone}');
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .80,
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 15, bottom: 15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 4.0,
+                                spreadRadius: 0.0,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.phone,
+                                color: ColorConstant.kistlerBrandGreen,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                provider.userData?.phone ?? "N/a",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  letterSpacing: 1,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -233,16 +232,19 @@ class _ProfilScreenState extends State<ProfilScreen> {
                     ],
                   ),
                   SizedBox(height: 30),
-                  Container(
-                    height: 200,
-                    width: 200,
-                    // color: ColorConstant.kistlerWhite,
-                    child: Image.network(
-                      provider.userData?.qrCode ?? "",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(height: 40),
+                  provider.userData?.qrCode != null
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 40),
+                          child: Container(
+                              height: 200,
+                              width: 200,
+                              // color: ColorConstant.kistlerWhite,
+                              child: CommonImageView(
+                                url: provider.userData?.qrCode,
+                                fit: BoxFit.cover,
+                              )),
+                        )
+                      : SizedBox(),
                   InkWell(
                     onTap: () {
                       logoutConfirmPopup(context: context);

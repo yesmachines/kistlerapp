@@ -9,4 +9,7 @@ class ImageConstant {
   static String profileIcon = "assets/images/profile.png";
   static String customMadeIcon = "assets/images/CustomMadeSolution2.png";
   static String productIcon = "assets/images/Products.png";
+
+  //asset not found
+  static String assetNotfound = "assets/images/asset_not_found.png";
 }

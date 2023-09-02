@@ -161,35 +161,35 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                   TextfieldRefactor(
                       controller: contactNameController,
                       name: LocaleKeys.contact_name.tr(),
-                      length: 1),
+                      maxLines: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
                       controller: emailAddressController,
                       name: LocaleKeys.conpany_name.tr(),
-                      length: 1),
+                      maxLines: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
                       controller: emailAddressController,
                       name: LocaleKeys.email_address.tr(),
-                      length: 1),
+                      maxLines: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
                       controller: contactNumberController,
                       name: LocaleKeys.contact_number.tr(),
-                      length: 1),
+                      maxLines: 1),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
                       controller: commentsController,
                       name: LocaleKeys.comment.tr(),
-                      length: 5),
+                      maxLines: 5),
                   SizedBox(
                     height: 40,
                   ),

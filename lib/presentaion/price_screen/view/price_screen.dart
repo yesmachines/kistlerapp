@@ -87,6 +87,8 @@ class _PriceScreenState extends State<PriceScreen> {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) => ExpansionTileRefactor(
+                          modelDescription:
+                              provider.modelsList[index].description ?? "",
                           tilenumber: index < 10 ? "0$index" : index.toString(),
                           productDetails: provider.modelsList[index],
                           extrasList:

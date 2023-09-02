@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
+import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/repository/api/profile_update_screen/services/profile_update_screen_services.dart';
 
 class ProfileUpdateScreenController extends ChangeNotifier {
@@ -12,7 +12,6 @@ class ProfileUpdateScreenController extends ChangeNotifier {
   String? errorMessage;
   File? profileImgeFile;
   File? qrImgeFile;
-
   bool isPasswordVissible = false;
   bool isConfirmPasswordVisible = false;
 
@@ -79,8 +78,9 @@ class ProfileUpdateScreenController extends ChangeNotifier {
   selectProfileImge(
       {required ImageSource source, required BuildContext context}) async {
     profileImgeFile = await getImage(source: source);
-    if (qrImgeFile != null) {
-      AppUtils.oneTimeSnackBar("Image uploaded successfully", context: context);
+    if (profileImgeFile != null) {
+      AppUtils.oneTimeSnackBar("Image uploaded successfully",
+          context: context, bgColor: ColorConstant.kistlerBrandGreen);
     } else {
       AppUtils.oneTimeSnackBar("Failed to upload Image", context: context);
     }
@@ -106,5 +106,16 @@ class ProfileUpdateScreenController extends ChangeNotifier {
   onConfirmPasswordVisibilityPressed() {
     isConfirmPasswordVisible = !isConfirmPasswordVisible;
     notifyListeners();
+  }
+
+  resetController() async {
+    profileImgeFile = null;
+    qrImgeFile = null;
+    isSuccess = false;
+
+    errorMessage = null;
+
+    isPasswordVissible = false;
+    isConfirmPasswordVisible = false;
   }
 }
