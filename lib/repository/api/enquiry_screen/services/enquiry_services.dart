@@ -5,13 +5,13 @@ import '../../../helper/api_helper.dart';
 
 class EnquiryScreenServices {
   Future<APIResponse> sendEnquiry(
-      {required Locale language, required Map<String, dynamic> body}) async {
+      {required Locale language,
+      required Map<String, dynamic> body,
+      required String productId}) async {
     try {
       final APIResponse response = await ApiHelper.postData(
           body: body,
-          endPoint:
-              //TODO : product slug need to be changed to product id
-              "/${language.languageCode}/send-enquiry-mail/konventionelle-rotatoren-der-reihe-beh%C3%A4lterdrehvorrichtungen",
+          endPoint: "/${language.languageCode}/send-enquiry-mail/$productId",
           header: ApiHelper.getApiHeader(
               access: await AppUtils.getAccessKey())); // pass header token
       if (response.error) {

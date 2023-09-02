@@ -14,17 +14,22 @@ class EnquiryScreenController extends ChangeNotifier {
       String? name,
       String? email,
       String? phoneNumber,
+      required String productId,
       required Locale language}) async {
     isLoading = true;
     notifyListeners();
 
     try {
-      final fetchedData = await EnquiryScreenServices().sendEnquiry(body: {
-        // "model": modelName,
-        "name": name,
-        "email": email,
-        "phone": phoneNumber,
-      }, language: language);
+      print(productId + "ProductIde");
+      final fetchedData = await EnquiryScreenServices().sendEnquiry(
+          productId: productId,
+          body: {
+            // "model": modelName,
+            "name": name,
+            "email": email,
+            "phone": phoneNumber,
+          },
+          language: language);
       if (fetchedData.error != true) {
         isSuccess = true;
         isLoading = false;

@@ -180,7 +180,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Enquirycreen(
-                                                  url: provider
+                                                  productId: provider
+                                                          .productDetails
+                                                          ?.products
+                                                          ?.id
+                                                          ?.toString() ??
+                                                      "",
+                                                  iamgeUrl: provider
                                                           .productDetails
                                                           ?.products
                                                           ?.defaultImage ??
@@ -242,28 +248,31 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             SizedBox(
                               height: 18,
                             ),
-                            Align(
-                              alignment: Alignment.topLeft,
+                            provider.productDetails?.products?.tdescription !=
+                                    null
+                                ? Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      LocaleKeys.description.tr(),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  )
+                                : SizedBox(),
+
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Text(
-                                LocaleKeys.description.tr(),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                provider.productDetails?.products
+                                        ?.tdescription ??
+                                    "",
+                                style: TextStyle(fontSize: 14, height: 1.5),
+                                textAlign: TextAlign.justify,
                               ),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              provider.productDetails?.products?.tdescription ??
-                                  "N/a",
-                              style: TextStyle(fontSize: 14, height: 1.5),
-                              textAlign: TextAlign.justify,
-                            ),
-                            SizedBox(
-                              height: 18,
-                            ),
+
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text(
@@ -374,14 +383,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Pipe cutting machines of the SCM range are used for pipe cutting and profiling in the workshop as well as on site.",
-                              style: TextStyle(fontSize: 14, height: 1.5),
-                              textAlign: TextAlign.justify,
-                            ),
+                            // SizedBox(
+                            //   height: 10,
+                            // ),
+                            // Text(
+                            //   "Pipe cutting machines of the SCM range are used for pipe cutting and profiling in the workshop as well as on site.",
+                            //   style: TextStyle(fontSize: 14, height: 1.5),
+                            //   textAlign: TextAlign.justify,
+                            // ),
                             SizedBox(
                               height: 20,
                             ),

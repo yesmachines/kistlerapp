@@ -23,69 +23,74 @@ class ProfileUpdateScreenServices {
     var url = Uri.parse(
         "https://bigleap.tech/apiKistler/public/api/v1/${language.languageCode}/profile-update/$userId"); // Replace with your API endpoint
 
-    // Prepare the request body
-    var request = http.MultipartRequest('POST', url);
+    try {
+      // Prepare the request body
+      var request = http.MultipartRequest('POST', url);
 
-    // Add text fields to the request body
-    if (fullName != null) {
-      request.fields['name'] = fullName;
-    }
-    if (email != null) {
-      request.fields['email'] = email;
-    }
-    if (designation != null) {
-      request.fields['designation'] = designation;
-    }
-    if (phoneNumber != null) {
-      request.fields['phone'] = phoneNumber;
-    }
-    if (linkedin != null) {
-      request.fields['linkedin'] = linkedin;
-    }
-    if (password != null && confirmPassword != null) {
-      request.fields['confirm_password'] = password;
-      request.fields['password'] = confirmPassword;
-    }
-
-    // Add image files to the request body
-
-    profileiImage != null
-        ? request.files.add(await http.MultipartFile.fromPath(
-            'image_url', profileiImage.path,
-            filename: basename(profileiImage.path)))
-        : null;
-
-    qrImage != null
-        ? request.files.add(await http.MultipartFile.fromPath(
-            'qr_code', qrImage.path,
-            filename: basename(qrImage.path)))
-        : null;
-
-    // Add headers
-    request.headers
-        .addAll(ApiHelper.getApiHeader(access: await AppUtils.getAccessKey()));
-
-    // Send the request
-    final http.Response res =
-        await http.Response.fromStream(await request.send());
-    if (isRequestSucceeded(res.statusCode)) {
-      var resBody = json.decode(utf8.decode(res.bodyBytes));
-      print('post resBody');
-      print(resBody);
-      if (resBody['status'] == '1') {
-        return APIResponse(data: resBody, error: false, errorMessage: '');
-      } else {
-        // AppUtils.oneTimeSnackBar(resBody['message'].toString());
-        return APIResponse(
-            data: resBody,
-            error: true,
-            errorMessage:
-                resBody['message'].toString() ?? 'Something went wrong!');
+      // Add text fields to the request body
+      if (fullName != null) {
+        request.fields['name'] = fullName;
       }
-    } else {
-      // AppUtils.oneTimeSnackBar('Something went wrong!');
-      return APIResponse(
-          data: res.body, error: true, errorMessage: 'Something went wrong!');
+      if (email != null) {
+        request.fields['email'] = email;
+      }
+      if (designation != null) {
+        request.fields['designation'] = designation;
+      }
+      if (phoneNumber != null) {
+        request.fields['phone'] = phoneNumber;
+      }
+      if (linkedin != null) {
+        request.fields['linkedin'] = linkedin;
+      }
+      if (password != null && confirmPassword != null) {
+        request.fields['confirm_password'] = password;
+        request.fields['password'] = confirmPassword;
+      }
+
+      // Add image files to the request body
+
+      profileiImage != null
+          ? request.files.add(await http.MultipartFile.fromPath(
+              'image_url', profileiImage.path,
+              filename: basename(profileiImage.path)))
+          : null;
+
+      qrImage != null
+          ? request.files.add(await http.MultipartFile.fromPath(
+              'qr_code', qrImage.path,
+              filename: basename(qrImage.path)))
+          : null;
+
+      // Add headers
+      request.headers.addAll(
+          ApiHelper.getApiHeader(access: await AppUtils.getAccessKey()));
+
+      // Send the request
+      final http.Response res =
+          await http.Response.fromStream(await request.send());
+      if (isRequestSucceeded(res.statusCode)) {
+        var resBody = json.decode(utf8.decode(res.bodyBytes));
+        print('post resBody');
+        print(resBody);
+        if (resBody['status'] == '1') {
+          return APIResponse(data: resBody, error: false, errorMessage: '');
+        } else {
+          // AppUtils.oneTimeSnackBar(resBody['message'].toString());
+          return APIResponse(
+              data: resBody,
+              error: true,
+              errorMessage:
+                  resBody['message'].toString() ?? 'Something went wrong!');
+        }
+      } else {
+        // AppUtils.oneTimeSnackBar('Something went wrong!');
+        return APIResponse(
+            data: res.body, error: true, errorMessage: 'Something went wrong!');
+      }
+    } catch (e) {
+      print(e.toString());
+      rethrow;
     }
   }
 

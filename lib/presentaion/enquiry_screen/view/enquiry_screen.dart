@@ -12,20 +12,35 @@ import '../../../global_widgets/reusable_loading_widget.dart';
 import '../../../global_widgets/textfield_refactor.dart';
 
 class Enquirycreen extends StatefulWidget {
-  final String url;
+  final String iamgeUrl;
   final String productName;
-  const Enquirycreen({super.key, required this.url, required this.productName});
+  final String productId;
+
+  const Enquirycreen({
+    super.key,
+    required this.iamgeUrl,
+    required this.productName,
+    required this.productId,
+  });
 
   @override
   State<Enquirycreen> createState() => _EnquirycreenState();
 }
 
 class _EnquirycreenState extends State<Enquirycreen> {
+  //form keys
+
+  final emailFormKey = GlobalKey<FormState>();
+  final companyNameFormKey = GlobalKey<FormState>();
+  final phoneNoFormKey = GlobalKey<FormState>();
+
+  //text field controllers
   TextEditingController companyNameController = TextEditingController();
   TextEditingController emailAddressController = TextEditingController();
   TextEditingController contactNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    //enquiry popup
     Future<bool> showEnquirySumitPopup() async {
       return await showDialog(
             //the return value will be from "Yes" or "No" options
@@ -109,7 +124,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
                     width: 180,
                     child: Center(
                         child: CommonImageView(
-                      url: widget.url,
+                      url: widget.iamgeUrl,
                     )),
                   ),
                 ),
@@ -172,23 +187,51 @@ class _EnquirycreenState extends State<Enquirycreen> {
                 height: 20,
               ),
               TextfieldRefactor(
-                  controller: companyNameController,
-                  name: LocaleKeys.conpany_name.tr(),
-                  length: 1),
+                formKey: companyNameFormKey,
+                controller: companyNameController,
+                name: LocaleKeys.conpany_name.tr(),
+                length: 1,
+                validator: (value) {
+                  if (value != null && value.isNotEmpty) {
+                    return null;
+                  } else {
+                    return "Enter a vaild name";
+                  }
+                },
+              ),
               SizedBox(
                 height: 20,
               ),
               TextfieldRefactor(
                   controller: emailAddressController,
                   name: LocaleKeys.email_address.tr(),
-                  length: 1),
+                  length: 1,
+                  formKey: emailFormKey,
+                  validator: (value) {
+                    if (value != null &&
+                        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                      return null;
+                    } else {
+                      return "Enter a valid email address";
+                    }
+                  }),
               SizedBox(
                 height: 10,
               ),
               TextfieldRefactor(
+                  formKey: phoneNoFormKey,
                   controller: contactNumberController,
                   name: LocaleKeys.contact_number.tr(),
-                  length: 1),
+                  length: 1,
+                  validator: (value) {
+                    if (value != null &&
+                        RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
+                      return null;
+                    } else {
+                      return "Enter a valid Contact number";
+                    }
+                  }),
               SizedBox(
                 height: 20,
               ),
@@ -200,33 +243,36 @@ class _EnquirycreenState extends State<Enquirycreen> {
                             ColorConstant.kistlerBrandGreen),
                       ),
                       onPressed: () {
-                        Provider.of<EnquiryScreenController>(context,
-                                listen: false)
-                            .onEnquirySend(
-                                language: context.locale,
-                                modelName: widget.productName,
-                                name: companyNameController.text,
-                                email: emailAddressController.text,
-                                phoneNumber: contactNumberController.text)
-                            .then((value) {
-                          if (value) {
-                            AppUtils.oneTimeSnackBar(
-                                "Thank you for your interest. We will contact you!!!",
-                                context: context,
-                                bgColor: ColorConstant.kistlerBrandGreen);
-                            // calling api to update user  data on profile screen
-                            Provider.of<EnquiryScreenController>(context,
-                                    listen: false)
-                                .onEnquirySend(
-                              language: context.locale,
-                            );
-                            Navigator.pop(context);
-                          } else {
-                            // showing error message if failed to update data
-                            AppUtils.oneTimeSnackBar(provider.errorMessage,
-                                context: context);
-                          }
-                        });
+                        // validate form fields
+                        if (companyNameFormKey.currentState!.validate() &&
+                            emailFormKey.currentState!.validate() &&
+                            phoneNoFormKey.currentState!.validate()) {
+                          // end enquiry api call controller
+                          Provider.of<EnquiryScreenController>(context,
+                                  listen: false)
+                              .onEnquirySend(
+                                  productId: widget.productId,
+                                  language: context.locale,
+                                  modelName: widget.productName,
+                                  name: companyNameController.text,
+                                  email: emailAddressController.text,
+                                  phoneNumber: contactNumberController.text)
+                              .then((value) {
+                            if (value) {
+                              AppUtils.oneTimeSnackBar(
+                                  "Thank you for your interest. We will contact you!!!",
+                                  context: context,
+                                  bgColor: ColorConstant.kistlerBrandGreen);
+
+                              Navigator.pop(context);
+                            } else {
+                              // showing error message if failed to update data
+                              AppUtils.oneTimeSnackBar(provider.errorMessage,
+                                  context: context);
+                            }
+                          });
+                        }
+
                         // showEnquirySumitPopup();
                       },
                       child: Text(
