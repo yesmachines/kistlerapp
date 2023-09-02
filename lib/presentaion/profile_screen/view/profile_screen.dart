@@ -33,8 +33,6 @@ class _ProfilScreenState extends State<ProfilScreen> {
   Widget build(BuildContext context) {
     final provider = Provider.of<ProfileScreenController>(context);
 
-    String number = "777737377";
-
     return Scaffold(
       backgroundColor: ColorConstant.kistlerWhite,
       body: provider.isLoading
@@ -298,14 +296,5 @@ class _ProfilScreenState extends State<ProfilScreen> {
         );
       },
     );
-  }
-}
-
-launchDialer(String number) async {
-  String url = 'tel:' + number;
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Application unable to open dialer.';
   }
 }
