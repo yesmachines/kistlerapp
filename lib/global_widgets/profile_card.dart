@@ -4,6 +4,21 @@ import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 
 class ProfileCard extends StatelessWidget {
+  final String name;
+  final String designation;
+  final String mobileNumber;
+  final String email;
+  final String linkedin;
+  final String website;
+
+  ProfileCard({
+    required this.name,
+    required this.designation,
+    required this.mobileNumber,
+    required this.email,
+    required this.linkedin,
+    required this.website,
+  });
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -39,7 +54,7 @@ class ProfileCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    "Felix Kistler",
+                    name,
                     style: TextStyle(
                         color: ColorConstant.kistlerBrandGreen,
                         fontSize: 20,
@@ -48,10 +63,10 @@ class ProfileCard extends StatelessWidget {
                   SizedBox(
                     width: 240,
                     child: Text(
-                      "Business Development Management Kistler Cutting and Welding Techniques",
+                      designation,
                       style: TextStyle(
                           color: ColorConstant.kistlerBrandGreen,
-                          fontSize: 11,
+                          fontSize: 12,
                           wordSpacing: 1.5),
                     ),
                   ),
@@ -69,7 +84,7 @@ class ProfileCard extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "+49 152 22972391",
+                        mobileNumber,
                         style: TextStyle(
                             color: ColorConstant.kistlerBrandGreen,
                             fontSize: 10),
@@ -90,10 +105,11 @@ class ProfileCard extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "felix.kistler@kistler-machine.de",
+                        email,
                         style: TextStyle(
-                            color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 10),
+                          color: ColorConstant.kistlerBrandGreen,
+                          fontSize: 12,
+                        ),
                       ),
                     ],
                   ),
@@ -110,36 +126,15 @@ class ProfileCard extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "felix Kistler",
+                        linkedin,
                         style: TextStyle(
                             color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 10),
+                            fontSize: 12),
                       ),
                     ],
                   ),
                   SizedBox(
                     height: 22,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        color: ColorConstant.kistlerBrandGreen,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "+49 152 22972391",
-                        style: TextStyle(
-                            color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 10),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
                   ),
                   Row(
                     children: [
@@ -155,35 +150,12 @@ class ProfileCard extends StatelessWidget {
                         "https://kistler-machine.com",
                         style: TextStyle(
                             color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 10),
+                            fontSize: 12),
                       ),
                     ],
                   ),
                   SizedBox(
                     height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: ColorConstant.kistlerBrandGreen,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Mackstrabe 84, D88348 Bad Saulgau",
-                            style: TextStyle(
-                                color: ColorConstant.kistlerBrandGreen,
-                                fontSize: 10),
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
                   SizedBox(
                     height: 15,
