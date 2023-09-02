@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
-import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/custom_table_widget.dart';
+import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
+import 'package:kistler/presentaion/price_screen/view/widgets/custom_extras_table_widget.dart';
+import 'package:kistler/presentaion/price_screen/view/widgets/custom_table_widget.dart';
 import 'package:kistler/repository/api/price_screen/models/price_details_res_model.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../generated/locale_keys.g.dart';
 
@@ -12,13 +15,13 @@ class ExpansionTileRefactor extends StatefulWidget {
   final String tilenumber;
   final String modelDescription;
 
-  final ProductModels productDetails;
+  final ProductModels modelDetails;
   const ExpansionTileRefactor(
       {super.key,
       required this.extrasList,
       required this.accessoriesList,
       required this.tilenumber,
-      required this.productDetails,
+      required this.modelDetails,
       required this.modelDescription});
 
   @override
@@ -40,7 +43,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
         textColor: ColorConstant.kistlerWhite,
         iconColor: ColorConstant.kistlerWhite,
         title: Text(
-          widget.productDetails.title ?? "N/a",
+          widget.modelDetails.title ?? "N/a",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
         leading: Text(widget.tilenumber),
@@ -77,7 +80,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                       Row(
                         children: [
                           Text(
-                            "€ ${widget.productDetails.price?.toStringAsFixed(2) ?? "N/a"}",
+                            "€ ${widget.modelDetails.price?.toStringAsFixed(2) ?? "N/a"}",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
@@ -86,11 +89,11 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                           ),
                           Checkbox(
                               activeColor: ColorConstant.kistlerBrandGreen,
-                              value: checkValue,
+                              value: widget.modelDetails.isSelected,
                               onChanged: (value) {
-                                setState(() {
-                                  checkValue = value;
-                                });
+                                Provider.of<PriceScreenController>(context,
+                                        listen: false)
+                                    .toggleSelection(widget.modelDetails.id);
                               })
                         ],
                       ),
@@ -100,7 +103,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                  child: widget.extrasList.isNotEmpty
+                  child: widget.accessoriesList.isNotEmpty
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -114,15 +117,16 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                       : SizedBox(),
                 ),
                 SizedBox(height: 15),
-                widget.extrasList.isNotEmpty
-                    ? CustomTableWidget(
-                        dataList: widget.extrasList,
+                widget.accessoriesList.isNotEmpty
+                    ? CustomAccessoriesTableWidget(
+                        productId: widget.modelDetails.id,
+                        dataList: widget.accessoriesList,
                       )
                     : SizedBox(),
                 SizedBox(
                   height: 18,
                 ),
-                widget.accessoriesList.isNotEmpty
+                widget.extrasList.isNotEmpty
                     ? Text(
                         LocaleKeys.extra_fittings.tr(),
                         style: TextStyle(
@@ -132,9 +136,10 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                 SizedBox(
                   height: 18,
                 ),
-                widget.accessoriesList.isNotEmpty
-                    ? CustomTableWidget(
-                        dataList: widget.accessoriesList,
+                widget.extrasList.isNotEmpty
+                    ? CustomExtrasTableWidget(
+                        productId: widget.modelDetails.id,
+                        extraFittingsDataList: widget.extrasList,
                       )
                     : SizedBox(),
               ],

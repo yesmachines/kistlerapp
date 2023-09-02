@@ -49,24 +49,24 @@ class PriceDetailsResModel {
 }
 
 class ProductModels {
-  int? id;
+  int id;
   String? title;
-  int? price;
+  int price;
   String? description;
   bool isSelected;
   int quantity;
-  List<ItemModel>? accessoriesList;
-  List<ItemModel>? extrasList;
+  List<ItemModel> accessoriesList;
+  List<ItemModel> extrasList;
 
   ProductModels({
-    this.id,
+    required this.id,
     this.title,
-    this.price,
+    this.price = 0,
     this.description,
     this.isSelected = false,
     this.quantity = 0,
-    this.accessoriesList,
-    this.extrasList,
+    this.accessoriesList = const [],
+    this.extrasList = const [],
   });
 
   factory ProductModels.fromJson(Map<String, dynamic> json) => ProductModels(
@@ -99,17 +99,17 @@ class ProductModels {
 }
 
 class ItemModel {
-  int? id;
+  int id;
   String? title;
-  int? price;
+  int price;
   int? status;
   bool isSelected;
   int quantity;
 
   ItemModel({
-    this.id,
+    required this.id,
     this.title,
-    this.price,
+    this.price = 0,
     this.status,
     this.isSelected = false,
     this.quantity = 0,

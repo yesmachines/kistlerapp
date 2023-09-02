@@ -1,7 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
-import 'package:kistler/generated/locale_keys.g.dart';
 
 class CustomPasswordTextField extends StatelessWidget {
   const CustomPasswordTextField({
@@ -10,12 +8,14 @@ class CustomPasswordTextField extends StatelessWidget {
     this.formKey,
     this.obscureText = false,
     this.onPassVisibilityPressed,
+    this.titleText,
   });
 
   final TextEditingController? controller;
   final Key? formKey;
   final bool obscureText;
   final VoidCallback? onPassVisibilityPressed;
+  final String? titleText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CustomPasswordTextField extends StatelessWidget {
           SizedBox(
             width: 120,
             child: Text(
-              LocaleKeys.password.tr(),
+              titleText ?? "",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

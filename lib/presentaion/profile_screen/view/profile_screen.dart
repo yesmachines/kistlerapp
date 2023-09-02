@@ -9,6 +9,7 @@ import 'package:kistler/global_widgets/profile_card.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/widgets/logout_confirm_popup.dart';
+import 'package:kistler/presentaion/profile_update_screen/controller/profile_update_screen_controller.dart';
 import 'package:kistler/presentaion/profile_update_screen/view/profile_update_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -56,8 +57,12 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProfileUpdateScreen()),
+                                        builder: (context) =>
+                                            ChangeNotifierProvider(
+                                                create: (context) =>
+                                                    ProfileUpdateScreenController(),
+                                                child: ProfileUpdateScreen()),
+                                      ),
                                     );
                                   },
                                   child: Icon(
@@ -73,6 +78,10 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                   height: 150,
                                   width: 150,
                                   decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              ImageConstant.assetNotfound),
+                                          fit: BoxFit.fill),
                                       color: ColorConstant.kistlerBrandGreen,
                                       shape: BoxShape.circle),
                                   child: provider.userData?.imageUrl != null
@@ -85,8 +94,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                                 .toString(),
                                           ),
                                         )
-                                      : Image.asset(
-                                          ImageConstant.assetNotfound),
+                                      : SizedBox(),
                                 ),
                                 // CircleAvatar(
                                 //   radius: 75,

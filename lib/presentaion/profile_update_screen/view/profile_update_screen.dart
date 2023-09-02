@@ -312,6 +312,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
           ),
 
           CustomPasswordTextField(
+            titleText: LocaleKeys.password.tr(),
             formKey: passFormKey,
             controller: _PassController,
             obscureText: provider.isPasswordVissible,
@@ -324,6 +325,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             },
           ),
           CustomPasswordTextField(
+            titleText: LocaleKeys.confirm_password.tr(),
             formKey: cnfrmPasswordFormKey,
             obscureText: provider.isConfirmPasswordVisible,
             controller: _cnfrmPasswordController,

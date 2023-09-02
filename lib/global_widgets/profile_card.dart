@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/repository/image_save_share_service.dart';
 
 class ProfileCard extends StatelessWidget {
   final String name;
@@ -21,146 +22,151 @@ class ProfileCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final shareCardKey = GlobalKey();
+
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Card(
-            child: Padding(
-              padding: EdgeInsets.only(left: 30, right: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 100,
-                            child: Image.asset(
-                              "assets/images/logo_sub.png",
-                              fit: BoxFit.fitWidth,
+          RepaintBoundary(
+            key: shareCardKey,
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.only(left: 30, right: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              height: 40,
+                              width: 100,
+                              child: Image.asset(
+                                "assets/images/logo_sub.png",
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Text(
-                    name,
-                    style: TextStyle(
-                        color: ColorConstant.kistlerBrandGreen,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 240,
-                    child: Text(
-                      designation,
+                          ],
+                        ),
+                      ],
+                    ),
+                    Text(
+                      name,
                       style: TextStyle(
                           color: ColorConstant.kistlerBrandGreen,
-                          fontSize: 12,
-                          wordSpacing: 1.5),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        color: ColorConstant.kistlerBrandGreen,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        mobileNumber,
+                    SizedBox(
+                      width: 240,
+                      child: Text(
+                        designation,
                         style: TextStyle(
                             color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 10),
+                            fontSize: 12,
+                            wordSpacing: 1.5),
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.mail,
-                        color: ColorConstant.kistlerBrandGreen,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        email,
-                        style: TextStyle(
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.phone,
                           color: ColorConstant.kistlerBrandGreen,
-                          fontSize: 12,
+                          size: 20,
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: Image.asset("assets/images/linkedin.png")),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        linkedin,
-                        style: TextStyle(
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          mobileNumber,
+                          style: TextStyle(
+                              color: ColorConstant.kistlerBrandGreen,
+                              fontSize: 10),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.mail,
+                          color: ColorConstant.kistlerBrandGreen,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          email,
+                          style: TextStyle(
                             color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 12),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 22,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.language,
-                        color: ColorConstant.kistlerBrandGreen,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "https://kistler-machine.com",
-                        style: TextStyle(
-                            color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 12),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                ],
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: Image.asset("assets/images/linkedin.png")),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          linkedin,
+                          style: TextStyle(
+                              color: ColorConstant.kistlerBrandGreen,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 22,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.language,
+                          color: ColorConstant.kistlerBrandGreen,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "https://kistler-machine.com",
+                          style: TextStyle(
+                              color: ColorConstant.kistlerBrandGreen,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -182,7 +188,9 @@ class ProfileCard extends StatelessWidget {
               ),
               SizedBox(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  CardShareAndSaveServices().shareWidgetAsImage(shareCardKey);
+                },
                 child: Text(LocaleKeys.send.tr()),
                 style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(

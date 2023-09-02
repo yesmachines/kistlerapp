@@ -91,7 +91,8 @@ class ProfileUpdateScreenController extends ChangeNotifier {
       {required ImageSource source, required BuildContext context}) async {
     qrImgeFile = await getImage(source: source);
     if (qrImgeFile != null) {
-      AppUtils.oneTimeSnackBar("Image uploaded successfully", context: context);
+      AppUtils.oneTimeSnackBar("Image uploaded successfully",
+          context: context, bgColor: ColorConstant.kistlerBrandGreen);
     } else {
       AppUtils.oneTimeSnackBar("Failed to upload Image", context: context);
     }

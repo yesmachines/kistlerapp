@@ -10,6 +10,7 @@ import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/enquiry_screen/view/enquiry_screen.dart';
+import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
 import 'package:kistler/presentaion/product_details_screen/controller/product_details_screen_controller.dart';
 
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/accessories_container.dart';
@@ -38,7 +39,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      print(widget.productId.toString() + " productId");
+      print(widget.productId.toString() + "productId");
       Provider.of<ProductDetailsScreenController>(context, listen: false)
           .getPoductDetails(
         language: context.locale,

@@ -6,7 +6,7 @@ import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
-import 'package:kistler/presentaion/price_screen/view/price_screen_widgets/expansion_tile_refactor.dart';
+import 'package:kistler/presentaion/price_screen/view/widgets/expansion_tile_refactor.dart';
 import 'package:kistler/presentaion/quote_summary_screen/view/quote_summary_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -90,10 +90,10 @@ class _PriceScreenState extends State<PriceScreen> {
                           modelDescription:
                               provider.modelsList[index].description ?? "",
                           tilenumber: index < 10 ? "0$index" : index.toString(),
-                          productDetails: provider.modelsList[index],
-                          extrasList:
-                              provider.modelsList[index].accessoriesList ?? [],
+                          modelDetails: provider.modelsList[index],
                           accessoriesList:
+                              provider.modelsList[index].accessoriesList ?? [],
+                          extrasList:
                               provider.modelsList[index].extrasList ?? [],
                         ),
                     separatorBuilder: (context, index) => SizedBox(
@@ -107,7 +107,9 @@ class _PriceScreenState extends State<PriceScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const QuoteSummaryScreen()));
+                  builder: (context) => QuoteSummaryScreen(
+                        productId: widget.productId,
+                      )));
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 50, bottom: 20, right: 50),
