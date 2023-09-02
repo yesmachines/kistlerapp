@@ -44,10 +44,12 @@ class _ModelsContainerState extends State<ModelsContainer> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
+                    width: MediaQuery.sizeOf(context).width * .55,
                     color: ColorConstant.kistlerBrandGreen.withOpacity(.1),
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     child: Text(
                       widget.modelData.title ?? "",
+                      maxLines: 3,
                       style: TextStyle(
                         fontSize: 16,
                       ),
@@ -91,7 +93,7 @@ class _ModelsContainerState extends State<ModelsContainer> {
                                         .updateQuantity(
                                             productId: widget.modelData.id,
                                             newQuantity:
-                                                widget.modelData.quantity + 1);
+                                                widget.modelData.quantity - 1);
                                   }
                                 },
                               ),
@@ -156,42 +158,44 @@ class _ModelsContainerState extends State<ModelsContainer> {
             SizedBox(
               height: 10,
             ),
-            for (final accessory in widget.modelData.accessoriesList)
-              if (accessory.isSelected)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border:
-                          Border.all(color: ColorConstant.kistlerBrandGreen),
-                      borderRadius: BorderRadius.circular(8),
-                      color: ColorConstant.kistlerWhite,
-                    ),
-                    child: AssessoriesQuoteContainer(
-                      modelId: widget.modelData.id,
-                      accessoryData: accessory,
-                      onDelete: () {
-                        if (accessory.isSelected) {
-                          Provider.of<PriceScreenController>(context,
-                                  listen: false)
-                              .toggleAccessorySelection(
-                                  accessoryId: accessory.id,
-                                  productId: widget.modelData.id);
-                          AppUtils.oneTimeSnackBar(
-                            "${accessory.title} deleted from the cart",
-                            context: context,
-                          );
-                        } else {
-                          AppUtils.oneTimeSnackBar(
-                            "${accessory.title} not found in cart ",
-                            context: context,
-                          );
-                        }
-                      },
+            ...[
+              for (final accessory in widget.modelData.accessoriesList)
+                if (accessory.isSelected)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: ColorConstant.kistlerBrandGreen),
+                        borderRadius: BorderRadius.circular(8),
+                        color: ColorConstant.kistlerWhite,
+                      ),
+                      child: AssessoriesQuoteContainer(
+                        modelId: widget.modelData.id,
+                        accessoryData: accessory,
+                        onDelete: () {
+                          if (accessory.isSelected) {
+                            Provider.of<PriceScreenController>(context,
+                                    listen: false)
+                                .toggleAccessorySelection(
+                                    accessoryId: accessory.id,
+                                    productId: widget.modelData.id);
+                            AppUtils.oneTimeSnackBar(
+                              "${accessory.title} deleted from the cart",
+                              context: context,
+                            );
+                          } else {
+                            AppUtils.oneTimeSnackBar(
+                              "${accessory.title} not found in cart ",
+                              context: context,
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ),
-                ),
+            ]
 
             // Container(
             //   padding: EdgeInsets.all(10),
@@ -207,6 +211,7 @@ class _ModelsContainerState extends State<ModelsContainer> {
             //     itemBuilder: (context, index) => AssessoriesQuoteContainer(),
             //   ),
             // ),
+            ,
             widget.modelData.extrasList.any((e) => e.isSelected)
                 ? Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -221,42 +226,44 @@ class _ModelsContainerState extends State<ModelsContainer> {
                     ),
                   )
                 : SizedBox(),
-            for (final fitting in widget.modelData.extrasList)
-              if (fitting.isSelected)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border:
-                          Border.all(color: ColorConstant.kistlerBrandGreen),
-                      borderRadius: BorderRadius.circular(8),
-                      color: ColorConstant.kistlerWhite,
-                    ),
-                    child: ExtrasQuoteContainer(
-                      modelId: widget.modelData.id,
-                      fittingsData: fitting,
-                      onDelete: () {
-                        if (fitting.isSelected) {
-                          Provider.of<PriceScreenController>(context,
-                                  listen: false)
-                              .toggleFittingSelection(
-                                  fittingId: fitting.id,
-                                  productId: widget.modelData.id);
-                          AppUtils.oneTimeSnackBar(
-                            "${fitting.title} deleted from the cart",
-                            context: context,
-                          );
-                        } else {
-                          AppUtils.oneTimeSnackBar(
-                            "${fitting.title} not found in cart ",
-                            context: context,
-                          );
-                        }
-                      },
+            ...[
+              for (final fitting in widget.modelData.extrasList)
+                if (fitting.isSelected)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: ColorConstant.kistlerBrandGreen),
+                        borderRadius: BorderRadius.circular(8),
+                        color: ColorConstant.kistlerWhite,
+                      ),
+                      child: ExtrasQuoteContainer(
+                        modelId: widget.modelData.id,
+                        fittingsData: fitting,
+                        onDelete: () {
+                          if (fitting.isSelected) {
+                            Provider.of<PriceScreenController>(context,
+                                    listen: false)
+                                .toggleFittingSelection(
+                                    fittingId: fitting.id,
+                                    productId: widget.modelData.id);
+                            AppUtils.oneTimeSnackBar(
+                              "${fitting.title} deleted from the cart",
+                              context: context,
+                            );
+                          } else {
+                            AppUtils.oneTimeSnackBar(
+                              "${fitting.title} not found in cart ",
+                              context: context,
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ),
-                ),
+            ]
             // Container(
             //   padding: EdgeInsets.all(10),
             //   decoration: BoxDecoration(

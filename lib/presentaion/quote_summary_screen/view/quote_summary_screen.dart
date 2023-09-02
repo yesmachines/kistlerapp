@@ -139,28 +139,31 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
               color: Color.fromARGB(255, 237, 237, 237),
               thickness: 8,
             ),
-            for (final model in provider.modelsList)
-              if (model.isSelected ||
-                  model.accessoriesList.any((a) => a.isSelected) ||
-                  model.accessoriesList.any((f) => f.isSelected))
-                ModelsContainer(
-                  modelData: model,
-                  onDelete: () {
-                    if (model.isSelected) {
-                      Provider.of<PriceScreenController>(context, listen: false)
-                          .toggleSelection(model.id);
-                      AppUtils.oneTimeSnackBar(
-                        "${model.title} deleted from the cart",
-                        context: context,
-                      );
-                    } else {
-                      AppUtils.oneTimeSnackBar(
-                        "${model.title} not found in cart ",
-                        context: context,
-                      );
-                    }
-                  },
-                ),
+            ...[
+              for (final model in provider.modelsList)
+                if (model.isSelected ||
+                    model.accessoriesList.any((a) => a.isSelected) ||
+                    model.extrasList.any((f) => f.isSelected))
+                  ModelsContainer(
+                    modelData: model,
+                    onDelete: () {
+                      if (model.isSelected) {
+                        Provider.of<PriceScreenController>(context,
+                                listen: false)
+                            .toggleSelection(model.id);
+                        AppUtils.oneTimeSnackBar(
+                          "${model.title} deleted from the cart",
+                          context: context,
+                        );
+                      } else {
+                        AppUtils.oneTimeSnackBar(
+                          "${model.title} not found in cart ",
+                          context: context,
+                        );
+                      }
+                    },
+                  ),
+            ],
 
             // ListView.separated(
             //   shrinkWrap: true,

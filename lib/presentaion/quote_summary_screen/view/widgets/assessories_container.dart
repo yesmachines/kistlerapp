@@ -32,10 +32,14 @@ class _AssessoriesQuoteContainerState extends State<AssessoriesQuoteContainer> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                widget.accessoryData.title ?? "",
-                style: TextStyle(
-                  fontSize: 12,
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width * .55,
+                child: Text(
+                  widget.accessoryData.title ?? "",
+                  maxLines: 3,
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
                 ),
               ),
               InkWell(

@@ -31,10 +31,14 @@ class _ExtrasQuoteContainerState extends State<ExtrasQuoteContainer> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                widget.fittingsData.title ?? "",
-                style: TextStyle(
-                  fontSize: 12,
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width * .55,
+                child: Text(
+                  widget.fittingsData.title ?? "",
+                  maxLines: 3,
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
                 ),
               ),
               InkWell(
