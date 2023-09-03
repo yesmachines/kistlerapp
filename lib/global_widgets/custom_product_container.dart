@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/global_widgets/common_image_view.dart';
+import 'package:kistler/presentaion/product_details_screen/controller/product_details_screen_controller.dart';
 import 'package:kistler/presentaion/product_details_screen/views/product_details_screen.dart';
 import 'package:kistler/repository/api/categories_screen/models/get_all_products_res_model.dart';
+import 'package:provider/provider.dart';
 
 class ProductContainer extends StatelessWidget {
   const ProductContainer({super.key, required this.productData});
@@ -12,9 +14,12 @@ class ProductContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ProductDetailsScreen(
-                productId: productData.id.toString(),
-              ))),
+        builder: (context) => ChangeNotifierProvider(
+            create: (context) => ProductDetailsScreenController(),
+            child: ProductDetailsScreen(
+              productId: productData.id.toString(),
+            )),
+      )),
       child: Container(
         decoration: BoxDecoration(
             border:
@@ -25,6 +30,7 @@ class ProductContainer extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(),
               Container(
@@ -40,14 +46,10 @@ class ProductContainer extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                  height: 100,
-                  child: Container(
-                    //TODO: need to be updated with no image
-
-                    child: CommonImageView(
-                      fit: BoxFit.fitWidth,
-                      url: productData.defaultImage,
-                    ),
+                  height: MediaQuery.sizeOf(context).height * .15,
+                  child: CommonImageView(
+                    fit: BoxFit.fitHeight,
+                    url: productData.defaultImage,
                   ),
                 ),
               ),

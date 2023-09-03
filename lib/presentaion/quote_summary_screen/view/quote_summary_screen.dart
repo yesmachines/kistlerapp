@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kistler/core/app_utils/app_utils.dart';
 
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
@@ -7,10 +10,15 @@ import 'package:kistler/global_widgets/custom_app_bar.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 import 'package:kistler/global_widgets/textfield_refactor.dart';
-import 'package:kistler/presentaion/quote_summary_screen/view/quote_screen_widgets/card_refactor.dart';
+import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
+import 'package:kistler/presentaion/quote_summary_screen/controller/quote_summary_screen_controller.dart';
+import 'package:kistler/presentaion/quote_summary_screen/view/widgets/models_container.dart';
+import 'package:provider/provider.dart';
 
 class QuoteSummaryScreen extends StatefulWidget {
-  const QuoteSummaryScreen({super.key});
+  final String productId;
+
+  const QuoteSummaryScreen({super.key, required this.productId});
 
   @override
   State<QuoteSummaryScreen> createState() => _QuoteSummaryScreenState();
@@ -25,6 +33,8 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PriceScreenController>(context);
+
     Future<bool> showExitPopup() async {
       return await showDialog(
             //the return value will be from "Yes" or "No" options
@@ -129,21 +139,48 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
               color: Color.fromARGB(255, 237, 237, 237),
               thickness: 8,
             ),
-            ListView.separated(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 3,
-              itemBuilder: (context, index) => QuantityInput(
-                initialValue: 1,
-                onChanged: (value) {
-                  print('Quantity changed: $value');
-                },
-              ),
-              separatorBuilder: (context, index) => Divider(
-                color: Color.fromARGB(255, 237, 237, 237),
-                thickness: 8,
-              ),
-            ),
+            ...[
+              for (final model in provider.modelsList)
+                if (model.isSelected ||
+                    model.accessoriesList.any((a) => a.isSelected) ||
+                    model.extrasList.any((f) => f.isSelected))
+                  ModelsContainer(
+                    modelData: model,
+                    onDelete: () {
+                      if (model.isSelected) {
+                        Provider.of<PriceScreenController>(context,
+                                listen: false)
+                            .toggleSelection(model.id);
+                        AppUtils.oneTimeSnackBar(
+                          "${model.title} deleted from the cart",
+                          context: context,
+                        );
+                      } else {
+                        AppUtils.oneTimeSnackBar(
+                          "${model.title} not found in cart ",
+                          context: context,
+                        );
+                      }
+                    },
+                  ),
+            ],
+
+            // ListView.separated(
+            //   shrinkWrap: true,
+            //   physics: NeverScrollableScrollPhysics(),
+            //   itemCount: 2,
+            //   itemBuilder: (context, index) => ModelsContainer(
+            //     modelData: provider.modelsList[index],
+            //     initialValue: 1,
+            //     onChanged: (value) {
+            //       print('Quantity changed: $value');
+            //     },
+            //   ),
+            //   separatorBuilder: (context, index) => Divider(
+            //     color: Color.fromARGB(255, 237, 237, 237),
+            //     thickness: 8,
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -166,7 +203,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      controller: emailAddressController,
+                      controller: companyNameController,
                       name: LocaleKeys.conpany_name.tr(),
                       maxLines: 1),
                   SizedBox(
@@ -195,7 +232,28 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      showExitPopup();
+                      Provider.of<QuotationSummaryScreenController>(context,
+                              listen: false)
+                          .sendQuotation(
+                              language: context.locale,
+                              productId: widget.productId,
+                              companyName: companyNameController.text.trim(),
+                              name: contactNameController.text.trim(),
+                              comment: commentsController.text.trim(),
+                              email: emailAddressController.text.trim(),
+                              phoneNumber: contactNumberController.text.trim(),
+                              quptationData: provider.generateJsonData())
+                          .then((value) {
+                        if (value) {
+                          provider.generateJsonData();
+                        } else {
+                          AppUtils.oneTimeSnackBar(
+                              "Failed to send quotation , try again",
+                              context: context);
+                        }
+                      });
+
+                      // showExitPopup();
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(

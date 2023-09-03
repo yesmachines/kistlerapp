@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
 import 'package:kistler/repository/api/price_screen/models/price_details_res_model.dart';
+import 'package:provider/provider.dart';
 
-class CustomTableWidget extends StatefulWidget {
-  final List<ItemModel> dataList;
-  const CustomTableWidget({super.key, required this.dataList});
+class CustomExtrasTableWidget extends StatefulWidget {
+  final List<ItemModel> extraFittingsDataList;
+  final int productId;
+
+  const CustomExtrasTableWidget({
+    super.key,
+    required this.extraFittingsDataList,
+    required this.productId,
+  });
 
   @override
-  State<CustomTableWidget> createState() => _CustomTableWidgetState();
+  State<CustomExtrasTableWidget> createState() =>
+      _CustomExtrasTableWidgetState();
 }
 
-class _CustomTableWidgetState extends State<CustomTableWidget> {
-  bool _isChecked = false;
+class _CustomExtrasTableWidgetState extends State<CustomExtrasTableWidget> {
+  // bool _isChecked = false;
   int selectedNumber = 1;
 
-  _toggleCheckbox(bool value) {
-    setState(() {
-      _isChecked = value;
-    });
-  }
+  // _toggleCheckbox(bool value) {
+  //   setState(() {
+  //     _isChecked = value;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +81,9 @@ class _CustomTableWidgetState extends State<CustomTableWidget> {
               ),
             ],
           ),
-          for (int index = 0; index < widget.dataList.length; index++)
+          for (int index = 0;
+              index < widget.extraFittingsDataList.length;
+              index++)
             TableRow(
               children: [
                 TableCell(
@@ -86,7 +97,8 @@ class _CustomTableWidgetState extends State<CustomTableWidget> {
                     padding: EdgeInsets.all(8.0),
                     child: SizedBox(
                         width: 50,
-                        child: Text(widget.dataList[index].title ?? "N/a",
+                        child: Text(
+                            widget.extraFittingsDataList[index].title ?? "N/a",
                             textAlign: TextAlign.center)),
                   ),
                 ),
@@ -94,7 +106,7 @@ class _CustomTableWidgetState extends State<CustomTableWidget> {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                        "€ ${widget.dataList[index].price?.toString() ?? "N/a"}",
+                        "€ ${widget.extraFittingsDataList[index].price?.toString() ?? "N/a"}",
                         textAlign: TextAlign.center),
                   ),
                 ),
@@ -103,9 +115,14 @@ class _CustomTableWidgetState extends State<CustomTableWidget> {
                     padding: EdgeInsets.all(8.0),
                     child: Checkbox(
                       activeColor: ColorConstant.kistlerBrandGreen,
-                      value: _isChecked,
+                      value: widget.extraFittingsDataList[index].isSelected,
                       onChanged: (value) => setState(() {
-                        _isChecked = value!;
+                        Provider.of<PriceScreenController>(context,
+                                listen: false)
+                            .toggleFittingSelection(
+                                productId: widget.productId,
+                                fittingId:
+                                    widget.extraFittingsDataList[index].id);
                       }),
                     ),
                   ),
@@ -117,37 +134,3 @@ class _CustomTableWidgetState extends State<CustomTableWidget> {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// class CustomTableWidgetWithCheckBox extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       shrinkWrap: true,
-//       physics: NeverScrollableScrollPhysics(),
-//       itemCount: 4, // Number of rows
-//       itemBuilder: (context, rowIndex) {
-//         return Container(
-//           decoration: BoxDecoration(
-//             border: Border.all(width: 1.0, color: Colors.grey),
-//           ),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: <Widget>[
-//               for (int i = 1; i <= 4; i++)
-//                 Container(
-//                   width: 70, // Adjust the width as needed
-//                   padding: EdgeInsets.all(8.0),
-//                   child: Text(
-//                     'Row ${rowIndex + 1}, Col $i',
-//                     textAlign: TextAlign.center,
-//                   ),
-//                 ),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }

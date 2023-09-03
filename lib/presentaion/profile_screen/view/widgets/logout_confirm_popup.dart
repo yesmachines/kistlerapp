@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/repository/helper_fucntions/helper_functions.dart';
+import 'package:provider/provider.dart';
 
 Future<bool> logoutConfirmPopup({required BuildContext context}) async {
   return await showDialog(
@@ -65,7 +67,18 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: () => HelperFunctions.logOut(context),
+                      onTap: () async {
+                        //Funtionality need tobe tested
+
+                        await Provider.of<ProfileScreenController>(context,
+                                listen: false)
+                            .onLogout(language: context.locale)
+                            .then((value) {
+                          if (value) {
+                            HelperFunctions.logOut(context);
+                          }
+                        });
+                      },
                       child: Container(
                         height: 40,
                         decoration: BoxDecoration(

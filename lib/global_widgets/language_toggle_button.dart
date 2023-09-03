@@ -67,6 +67,10 @@ class _LanguageToggleButtonState extends State<LanguageToggleButton> {
 
           Provider.of<CategoriesScreenController>(context, listen: false)
               .getAllProducts(language: context.locale);
+          Provider.of<CategoriesScreenController>(context, listen: false)
+              .getCuttingProductsLidt(language: context.locale);
+          Provider.of<CategoriesScreenController>(context, listen: false)
+              .getWeldingProductsLidt(language: context.locale);
           // TODO : UNCOMMENT IF  PROFILE SCREEN API HAVE DATA WITH DIFFERRNT LANGUAGE
           // Provider.of<ProfileScreenController>(context, listen: false)
           //     .getUserData(language: context.locale);
