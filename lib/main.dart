@@ -8,8 +8,10 @@ import 'package:kistler/presentaion/custom_made_solution_screen/controller/custo
 import 'package:kistler/presentaion/custom_made_solution_screen/view/custom_made_solution_screen.dart';
 import 'package:kistler/presentaion/enquiry_screen/controller/enquiryScreenController.dart';
 import 'package:kistler/presentaion/login_screen/controller/login_screen_controller.dart';
+import 'package:kistler/presentaion/no_internet_screen/view/no_internet_screen.dart';
 import 'package:kistler/presentaion/profile_update_screen/controller/profile_update_screen_controller.dart';
 import 'package:kistler/presentaion/quote_summary_screen/controller/quote_summary_screen_controller.dart';
+import 'package:kistler/presentaion/splash_Screen/controller/common_controller.dart';
 import 'package:kistler/presentaion/splash_Screen/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -55,8 +57,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProfileScreenController()),
         // ChangeNotifierProvider(
         //     create: (context) => ProfileUpdateScreenController()),
-        ChangeNotifierProvider(
-            create: (context) => ProductDetailsScreenController()),
+        // ChangeNotifierProvider(
+        //     create: (context) => ProductDetailsScreenController()),
         ChangeNotifierProvider(create: (context) => PriceScreenController()),
         ChangeNotifierProvider(create: (context) => EnquiryScreenController()),
         ChangeNotifierProvider(
@@ -65,6 +67,7 @@ class MyApp extends StatelessWidget {
             create: (context) => QuotationSummaryScreenController()),
       ],
       child: MaterialApp(
+        navigatorKey: CommonController.navigatorState,
         theme: ThemeData(
             textTheme: GoogleFonts.poppinsTextTheme(),
             scaffoldBackgroundColor: ColorConstant.kistlerWhite),

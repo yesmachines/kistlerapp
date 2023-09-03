@@ -5,6 +5,8 @@ import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 import 'package:kistler/presentaion/get_started_screen/view/get_started_screen.dart';
+import 'package:kistler/presentaion/no_internet_screen/view/no_internet_screen.dart';
+import 'package:kistler/presentaion/splash_Screen/controller/common_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -21,35 +23,45 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(Duration(seconds: 3), () async {
-      final String? savedToken = await AppUtils.getAccessKey();
+      if (await AppUtils.isOnline()) {
+        final String? savedToken = await AppUtils.getAccessKey();
 
-      if (savedToken != null && savedToken.isNotEmpty) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => BottomNavScreen()),
-        );
+        if (savedToken != null && savedToken.isNotEmpty) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => BottomNavScreen()),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => GetStartedScreen()),
+          );
+        }
       } else {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => GetStartedScreen()),
-        );
+        if (mounted) {
+          await AppUtils.oneTimeSnackBar("No internet connection !!!",
+              context: CommonController.navigatorState.currentContext!);
+        }
+
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => NoInternetScreen()),
+            (route) => false);
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Container(
-              height: 100,
-              width: 100,
-              child: Image.asset(
-                ImageConstant.smallLogo,
-                fit: BoxFit.cover,
-              )),
-        ),
+    return Scaffold(
+      body: Center(
+        child: Container(
+            height: 100,
+            width: 100,
+            child: Image.asset(
+              ImageConstant.smallLogo,
+              fit: BoxFit.cover,
+            )),
       ),
     );
   }

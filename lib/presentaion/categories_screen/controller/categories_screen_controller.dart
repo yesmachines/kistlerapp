@@ -9,7 +9,9 @@ class CategoriesScreenController extends ChangeNotifier {
   bool isLoading = false;
   late SharedPreferences sharedPreferences;
   ProductsByCategoryresModel? allProductsData;
-  List<Category> categoriesList = [];
+  List<Category> allCategoriesList = [];
+  List<Category> cuttingsProductsList = [];
+  List<Category> weldingProductsList = [];
 
   // to Fetch the Course demo videos
 
@@ -26,7 +28,7 @@ class CategoriesScreenController extends ChangeNotifier {
       if (fetchedData.error != true) {
         allProductsData = fetchedData.data;
         if (allProductsData != null) {
-          categoriesList = allProductsData!.categoriesList ?? [];
+          allCategoriesList = allProductsData!.categoriesList ?? [];
         }
 
         isLoading = false;
@@ -45,34 +47,65 @@ class CategoriesScreenController extends ChangeNotifier {
     }
   }
 
-  // Future<bool> getProductByCategoryId({required Locale language}) async {
-  //   sharedPreferences = await SharedPreferences.getInstance();
-  //   isLoading = true;
-  //   notifyListeners();
+  Future<bool> getCuttingProductsLidt({required Locale language}) async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    isLoading = true;
+    notifyListeners();
+// , categoryId: "166"
+    try {
+      // need to update values from  user input
+      final fetchedData = await CategoriesScreenServices()
+          .getProductsByCategories(language: language, categoryId: "166");
+      if (fetchedData.error != true) {
+        allProductsData = fetchedData.data;
+        if (allProductsData != null) {
+          cuttingsProductsList = allProductsData!.categoriesList ?? [];
+        }
 
-  //   try {
-  //     // need to update values from  user input
-  //     final fetchedData = await CategoriesScreenServices()
-  //         .getProductsByCategories(language: language);
-  //     if (fetchedData.error != true) {
-  //       allProductsData = fetchedData.data;
-  //       if (allProductsData != null) {
-  //         categoriesList = allProductsData!.categoriesList ?? [];
-  //       }
+        isLoading = false;
+        notifyListeners();
+        return true;
+      } else {
+        isLoading = false;
+        notifyListeners();
+        return false;
+      }
+    } catch (e) {
+      isLoading = false;
+      notifyListeners();
+      print(e);
+      rethrow;
+    }
+  }
 
-  //       isLoading = false;
-  //       notifyListeners();
-  //       return true;
-  //     } else {
-  //       isLoading = false;
-  //       notifyListeners();
-  //       return false;
-  //     }
-  //   } catch (e) {
-  //     isLoading = false;
-  //     notifyListeners();
-  //     print(e);
-  //     rethrow;
-  //   }
-  // }
+  Future<bool> getWeldingProductsLidt({required Locale language}) async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    isLoading = true;
+    notifyListeners();
+// , categoryId: "165"
+    try {
+      // need to update values from  user input
+      final fetchedData = await CategoriesScreenServices()
+          .getProductsByCategories(language: language, categoryId: "165");
+      if (fetchedData.error != true) {
+        allProductsData = fetchedData.data;
+        if (allProductsData != null) {
+          weldingProductsList = allProductsData!.categoriesList ?? [];
+        }
+
+        isLoading = false;
+        notifyListeners();
+        return true;
+      } else {
+        isLoading = false;
+        notifyListeners();
+        return false;
+      }
+    } catch (e) {
+      isLoading = false;
+      notifyListeners();
+      print(e);
+      rethrow;
+    }
+  }
 }

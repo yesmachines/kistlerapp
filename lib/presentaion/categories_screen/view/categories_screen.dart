@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/search_bar.dart';
+import 'package:kistler/presentaion/categories_screen/controller/categories_screen_controller.dart';
 import 'package:kistler/presentaion/categories_screen/view/tabs/tab_all_screen.dart';
 import 'package:kistler/presentaion/categories_screen/view/tabs/tab_screen_cutter.dart';
+import 'package:provider/provider.dart';
 import 'tabs/tab_view_welding.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -17,6 +19,14 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Provider.of<CategoriesScreenController>(context, listen: false)
+          .getAllProducts(language: context.locale);
+      await Provider.of<CategoriesScreenController>(context, listen: false)
+          .getCuttingProductsLidt(language: context.locale);
+      await Provider.of<CategoriesScreenController>(context, listen: false)
+          .getWeldingProductsLidt(language: context.locale);
+    });
     super.initState();
   }
 

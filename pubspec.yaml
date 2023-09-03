@@ -81,6 +81,7 @@ flutter:
     - assets/images/
     - assets/welding/
     - assets/translations/
+    - assets/lottie_files/
   
  
 

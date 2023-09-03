@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:kistler/presentaion/splash_Screen/controller/common_controller.dart';
 
 import '../../app_config/app_config.dart';
 import '../../core/app_utils/app_utils.dart';
@@ -53,12 +54,17 @@ class ApiHelper {
         return APIResponse(
             data: '', error: true, errorMessage: 'Something went wrong!');
       }
+    } else {
+      if (CommonController.navigatorState.currentContext!.mounted) {
+        await AppUtils.oneTimeSnackBar("No internet connection !!!",
+            context: CommonController.navigatorState.currentContext!);
+      }
     }
   }
 
   //for post
   ///endpoint is applied olny if finalUrl is empty
-  static Future<APIResponse> postData(
+  static postData(
       {required String endPoint,
       required Map<String, String> header,
       required Map<String, dynamic> body,
@@ -98,13 +104,15 @@ class ApiHelper {
       //       data: '', error: true, errorMessage: 'Could\'t reach server');
       // }
     } else {
-      return APIResponse(
-          data: '', error: true, errorMessage: 'Something went wrong!');
+      if (CommonController.navigatorState.currentContext!.mounted) {
+        await AppUtils.oneTimeSnackBar("No internet connection !!!",
+            context: CommonController.navigatorState.currentContext!);
+      }
     }
   }
 
   //patch
-  static Future<APIResponse> patchData(
+  static patchData(
       {required String endPoint,
       required Map<String, String> header,
       required Map<String, dynamic> body}) async {
@@ -129,15 +137,17 @@ class ApiHelper {
               data: resBody,
               error: true,
               errorMessage:
-                  resBody['message'].toString() ?? 'Something went wrong!');
+                  resBody['message']?.toString() ?? 'Something went wrong!');
         }
       } else {
         return APIResponse(
             data: res.body, error: true, errorMessage: 'Something went wrong!');
       }
     } else {
-      return APIResponse(
-          data: '', error: true, errorMessage: 'Something went wrong!');
+      if (CommonController.navigatorState.currentContext!.mounted) {
+        await AppUtils.oneTimeSnackBar("No internet connection !!!",
+            context: CommonController.navigatorState.currentContext!);
+      }
     }
   }
 

@@ -1,6 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/repository/api/categories_screen/models/get_all_products_res_model.dart';
 
 import '../../../../global_widgets/custom_product_container.dart';

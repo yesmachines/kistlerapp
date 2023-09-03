@@ -37,128 +37,174 @@ class _ProfilScreenState extends State<ProfilScreen> {
       backgroundColor: ColorConstant.kistlerWhite,
       body: provider.isLoading
           ? ReusableLoadingIndicator()
-          : SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(),
-                  Column(
-                    children: [
-                      SizedBox(height: 60),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            SizedBox(),
-                            Row(
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChangeNotifierProvider(
-                                                create: (context) =>
-                                                    ProfileUpdateScreenController(),
-                                                child: ProfileUpdateScreen()),
-                                      ),
-                                    );
-                                  },
-                                  child: Icon(
-                                    Icons.save_as,
-                                    size: 30,
-                                    color: ColorConstant.kistlerBrandGreen,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                  height: 150,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              ImageConstant.assetNotfound),
-                                          fit: BoxFit.fill),
+          : RefreshIndicator(
+              color: ColorConstant.kistlerBrandGreen,
+              onRefresh: () async {
+                await Provider.of<ProfileScreenController>(context,
+                        listen: false)
+                    .getUserData(language: context.locale);
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(),
+                    Column(
+                      children: [
+                        SizedBox(height: 60),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              SizedBox(),
+                              Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChangeNotifierProvider(
+                                                  create: (context) =>
+                                                      ProfileUpdateScreenController(),
+                                                  child: ProfileUpdateScreen()),
+                                        ),
+                                      );
+                                    },
+                                    child: Icon(
+                                      Icons.save_as,
+                                      size: 30,
                                       color: ColorConstant.kistlerBrandGreen,
-                                      shape: BoxShape.circle),
-                                  child: provider.userData?.imageUrl != null
-                                      ? ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(300.0),
-                                          child: CommonImageView(
-                                            fit: BoxFit.cover,
-                                            url: provider.userData?.imageUrl
-                                                .toString(),
-                                          ),
-                                        )
-                                      : SizedBox(),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    height: 150,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                ImageConstant.assetNotfound),
+                                            fit: BoxFit.fill),
+                                        color: ColorConstant.kistlerBrandGreen,
+                                        shape: BoxShape.circle),
+                                    child: provider.userData?.imageUrl != null
+                                        ? ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(300.0),
+                                            child: CommonImageView(
+                                              fit: BoxFit.cover,
+                                              url: provider.userData?.imageUrl
+                                                  .toString(),
+                                            ),
+                                          )
+                                        : SizedBox(),
+                                  ),
+                                  // CircleAvatar(
+                                  //   radius: 75,
+                                  //   backgroundColor:
+                                  //       ColorConstant.kistlerBrandGreen,
+                                  //   child: CircleAvatar(
+                                  //       backgroundColor:
+                                  //           ColorConstant.kistlerWhite,
+                                  //       radius: 72,
+                                  //       backgroundImage: NetworkImage(provider
+                                  //               .userData?.imageUrl ??
+                                  //           "https://www.acubeias.com/upload/webcontent/no-img.png")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
+                                  // ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  InkWell(
+                                    onTap: () => _showProfileCard(context,
+                                        name: provider.userData?.name,
+                                        designation:
+                                            provider.userData?.designation,
+                                        mobileNumber: provider.userData?.phone,
+                                        email: provider.userData?.email,
+                                        linkedin: provider.userData?.linkedin,
+                                        website: ""),
+                                    child: Icon(
+                                      Icons.share,
+                                      size: 30,
+                                      color: ColorConstant.kistlerBrandGreen,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(),
+                            ]),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          provider.userData?.name ?? "N/a",
+                          style: TextStyle(
+                              fontSize: 23,
+                              letterSpacing: 1,
+                              fontWeight: FontWeight.w500,
+                              color: ColorConstant.kistlerBrandGreen),
+                        ),
+                        Text(
+                          provider.userData?.designation ?? "N/a",
+                          style: TextStyle(
+                            fontSize: 12,
+                            letterSpacing: 1,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            // launch('tel:${provider.userData?.phone}');
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * .80,
+                            padding: EdgeInsets.only(
+                                left: 10, right: 10, top: 15, bottom: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(2.0, 2.0),
+                                  blurRadius: 4.0,
+                                  spreadRadius: 0.0,
                                 ),
-                                // CircleAvatar(
-                                //   radius: 75,
-                                //   backgroundColor:
-                                //       ColorConstant.kistlerBrandGreen,
-                                //   child: CircleAvatar(
-                                //       backgroundColor:
-                                //           ColorConstant.kistlerWhite,
-                                //       radius: 72,
-                                //       backgroundImage: NetworkImage(provider
-                                //               .userData?.imageUrl ??
-                                //           "https://www.acubeias.com/upload/webcontent/no-img.png")), // TODO : NEED TO BE UPDATED AFTER IMAGE SETUP
-                                // ),
-                                SizedBox(
-                                  width: 20,
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.phone,
+                                  color: ColorConstant.kistlerBrandGreen,
                                 ),
-                                InkWell(
-                                  onTap: () => _showProfileCard(context,
-                                      name: provider.userData?.name,
-                                      designation:
-                                          provider.userData?.designation,
-                                      mobileNumber: provider.userData?.phone,
-                                      email: provider.userData?.email,
-                                      linkedin: provider.userData?.linkedin,
-                                      website: ""),
-                                  child: Icon(
-                                    Icons.share,
-                                    size: 30,
-                                    color: ColorConstant.kistlerBrandGreen,
+                                SizedBox(width: 10),
+                                Text(
+                                  provider.userData?.phone ?? "N/a",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(),
-                          ]),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        provider.userData?.name ?? "N/a",
-                        style: TextStyle(
-                            fontSize: 23,
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.w500,
-                            color: ColorConstant.kistlerBrandGreen),
-                      ),
-                      Text(
-                        provider.userData?.designation ?? "N/a",
-                        style: TextStyle(
-                          fontSize: 12,
-                          letterSpacing: 1,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          // launch('tel:${provider.userData?.phone}');
-                        },
-                        child: Container(
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
                           width: MediaQuery.of(context).size.width * .80,
                           padding: EdgeInsets.only(
                               left: 10, right: 10, top: 15, bottom: 15),
@@ -178,102 +224,64 @@ class _ProfilScreenState extends State<ProfilScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.phone,
+                                Icons.mail_outline_rounded,
                                 color: ColorConstant.kistlerBrandGreen,
                               ),
                               SizedBox(width: 10),
-                              Text(
-                                provider.userData?.phone ?? "N/a",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                  fontWeight: FontWeight.w500,
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * .60,
+                                child: Text(
+                                  provider.userData?.email ?? "N/a",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    letterSpacing: 1,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * .80,
-                        padding: EdgeInsets.only(
-                            left: 10, right: 10, top: 15, bottom: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(2.0, 2.0),
-                              blurRadius: 4.0,
-                              spreadRadius: 0.0,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(
-                              Icons.mail_outline_rounded,
-                              color: ColorConstant.kistlerBrandGreen,
-                            ),
-                            SizedBox(width: 10),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * .60,
-                              child: Text(
-                                provider.userData?.email ?? "N/a",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  letterSpacing: 1,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                  provider.userData?.qrCode != null
-                      ? Padding(
-                          padding: const EdgeInsets.only(bottom: 40),
-                          child: Container(
-                              height: 200,
-                              width: 200,
-                              // color: ColorConstant.kistlerWhite,
-                              child: CommonImageView(
-                                url: provider.userData?.qrCode,
-                                fit: BoxFit.cover,
-                              )),
                         )
-                      : SizedBox(),
-                  InkWell(
-                    onTap: () {
-                      logoutConfirmPopup(context: context);
-                    },
-                    child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width * .50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          color: ColorConstant.kistlerBrandGreen,
-                        ),
-                        child: Center(
-                            child: Text(
-                          LocaleKeys.logout.tr(),
-                          style: TextStyle(color: ColorConstant.kistlerWhite),
-                        ))),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                ],
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    provider.userData?.qrCode != null
+                        ? Padding(
+                            padding: const EdgeInsets.only(bottom: 40),
+                            child: Container(
+                                height: 200,
+                                width: 200,
+                                // color: ColorConstant.kistlerWhite,
+                                child: CommonImageView(
+                                  url: provider.userData?.qrCode,
+                                  fit: BoxFit.cover,
+                                )),
+                          )
+                        : SizedBox(),
+                    InkWell(
+                      onTap: () {
+                        logoutConfirmPopup(context: context);
+                      },
+                      child: Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width * .50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: ColorConstant.kistlerBrandGreen,
+                          ),
+                          child: Center(
+                              child: Text(
+                            LocaleKeys.logout.tr(),
+                            style: TextStyle(color: ColorConstant.kistlerWhite),
+                          ))),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                  ],
+                ),
               ),
             ),
     );
