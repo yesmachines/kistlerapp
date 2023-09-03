@@ -15,6 +15,8 @@ import 'package:kistler/presentaion/quote_summary_screen/controller/quote_summar
 import 'package:kistler/presentaion/quote_summary_screen/view/widgets/models_container.dart';
 import 'package:provider/provider.dart';
 
+import '../../../global_widgets/reusable_loading_widget.dart';
+
 class QuoteSummaryScreen extends StatefulWidget {
   final String productId;
 
@@ -254,6 +256,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                   TextfieldRefactor(
                     formKey: contactNumberFormKey,
                     controller: contactNumberController,
+                    inputType: true,
                     name: LocaleKeys.contact_number.tr(),
                     maxLines: 1,
                     validator: (value) {
@@ -276,58 +279,63 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                   SizedBox(
                     height: 40,
                   ),
-                  InkWell(
-                    onTap: () async {
-                      if (contactNameFormKey.currentState!.validate() &&
-                          companyNameFormKey.currentState!.validate() &&
-                          emailAddressFormKey.currentState!.validate() &&
-                          contactNumberFormKey.currentState!.validate()) {
-                        await Provider.of<QuotationSummaryScreenController>(
-                                context,
-                                listen: false)
-                            .sendQuotation(
-                                language: context.locale,
-                                productId: widget.productId,
-                                companyName: companyNameController.text.trim(),
-                                name: contactNameController.text.trim(),
-                                comment: commentsController.text.trim(),
-                                email: emailAddressController.text.trim(),
-                                phoneNumber:
-                                    contactNumberController.text.trim(),
-                                quptationData: provider.generateJsonData())
-                            .then((value) {
-                          if (value) {
-                            provider.generateJsonData();
-                          } else {
-                            AppUtils.oneTimeSnackBar(
-                                LocaleKeys.Failed_to_send_quotation.tr(),
-                                context: context);
-                          }
-                        });
+                  provider.isLoading
+                      ? ReusableLoadingIndicator()
+                      : InkWell(
+                          onTap: () async {
+                            if (contactNameFormKey.currentState!.validate() &&
+                                companyNameFormKey.currentState!.validate() &&
+                                emailAddressFormKey.currentState!.validate() &&
+                                contactNumberFormKey.currentState!.validate()) {
+                              await Provider.of<
+                                          QuotationSummaryScreenController>(
+                                      context,
+                                      listen: false)
+                                  .sendQuotation(
+                                      language: context.locale,
+                                      productId: widget.productId,
+                                      companyName:
+                                          companyNameController.text.trim(),
+                                      name: contactNameController.text.trim(),
+                                      comment: commentsController.text.trim(),
+                                      email: emailAddressController.text.trim(),
+                                      phoneNumber:
+                                          contactNumberController.text.trim(),
+                                      quptationData:
+                                          provider.generateJsonData())
+                                  .then((value) {
+                                if (value) {
+                                  provider.generateJsonData();
+                                } else {
+                                  AppUtils.oneTimeSnackBar(
+                                      LocaleKeys.Failed_to_send_quotation.tr(),
+                                      context: context);
+                                }
+                              });
 
-                        // showExitPopup();
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 50, bottom: 20, right: 50),
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: ColorConstant.kistlerBrandGreen,
+                              // showExitPopup();
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 50, bottom: 20, right: 50),
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ColorConstant.kistlerBrandGreen,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                LocaleKeys.send_quotation.tr(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: ColorConstant.kistlerWhite),
+                              )),
+                            ),
+                          ),
                         ),
-                        child: Center(
-                            child: Text(
-                          LocaleKeys.send_quotation.tr(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: ColorConstant.kistlerWhite),
-                        )),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

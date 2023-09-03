@@ -6,6 +6,7 @@ import 'package:kistler/presentaion/custom_made_solution_screen/controller/custo
 import 'package:provider/provider.dart';
 
 import '../../../core/app_utils/app_utils.dart';
+import '../../../global_widgets/reusable_loading_widget.dart';
 import '../../../global_widgets/search_bar.dart';
 import '../../../global_widgets/textfield_refactor.dart';
 
@@ -214,6 +215,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                 SizedBox(height: 10),
                 TextfieldRefactor(
                   formKey: contactNumberFormKey,
+                  inputType: true,
                   controller: contactNumbercontroller,
                   name: LocaleKeys.contact_number.tr(),
                   maxLines: 1,
@@ -270,55 +272,59 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   },
                 ),
                 SizedBox(height: 25),
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorConstant.kistlerBrandGreen,
-                    ),
-                    onPressed: () async {
-                      if (companyNameFormKey.currentState!.validate() &&
-                          contactNameFormKey.currentState!.validate() &&
-                          emailAddressFormKey.currentState!.validate() &&
-                          contactNumberFormKey.currentState!.validate() &&
-                          productNameFormKey.currentState!.validate() &&
-                          countryNameFormKey.currentState!.validate() &&
-                          descriptionFormKey.currentState!.validate()) {
-                        await Provider.of<CustomMadeScreenController>(context,
-                                listen: false)
-                            .sendCustomEnquiry(
-                          language: context.locale,
-                          name: contactNameController.text,
-                          companyName: companyNameController.text,
-                          email: emailAddressController.text,
-                          phoneNumber: contactNumbercontroller.text,
-                          country: countryNameController.text,
-                          description: descriptionController.text,
-                          productName: productNameController.text,
-                        )
-                            .then((value) {
-                          if (value) {
-                            customMadeSumitPopup();
-                            // AppUtils.oneTimeSnackBar(
-                            //     "Thank you for your interest. We will contact you!!!",
-                            //     context: context,
-                            //     bgColor: ColorConstant.kistlerBrandGreen);
-                            // calling api to update user  data on profile screen
+                provider.isLoading
+                    ? ReusableLoadingIndicator()
+                    : Center(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorConstant.kistlerBrandGreen,
+                          ),
+                          onPressed: () async {
+                            if (companyNameFormKey.currentState!.validate() &&
+                                contactNameFormKey.currentState!.validate() &&
+                                emailAddressFormKey.currentState!.validate() &&
+                                contactNumberFormKey.currentState!.validate() &&
+                                productNameFormKey.currentState!.validate() &&
+                                countryNameFormKey.currentState!.validate() &&
+                                descriptionFormKey.currentState!.validate()) {
+                              await Provider.of<CustomMadeScreenController>(
+                                      context,
+                                      listen: false)
+                                  .sendCustomEnquiry(
+                                language: context.locale,
+                                name: contactNameController.text,
+                                companyName: companyNameController.text,
+                                email: emailAddressController.text,
+                                phoneNumber: contactNumbercontroller.text,
+                                country: countryNameController.text,
+                                description: descriptionController.text,
+                                productName: productNameController.text,
+                              )
+                                  .then((value) {
+                                if (value) {
+                                  customMadeSumitPopup();
+                                  // AppUtils.oneTimeSnackBar(
+                                  //     "Thank you for your interest. We will contact you!!!",
+                                  //     context: context,
+                                  //     bgColor: ColorConstant.kistlerBrandGreen);
+                                  // calling api to update user  data on profile screen
 
-                            // Navigator.pop(context);
-                          } else {
-                            // showing error message if failed to update data
-                            AppUtils.oneTimeSnackBar(provider.errorMessage,
-                                context: context);
-                          }
-                        });
-                      }
-                    },
-                    child: Text(
-                      //  LocaleKeys.submit.tr(),
-                      LocaleKeys.submit.tr(),
-                    ),
-                  ),
-                ),
+                                  // Navigator.pop(context);
+                                } else {
+                                  // showing error message if failed to update data
+                                  AppUtils.oneTimeSnackBar(
+                                      provider.errorMessage,
+                                      context: context);
+                                }
+                              });
+                            }
+                          },
+                          child: Text(
+                            //  LocaleKeys.submit.tr(),
+                            LocaleKeys.submit.tr(),
+                          ),
+                        ),
+                      ),
                 SizedBox(height: 25),
                 // Text(
                 //   LocaleKeys.about_company_data.tr(),

@@ -222,6 +222,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
               TextfieldRefactor(
                   formKey: phoneNoFormKey,
                   controller: contactNumberController,
+                  inputType: true,
                   name: LocaleKeys.contact_number.tr(),
                   maxLines: 1,
                   validator: (value) {

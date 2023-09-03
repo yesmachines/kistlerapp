@@ -7,12 +7,14 @@ class TextfieldRefactor extends StatelessWidget {
   final Key? formKey;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final bool? inputType;
 
   const TextfieldRefactor(
       {super.key,
       required this.name,
       this.maxLines = 1,
       this.formKey,
+      this.inputType,
       required this.controller,
       this.validator});
 
@@ -22,6 +24,8 @@ class TextfieldRefactor extends StatelessWidget {
       key: formKey,
       child: TextFormField(
         controller: controller,
+        keyboardType:
+            inputType == true ? TextInputType.number : TextInputType.text,
         decoration: InputDecoration(
           //  isDense: true,
           contentPadding: EdgeInsets.all(15),
