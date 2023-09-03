@@ -82,10 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  focusedBorder: OutlineInputBorder()
                           ),
                           validator: (value) {
-                            if (_emailController.text.tr().isNotEmpty) {
+                            if (value != null &&
+                                RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                    .hasMatch(value)) {
                               return null;
                             } else {
-                              return "Enter a valid Email";
+                              return LocaleKeys.Enter_a_valid_email_address
+                                  .tr();
                             }
                           },
                         ),
@@ -133,10 +136,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  focusedBorder: OutlineInputBorder()
                           ),
                           validator: (value) {
-                            if (_emailController.text.tr().isNotEmpty) {
+                            if (value != null &&
+                                value.isNotEmpty &&
+                                value.length >= 8) {
                               return null;
                             } else {
-                              return "Invalid Password";
+                              return "Password must contain 8 character";
                             }
                           },
                         ),

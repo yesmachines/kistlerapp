@@ -86,5 +86,7 @@
     "Enter_a_valid_Contact_number": "Geben Sie eine gültige Kontaktnummer ein",
     "Enter_your_county": "Geben Sie Ihr Bundesland ein",
     "Enter_a_product_name": "Geben Sie einen Produktnamen ein",
-    "Enter_description": "Geben Sie eine Beschreibung ein"
+    "Enter_description": "Geben Sie eine Beschreibung ein",
+    "Other_than_specified_sizes_available_or_request": "Abweichende Größen verfügbar oder auf Anfrage",
+    "edit_Quotation": "Angebot bearbeiten"
 }

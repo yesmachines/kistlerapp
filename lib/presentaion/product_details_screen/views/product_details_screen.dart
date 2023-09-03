@@ -18,6 +18,7 @@ import 'package:kistler/presentaion/product_details_screen/views/productdetails_
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/technical_diagram.dart';
 import 'package:kistler/presentaion/product_details_screen/views/productdetails_widgets/product_images_containers.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants.dart/color.dart';
@@ -51,6 +52,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   // final String _linkUrl = 'https://www.youtube.com/watch?v=ENSjcy3eh8U';
   String? brochure_Download;
   String? videoLink;
+  String? productdetailslink;
 
   int selectedNumber = 1;
 
@@ -77,6 +79,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     final provider = Provider.of<ProductDetailsScreenController>(context);
     brochure_Download = provider.productDetails?.productPdf?.catalogue ?? "";
     videoLink = provider.productDetails?.products?.defaultVideo ?? "";
+
     return Scaffold(
       appBar: CustomAppBar(languageButtonVisibility: false),
       drawer: CustomDrawer(),
@@ -113,9 +116,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   SizedBox(),
-                                  Icon(Icons.share,
-                                      weight: 30,
-                                      color: ColorConstant.kistlerBrandGreen),
+                                  //todo need to change this link to provider
+                                  InkWell(
+                                    onTap: () => Share.share(
+                                        "https://newwebsite.kistler-machine.com/en/cutting/cnc-controlled/cnc-pipe-cutting-machine-rsm-range"),
+                                    child: Icon(Icons.share,
+                                        weight: 30,
+                                        color: ColorConstant.kistlerBrandGreen),
+                                  ),
                                 ],
                               ),
                               SizedBox(height: 20),
@@ -337,7 +345,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ? Row(
                                       children: [
                                         Text(
-                                          "*Other than specified sizes available or request", // TODO: need to be transalated
+                                          "*${LocaleKeys.Other_than_specified_sizes_available_or_request.tr()}",
                                           style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold,
@@ -381,24 +389,28 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       ],
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        LocaleKeys.share.tr(),
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: ColorConstant
-                                                .kistlerBrandGreen),
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Icon(Icons.share,
-                                          size: 20,
-                                          color:
-                                              ColorConstant.kistlerBrandGreen)
-                                    ],
+                                  InkWell(
+                                    onTap: () =>
+                                        Share.share("${brochure_Download}"),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          LocaleKeys.share.tr(),
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: ColorConstant
+                                                  .kistlerBrandGreen),
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Icon(Icons.share,
+                                            size: 20,
+                                            color:
+                                                ColorConstant.kistlerBrandGreen)
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),

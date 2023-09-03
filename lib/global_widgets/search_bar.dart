@@ -20,14 +20,6 @@ class SearchBarRefactor extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              // child: TextField(
-              //   enableInteractiveSelection: false,
-              //   decoration: InputDecoration(
-              //     hintText:
-              //     border: InputBorder.none,
-              //     contentPadding: EdgeInsets.all(10),
-              //   ),
-              // ),
               child: Container(
                 padding: EdgeInsets.all(6),
                 // color: Colors.amber,

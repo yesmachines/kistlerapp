@@ -102,7 +102,9 @@ class CodegenLoader extends AssetLoader{
   "Enter_a_valid_Contact_number": "Geben Sie eine gültige Kontaktnummer ein",
   "Enter_your_county": "Geben Sie Ihr Bundesland ein",
   "Enter_a_product_name": "Geben Sie einen Produktnamen ein",
-  "Enter_description": "Geben Sie eine Beschreibung ein"
+  "Enter_description": "Geben Sie eine Beschreibung ein",
+  "Other_than_specified_sizes_available_or_request": "Abweichende Größen verfügbar oder auf Anfrage",
+  "edit_Quotation": "Angebot bearbeiten"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -192,7 +194,9 @@ static const Map<String,dynamic> en = {
   "Enter_a_valid_Contact_number": "Enter a valid Contact number",
   "Enter_your_county": "Enter your county",
   "Enter_a_product_name": "Enter a product name",
-  "Enter_description": "Enter description"
+  "Enter_description": "Enter description",
+  "Other_than_specified_sizes_available_or_request": "Other than specified sizes available or request",
+  "edit_Quotation": "Edit Quotation"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

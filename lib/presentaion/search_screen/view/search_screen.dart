@@ -43,7 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     children: [
                       Expanded(
                         child: TextField(
-                          focusNode: FocusNode(),
+                          autofocus: true,
                           enableInteractiveSelection: false,
                           decoration: InputDecoration(
                             hintText: LocaleKeys.search.tr(),

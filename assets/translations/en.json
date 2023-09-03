@@ -86,5 +86,7 @@
     "Enter_a_valid_Contact_number": "Enter a valid Contact number",
     "Enter_your_county": "Enter your county",
     "Enter_a_product_name": "Enter a product name",
-    "Enter_description": "Enter description"
+    "Enter_description": "Enter description",
+    "Other_than_specified_sizes_available_or_request": "Other than specified sizes available or request",
+    "edit_Quotation": "Edit Quotation"
 }

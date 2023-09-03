@@ -25,6 +25,12 @@ class QuoteSummaryScreen extends StatefulWidget {
 }
 
 class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
+  final contactNumberFormKey = GlobalKey<FormState>();
+  final companyNameFormKey = GlobalKey<FormState>();
+  final emailAddressFormKey = GlobalKey<FormState>();
+  final contactNameFormKey = GlobalKey<FormState>();
+  final productNameFormKey = GlobalKey<FormState>();
+
   TextEditingController companyNameController = TextEditingController();
   TextEditingController emailAddressController = TextEditingController();
   TextEditingController contactNumberController = TextEditingController();
@@ -107,7 +113,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Edit Quotation",
+                    LocaleKeys.edit_Quotation.tr(),
                     style: TextStyle(
                         fontSize: 16, color: ColorConstant.kistlerWhite),
                   ),
@@ -196,30 +202,70 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     height: 20,
                   ),
                   TextfieldRefactor(
-                      controller: contactNameController,
-                      name: LocaleKeys.contact_name.tr(),
-                      maxLines: 1),
+                    formKey: contactNameFormKey,
+                    controller: contactNameController,
+                    name: LocaleKeys.contact_name.tr(),
+                    maxLines: 1,
+                    validator: (value) {
+                      if (value != null && value.isNotEmpty) {
+                        return null;
+                      } else {
+                        return LocaleKeys.Enter_your_name.tr();
+                      }
+                    },
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      controller: companyNameController,
-                      name: LocaleKeys.conpany_name.tr(),
-                      maxLines: 1),
+                    formKey: companyNameFormKey,
+                    controller: companyNameController,
+                    name: LocaleKeys.conpany_name.tr(),
+                    maxLines: 1,
+                    validator: (value) {
+                      if (value != null && value.isNotEmpty) {
+                        return null;
+                      } else {
+                        return LocaleKeys.Enter_your_company_name.tr();
+                      }
+                    },
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      controller: emailAddressController,
-                      name: LocaleKeys.email_address.tr(),
-                      maxLines: 1),
+                    formKey: emailAddressFormKey,
+                    controller: emailAddressController,
+                    name: LocaleKeys.email_address.tr(),
+                    maxLines: 1,
+                    validator: (value) {
+                      if (value != null &&
+                          RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                        return null;
+                      } else {
+                        return LocaleKeys.Enter_a_valid_email_address.tr();
+                      }
+                    },
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   TextfieldRefactor(
-                      controller: contactNumberController,
-                      name: LocaleKeys.contact_number.tr(),
-                      maxLines: 1),
+                    formKey: contactNumberFormKey,
+                    controller: contactNumberController,
+                    name: LocaleKeys.contact_number.tr(),
+                    maxLines: 1,
+                    validator: (value) {
+                      if (value != null &&
+                          RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)')
+                              .hasMatch(value)) {
+                        return null;
+                      } else {
+                        return LocaleKeys.Enter_a_valid_Contact_number.tr();
+                      }
+                    },
+                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -231,29 +277,36 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     height: 40,
                   ),
                   InkWell(
-                    onTap: () {
-                      Provider.of<QuotationSummaryScreenController>(context,
-                              listen: false)
-                          .sendQuotation(
-                              language: context.locale,
-                              productId: widget.productId,
-                              companyName: companyNameController.text.trim(),
-                              name: contactNameController.text.trim(),
-                              comment: commentsController.text.trim(),
-                              email: emailAddressController.text.trim(),
-                              phoneNumber: contactNumberController.text.trim(),
-                              quptationData: provider.generateJsonData())
-                          .then((value) {
-                        if (value) {
-                          provider.generateJsonData();
-                        } else {
-                          AppUtils.oneTimeSnackBar(
-                              "Failed to send quotation , try again",
-                              context: context);
-                        }
-                      });
+                    onTap: () async {
+                      if (contactNameFormKey.currentState!.validate() &&
+                          companyNameFormKey.currentState!.validate() &&
+                          emailAddressFormKey.currentState!.validate() &&
+                          contactNumberFormKey.currentState!.validate()) {
+                        await Provider.of<QuotationSummaryScreenController>(
+                                context,
+                                listen: false)
+                            .sendQuotation(
+                                language: context.locale,
+                                productId: widget.productId,
+                                companyName: companyNameController.text.trim(),
+                                name: contactNameController.text.trim(),
+                                comment: commentsController.text.trim(),
+                                email: emailAddressController.text.trim(),
+                                phoneNumber:
+                                    contactNumberController.text.trim(),
+                                quptationData: provider.generateJsonData())
+                            .then((value) {
+                          if (value) {
+                            provider.generateJsonData();
+                          } else {
+                            AppUtils.oneTimeSnackBar(
+                                "Failed to send quotation , try again",
+                                context: context);
+                          }
+                        });
 
-                      // showExitPopup();
+                        // showExitPopup();
+                      }
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(

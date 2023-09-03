@@ -89,5 +89,7 @@ abstract class  LocaleKeys {
   static const Enter_your_county = 'Enter_your_county';
   static const Enter_a_product_name = 'Enter_a_product_name';
   static const Enter_description = 'Enter_description';
+  static const Other_than_specified_sizes_available_or_request = 'Other_than_specified_sizes_available_or_request';
+  static const edit_Quotation = 'edit_Quotation';
 
 }
