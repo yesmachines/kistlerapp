@@ -48,16 +48,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     super.initState();
   }
 
-  final String _linkUrl = 'https://www.youtube.com/watch?v=ENSjcy3eh8U';
+  // final String _linkUrl = 'https://www.youtube.com/watch?v=ENSjcy3eh8U';
   String? brochure_Download;
+  String? videoLink;
 
   int selectedNumber = 1;
 
   _launchURL() async {
-    if (await canLaunch(_linkUrl)) {
-      await launch(_linkUrl);
+    if (await canLaunch(videoLink!)) {
+      await launch(videoLink!);
     } else {
-      throw 'Could not launch $_linkUrl';
+      throw 'Could not launch $videoLink';
     }
   }
 
@@ -75,6 +76,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductDetailsScreenController>(context);
     brochure_Download = provider.productDetails?.productPdf?.catalogue ?? "";
+    videoLink = provider.productDetails?.products?.defaultVideo ?? "";
     return Scaffold(
       appBar: CustomAppBar(languageButtonVisibility: false),
       drawer: CustomDrawer(),
@@ -294,49 +296,56 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ),
                               ),
 
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  "${LocaleKeys.specificattion.tr()} :",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                              provider.tableData.isNotEmpty
+                                  ? Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        "${LocaleKeys.specificattion.tr()} :",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox(),
                               SizedBox(
                                 height: 18,
                               ),
-                              Container(
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: MainPageTable(
-                                    data: provider.tableData.isNotEmpty
-                                        ? provider.tableData
-                                        : [],
-                                    columnTitles: provider.tableData.isNotEmpty
-                                        ? provider.tableTitles
-                                        : [],
-                                    keyList: provider.tableData.isNotEmpty
-                                        ? provider.tableKeyDataList
-                                        : [],
-                                  ),
-                                ),
-                              ),
+                              provider.tableData.isNotEmpty
+                                  ? Container(
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: MainPageTable(
+                                          data: provider.tableData.isNotEmpty
+                                              ? provider.tableData
+                                              : [],
+                                          columnTitles:
+                                              provider.tableData.isNotEmpty
+                                                  ? provider.tableTitles
+                                                  : [],
+                                          keyList: provider.tableData.isNotEmpty
+                                              ? provider.tableKeyDataList
+                                              : [],
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox(),
                               SizedBox(
                                 height: 12,
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "*Other than specified sizes available or request", // TODO: need to be transalated
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              provider.tableData.isNotEmpty
+                                  ? Row(
+                                      children: [
+                                        Text(
+                                          "*Other than specified sizes available or request", // TODO: need to be transalated
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : SizedBox(),
                               SizedBox(
                                 height: 20,
                               ),
@@ -396,16 +405,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  LocaleKeys.application.tr(),
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                              videoLink!.isNotEmpty
+                                  ? Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        LocaleKeys.application.tr(),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox(),
                               // SizedBox(
                               //   height: 10,
                               // ),
@@ -418,19 +429,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 height: 20,
                               ),
                               // here is calling the video player screen
-                              GestureDetector(
-                                  onTap: _launchURL,
-                                  child: Container(
-                                    height: 200,
-                                    width: double.infinity,
-                                    child: Image.asset(
-                                      "assets/images/thumbnail.jpg",
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                  )),
-                              SizedBox(
-                                height: 20,
-                              ),
+                              videoLink!.isNotEmpty
+                                  ? Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 20),
+                                      child: GestureDetector(
+                                          onTap: _launchURL,
+                                          child: Container(
+                                            height: 200,
+                                            width: double.infinity,
+                                            child: Image.asset(
+                                              "assets/images/thumbnail.jpg",
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                          )),
+                                    )
+                                  : SizedBox(),
+                              // SizedBox(
+                              //   height: 20,
+                              // ),
 
                               (provider.productDetails
                                               ?.productApplicationImages !=
@@ -468,16 +485,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     )
                                   : SizedBox(),
 
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  LocaleKeys.technical_diagram.tr(),
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                              provider.productDetails
+                                          ?.productTechnicalDiagrams !=
+                                      null
+                                  ? Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        LocaleKeys.technical_diagram.tr(),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox(),
                               SizedBox(
                                 height: 20,
                               ),
