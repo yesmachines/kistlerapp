@@ -2,38 +2,54 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
+import 'package:kistler/presentaion/search_screen/view/search_screen.dart';
 
 class SearchBarRefactor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: ColorConstant.kistlerBrandBorder)),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: LocaleKeys.search.tr(),
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.all(10),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchScreen(),
+          )),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(color: ColorConstant.kistlerBrandBorder)),
+        child: Row(
+          children: [
+            Expanded(
+              // child: TextField(
+              //   enableInteractiveSelection: false,
+              //   decoration: InputDecoration(
+              //     hintText:
+              //     border: InputBorder.none,
+              //     contentPadding: EdgeInsets.all(10),
+              //   ),
+              // ),
+              child: Container(
+                padding: EdgeInsets.all(6),
+                // color: Colors.amber,
+                child: Text(
+                  LocaleKeys.search.tr(),
+                ),
               ),
             ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: ColorConstant.kistlerBrandGreen,
-              borderRadius: BorderRadius.circular(8.0),
+            Container(
+              decoration: BoxDecoration(
+                color: ColorConstant.kistlerBrandGreen,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              height: MediaQuery.of(context).size.height,
+              width: 55,
+              child: Icon(
+                Icons.search,
+                color: ColorConstant.kistlerWhite,
+              ),
             ),
-            height: MediaQuery.of(context).size.height,
-            width: 55,
-            child: Icon(
-              Icons.search,
-              color: ColorConstant.kistlerWhite,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

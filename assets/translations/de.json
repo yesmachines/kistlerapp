@@ -78,5 +78,13 @@
     "confirm_password": "Kennwort Bestätigen",
     "change_password": "Kennwort ändern",
     "full_name": "Vollständiger Name",
-    "extra_fittings": "Zusätzliche Ausstattung"
+    "extra_fittings": "Zusätzliche Ausstattung",
+    "No_data_found": "Keine Daten gefunden",
+    "Enter_your_company_name": "Geben Sie den Firmennamen ein",
+    "Enter_your_name": "Geben Sie Ihren Namen ein",
+    "Enter_a_valid_email_address": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "Enter_a_valid_Contact_number": "Geben Sie eine gültige Kontaktnummer ein",
+    "Enter_your_county": "Geben Sie Ihr Bundesland ein",
+    "Enter_a_product_name": "Geben Sie einen Produktnamen ein",
+    "Enter_description": "Geben Sie eine Beschreibung ein"
 }

@@ -177,7 +177,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
-                      return "Enter your company name";
+                      return LocaleKeys.Enter_your_company_name.tr();
                     }
                   },
                 ),
@@ -191,7 +191,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
-                      return "Enter your name ";
+                      return LocaleKeys.Enter_your_name.tr();
                     }
                   },
                 ),
@@ -207,7 +207,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                             .hasMatch(value)) {
                       return null;
                     } else {
-                      return "Enter a valid email address";
+                      return LocaleKeys.Enter_a_valid_email_address.tr();
                     }
                   },
                 ),
@@ -222,7 +222,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                         RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
                       return null;
                     } else {
-                      return "Enter a valid Contact number";
+                      return LocaleKeys.Enter_a_valid_Contact_number.tr();
                     }
                   },
                 ),
@@ -236,7 +236,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
-                      return "Enter your county";
+                      return LocaleKeys.Enter_your_county.tr();
                     }
                   },
                 ),
@@ -250,7 +250,8 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
-                      return "Enter a product name"; // todo: translation pending
+                      return LocaleKeys.Enter_a_product_name
+                          .tr(); // todo: translation pending
                     }
                   },
                 ),
@@ -264,7 +265,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                     if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
-                      return "Enter description";
+                      return LocaleKeys.Enter_description.tr();
                     }
                   },
                 ),

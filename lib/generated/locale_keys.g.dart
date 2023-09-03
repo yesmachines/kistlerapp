@@ -81,5 +81,13 @@ abstract class  LocaleKeys {
   static const change_password = 'change_password';
   static const full_name = 'full_name';
   static const extra_fittings = 'extra_fittings';
+  static const No_data_found = 'No_data_found';
+  static const Enter_your_company_name = 'Enter_your_company_name';
+  static const Enter_your_name = 'Enter_your_name';
+  static const Enter_a_valid_email_address = 'Enter_a_valid_email_address';
+  static const Enter_a_valid_Contact_number = 'Enter_a_valid_Contact_number';
+  static const Enter_your_county = 'Enter_your_county';
+  static const Enter_a_product_name = 'Enter_a_product_name';
+  static const Enter_description = 'Enter_description';
 
 }

@@ -94,7 +94,15 @@ class CodegenLoader extends AssetLoader{
   "confirm_password": "Kennwort Bestätigen",
   "change_password": "Kennwort ändern",
   "full_name": "Vollständiger Name",
-  "extra_fittings": "Zusätzliche Ausstattung"
+  "extra_fittings": "Zusätzliche Ausstattung",
+  "No_data_found": "Keine Daten gefunden",
+  "Enter_your_company_name": "Geben Sie den Firmennamen ein",
+  "Enter_your_name": "Geben Sie Ihren Namen ein",
+  "Enter_a_valid_email_address": "Geben Sie eine gültige E-Mail-Adresse ein",
+  "Enter_a_valid_Contact_number": "Geben Sie eine gültige Kontaktnummer ein",
+  "Enter_your_county": "Geben Sie Ihr Bundesland ein",
+  "Enter_a_product_name": "Geben Sie einen Produktnamen ein",
+  "Enter_description": "Geben Sie eine Beschreibung ein"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -176,7 +184,15 @@ static const Map<String,dynamic> en = {
   "confirm_password": "Confirm password",
   "change_password": "Change Password",
   "full_name": "Full Name",
-  "extra_fittings": "Extra Fittings"
+  "extra_fittings": "Extra Fittings",
+  "No_data_found": "No data found",
+  "Enter_your_company_name": "Enter your company name",
+  "Enter_your_name ": "Enter your name ",
+  "Enter_a_valid_email_address": "Enter a valid email address",
+  "Enter_a_valid_Contact_number": "Enter a valid Contact number",
+  "Enter_your_county": "Enter your county",
+  "Enter_a_product_name": "Enter a product name",
+  "Enter_description": "Enter description"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

@@ -5,7 +5,6 @@ import 'package:kistler/core/image_constant/images.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/common_image_view.dart';
 import 'package:kistler/global_widgets/profile_card.dart';
-
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
 import 'package:kistler/presentaion/profile_screen/view/widgets/logout_confirm_popup.dart';

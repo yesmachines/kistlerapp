@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/categories_screen/controller/categories_screen_controller.dart';
 import 'package:kistler/presentaion/categories_screen/view/widgets/products_category_subcategory_card.dart';
@@ -42,7 +43,7 @@ class _TabAllViewScreenState extends State<TabAllViewScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: allCategoriesList.isEmpty
                     ? Center(
-                        child: Text("No data found"),
+                        child: Text(LocaleKeys.No_data_found.tr()),
                       )
                     : ListView.builder(
                         physics: AlwaysScrollableScrollPhysics(),

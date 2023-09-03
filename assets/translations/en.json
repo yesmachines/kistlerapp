@@ -78,5 +78,13 @@
     "confirm_password": "Confirm password",
     "change_password": "Change Password",
     "full_name": "Full Name",
-    "extra_fittings": "Extra Fittings"
+    "extra_fittings": "Extra Fittings",
+    "No_data_found": "No data found",
+    "Enter_your_company_name": "Enter your company name",
+    "Enter_your_name ": "Enter your name ",
+    "Enter_a_valid_email_address": "Enter a valid email address",
+    "Enter_a_valid_Contact_number": "Enter a valid Contact number",
+    "Enter_your_county": "Enter your county",
+    "Enter_a_product_name": "Enter a product name",
+    "Enter_description": "Enter description"
 }
