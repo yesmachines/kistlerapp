@@ -81,12 +81,18 @@
     "extra_fittings": "Extra Fittings",
     "No_data_found": "No data found",
     "Enter_your_company_name": "Enter your company name",
-    "Enter_your_name ": "Enter your name ",
+    "Enter_your_name": "Enter your name",
     "Enter_a_valid_email_address": "Enter a valid email address",
     "Enter_a_valid_Contact_number": "Enter a valid Contact number",
     "Enter_your_county": "Enter your county",
     "Enter_a_product_name": "Enter a product name",
     "Enter_description": "Enter description",
     "Other_than_specified_sizes_available_or_request": "Other than specified sizes available or request",
-    "edit_Quotation": "Edit Quotation"
+    "edit_Quotation": "Edit Quotation",
+    "Failed_to_send_quotation": "Failed to send quotation , try again",
+    "deleted_from_the_cart": "deleted from the cart",
+    "not_found_in_cart": "not found in cart",
+    "No_internet_connection": "No internet connection !!!",
+    "retry": "Retry",
+    "Something_went_wrong": "Something went wrong"
 }

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/presentaion/splash_Screen/view/splash_screen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,7 +24,7 @@ class NoInternetScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "No internet connection !!!",
+              LocaleKeys.No_internet_connection.tr(),
               style: TextStyle(
                   color: ColorConstant.kistlerBrandGreen,
                   fontSize: 20,
@@ -57,7 +59,7 @@ class NoInternetScreen extends StatelessWidget {
                       ),
                       SizedBox(width: 20),
                       Text(
-                        "Retry",
+                        LocaleKeys.retry.tr(),
                         style: TextStyle(
                             color: ColorConstant.kistlerWhite, fontSize: 20),
                       ),

@@ -88,5 +88,11 @@
     "Enter_a_product_name": "Geben Sie einen Produktnamen ein",
     "Enter_description": "Geben Sie eine Beschreibung ein",
     "Other_than_specified_sizes_available_or_request": "Abweichende Größen verfügbar oder auf Anfrage",
-    "edit_Quotation": "Angebot bearbeiten"
+    "edit_Quotation": "Angebot bearbeiten",
+    "Failed_to_send_quotation": "Angebot konnte nicht gesendet werden, bitte versuchen Sie es erneut",
+    "deleted_from_the_cart": "aus dem Warenkorb gelöscht",
+    "not_found_in_cart": "nicht im Warenkorb gefunden",
+    "No_internet_connection": "Keine Internetverbindung !!!",
+    "retry": "Wiederholen",
+    "Something_went_wrong": "Etwas ist schiefgelaufen"
 }

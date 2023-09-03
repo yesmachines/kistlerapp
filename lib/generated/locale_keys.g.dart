@@ -91,5 +91,11 @@ abstract class  LocaleKeys {
   static const Enter_description = 'Enter_description';
   static const Other_than_specified_sizes_available_or_request = 'Other_than_specified_sizes_available_or_request';
   static const edit_Quotation = 'edit_Quotation';
+  static const Failed_to_send_quotation = 'Failed_to_send_quotation';
+  static const deleted_from_the_cart = 'deleted_from_the_cart';
+  static const not_found_in_cart = 'not_found_in_cart';
+  static const No_internet_connection = 'No_internet_connection';
+  static const retry = 'retry';
+  static const Something_went_wrong = 'Something_went_wrong';
 
 }

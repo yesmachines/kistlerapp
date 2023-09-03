@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:kistler/core/constants.dart/color.dart';
-import 'package:kistler/presentaion/profile_screen/controller/profile_screen_controller.dart';
+
 import 'package:provider/provider.dart';
 
 import '../presentaion/categories_screen/controller/categories_screen_controller.dart';

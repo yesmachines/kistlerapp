@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:http/http.dart' as http;
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/presentaion/splash_Screen/controller/common_controller.dart';
 
 import '../../app_config/app_config.dart';
@@ -48,15 +50,18 @@ class ApiHelper {
           return APIResponse(
               data: resBody,
               error: true,
-              errorMessage: resBody['message'] ?? 'Something went wrong!');
+              errorMessage:
+                  resBody['message'] ?? LocaleKeys.Something_went_wrong.tr());
         }
       } else {
         return APIResponse(
-            data: '', error: true, errorMessage: 'Something went wrong!');
+            data: '',
+            error: true,
+            errorMessage: LocaleKeys.Something_went_wrong.tr());
       }
     } else {
       if (CommonController.navigatorState.currentContext!.mounted) {
-        await AppUtils.oneTimeSnackBar("No internet connection !!!",
+        await AppUtils.oneTimeSnackBar(LocaleKeys.No_internet_connection.tr(),
             context: CommonController.navigatorState.currentContext!);
       }
     }
@@ -91,13 +96,15 @@ class ApiHelper {
           return APIResponse(
               data: resBody,
               error: true,
-              errorMessage:
-                  resBody['message'].toString() ?? 'Something went wrong!');
+              errorMessage: resBody['message'].toString() ??
+                  LocaleKeys.Something_went_wrong.tr());
         }
       } else {
         // AppUtils.oneTimeSnackBar('Something went wrong!');
         return APIResponse(
-            data: res.body, error: true, errorMessage: 'Something went wrong!');
+            data: res.body,
+            error: true,
+            errorMessage: LocaleKeys.Something_went_wrong.tr());
       }
       // }catch(e){
       //   return APIResponse(
@@ -105,7 +112,7 @@ class ApiHelper {
       // }
     } else {
       if (CommonController.navigatorState.currentContext!.mounted) {
-        await AppUtils.oneTimeSnackBar("No internet connection !!!",
+        await AppUtils.oneTimeSnackBar(LocaleKeys.No_internet_connection.tr(),
             context: CommonController.navigatorState.currentContext!);
       }
     }
@@ -136,16 +143,19 @@ class ApiHelper {
           return APIResponse(
               data: resBody,
               error: true,
-              errorMessage:
-                  resBody['message']?.toString() ?? 'Something went wrong!');
+              errorMessage: resBody['message']?.toString() ??
+                  LocaleKeys.Something_went_wrong.tr());
         }
       } else {
         return APIResponse(
-            data: res.body, error: true, errorMessage: 'Something went wrong!');
+          data: res.body,
+          error: true,
+          errorMessage: LocaleKeys.Something_went_wrong.tr(),
+        );
       }
     } else {
       if (CommonController.navigatorState.currentContext!.mounted) {
-        await AppUtils.oneTimeSnackBar("No internet connection !!!",
+        await AppUtils.oneTimeSnackBar(LocaleKeys.No_internet_connection.tr(),
             context: CommonController.navigatorState.currentContext!);
       }
     }

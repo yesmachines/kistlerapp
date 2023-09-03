@@ -104,7 +104,13 @@ class CodegenLoader extends AssetLoader{
   "Enter_a_product_name": "Geben Sie einen Produktnamen ein",
   "Enter_description": "Geben Sie eine Beschreibung ein",
   "Other_than_specified_sizes_available_or_request": "Abweichende Größen verfügbar oder auf Anfrage",
-  "edit_Quotation": "Angebot bearbeiten"
+  "edit_Quotation": "Angebot bearbeiten",
+  "Failed_to_send_quotation": "Angebot konnte nicht gesendet werden, bitte versuchen Sie es erneut",
+  "deleted_from_the_cart": "aus dem Warenkorb gelöscht",
+  "not_found_in_cart": "nicht im Warenkorb gefunden",
+  "No_internet_connection": "Keine Internetverbindung !!!",
+  "retry": "Wiederholen",
+  "Something_went_wrong": "Etwas ist schiefgelaufen"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -189,14 +195,20 @@ static const Map<String,dynamic> en = {
   "extra_fittings": "Extra Fittings",
   "No_data_found": "No data found",
   "Enter_your_company_name": "Enter your company name",
-  "Enter_your_name ": "Enter your name ",
+  "Enter_your_name": "Enter your name",
   "Enter_a_valid_email_address": "Enter a valid email address",
   "Enter_a_valid_Contact_number": "Enter a valid Contact number",
   "Enter_your_county": "Enter your county",
   "Enter_a_product_name": "Enter a product name",
   "Enter_description": "Enter description",
   "Other_than_specified_sizes_available_or_request": "Other than specified sizes available or request",
-  "edit_Quotation": "Edit Quotation"
+  "edit_Quotation": "Edit Quotation",
+  "Failed_to_send_quotation": "Failed to send quotation , try again",
+  "deleted_from_the_cart": "deleted from the cart",
+  "not_found_in_cart": "not found in cart",
+  "No_internet_connection": "No internet connection !!!",
+  "retry": "Retry",
+  "Something_went_wrong": "Something went wrong"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

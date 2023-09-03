@@ -158,12 +158,12 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                                 listen: false)
                             .toggleSelection(model.id);
                         AppUtils.oneTimeSnackBar(
-                          "${model.title} deleted from the cart",
+                          "${model.title} ${LocaleKeys.deleted_from_the_cart.tr()}",
                           context: context,
                         );
                       } else {
                         AppUtils.oneTimeSnackBar(
-                          "${model.title} not found in cart ",
+                          "${model.title} ${LocaleKeys.not_found_in_cart.tr()}",
                           context: context,
                         );
                       }
@@ -300,7 +300,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                             provider.generateJsonData();
                           } else {
                             AppUtils.oneTimeSnackBar(
-                                "Failed to send quotation , try again",
+                                LocaleKeys.Failed_to_send_quotation.tr(),
                                 context: context);
                           }
                         });
