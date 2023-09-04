@@ -6,6 +6,9 @@ import 'package:kistler/presentaion/search_screen/controller/search_screen_contr
 import 'package:provider/provider.dart';
 import '../../../core/constants.dart/color.dart';
 import '../../../generated/locale_keys.g.dart';
+import '../../../global_widgets/custom_product_container.dart';
+import '../../product_details_screen/controller/product_details_screen_controller.dart';
+import '../../product_details_screen/views/product_details_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -94,11 +97,15 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
             searchScreenProvider.isLoading
-                ? ReusableLoadingIndicator()
+                ? Container(
+                    padding: EdgeInsets.all(100),
+                    child: ReusableLoadingIndicator())
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: searchScreenProvider.searchedProductList.length == 0
-                        ? SizedBox()
+                        ? Container(
+                            padding: EdgeInsets.only(top: 50),
+                            child: Text("not found any result"))
                         : Container(
                             width: MediaQuery.of(context).size.width * .80,
                             padding: EdgeInsets.all(10),
@@ -110,14 +117,26 @@ class _SearchScreenState extends State<SearchScreen> {
                               itemCount: searchScreenProvider
                                   .searchedProductList.length,
                               shrinkWrap: true,
-                              itemBuilder: (context, index) => Container(
-                                height: 45,
-                                child: Text(
-                                  searchScreenProvider
-                                          .searchedProductList[index].title ??
-                                      "",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                              itemBuilder: (context, index) => GestureDetector(
+                                onTap: () => Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(
+                                  builder: (context) => ChangeNotifierProvider(
+                                      create: (context) =>
+                                          ProductDetailsScreenController(),
+                                      child: ProductDetailsScreen(
+                                          productId: searchScreenProvider
+                                              .searchedProductList[index].id
+                                              .toString())),
+                                )),
+                                child: Container(
+                                  height: 45,
+                                  child: Text(
+                                    searchScreenProvider
+                                            .searchedProductList[index].title ??
+                                        "",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
                               ),
                             ),
