@@ -9,21 +9,21 @@ import 'package:provider/provider.dart';
 class CustomSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ChangeNotifierProvider(
-                    create: (context) => SearchScreenController(),
-                    child: SearchScreen(),
-                  ))),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(color: ColorConstant.kistlerBrandBorder)),
-        child: Row(
-          children: [
-            Expanded(
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(color: ColorConstant.kistlerBrandBorder)),
+      child: Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ChangeNotifierProvider(
+                            create: (context) => SearchScreenController(),
+                            child: SearchScreen(),
+                          ))),
               child: Container(
                 padding: EdgeInsets.all(6),
                 // color: Colors.amber,
@@ -32,20 +32,20 @@ class CustomSearchField extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: ColorConstant.kistlerBrandGreen,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              height: MediaQuery.of(context).size.height,
-              width: 55,
-              child: Icon(
-                Icons.search,
-                color: ColorConstant.kistlerWhite,
-              ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: ColorConstant.kistlerBrandGreen,
+              borderRadius: BorderRadius.circular(8.0),
             ),
-          ],
-        ),
+            height: MediaQuery.of(context).size.height,
+            width: 55,
+            child: Icon(
+              Icons.search,
+              color: ColorConstant.kistlerWhite,
+            ),
+          ),
+        ],
       ),
     );
   }
