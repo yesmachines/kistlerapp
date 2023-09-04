@@ -97,29 +97,31 @@ class _SearchScreenState extends State<SearchScreen> {
                 ? ReusableLoadingIndicator()
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .80,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all()),
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount:
-                            searchScreenProvider.searchedProductList.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => Container(
-                          height: 45,
-                          child: Text(
-                            searchScreenProvider
-                                    .searchedProductList[index].title ??
-                                "",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                    child: searchScreenProvider.searchedProductList.length == 0
+                        ? SizedBox()
+                        : Container(
+                            width: MediaQuery.of(context).size.width * .80,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all()),
+                            child: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: searchScreenProvider
+                                  .searchedProductList.length,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) => Container(
+                                height: 45,
+                                child: Text(
+                                  searchScreenProvider
+                                          .searchedProductList[index].title ??
+                                      "",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
                   )
           ],
         ),
