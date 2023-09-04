@@ -6,7 +6,7 @@ import 'package:kistler/presentaion/search_screen/controller/search_screen_contr
 import 'package:kistler/presentaion/search_screen/view/search_screen.dart';
 import 'package:provider/provider.dart';
 
-class SearchBarRefactor extends StatelessWidget {
+class CustomSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

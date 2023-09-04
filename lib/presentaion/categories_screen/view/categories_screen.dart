@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
-import 'package:kistler/global_widgets/search_bar.dart';
+import 'package:kistler/global_widgets/custom_search_field.dart';
 import 'package:kistler/presentaion/categories_screen/controller/categories_screen_controller.dart';
 import 'package:kistler/presentaion/categories_screen/view/tabs/tab_all_screen.dart';
 import 'package:kistler/presentaion/categories_screen/view/tabs/tab_screen_cutter.dart';
@@ -51,7 +51,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             child: Container(
               height: 45,
               width: MediaQuery.of(context).size.width * .80,
-              child: SearchBarRefactor(),
+              child: CustomSearchField(),
             ),
           ),
         ),

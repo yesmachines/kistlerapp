@@ -59,7 +59,7 @@ class SearchDataModel {
         title: json["title"],
         slug: json["slug"],
         transCategorySlug: json["trans_category_slug"],
-        transMainCategorySlug: json["trans_main_category_slug"]!,
+        transMainCategorySlug: json["trans_main_category_slug"],
         searchType: json["search_type"]!,
       );
 

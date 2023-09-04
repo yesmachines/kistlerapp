@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/app_utils/app_utils.dart';
 import '../../../global_widgets/reusable_loading_widget.dart';
-import '../../../global_widgets/search_bar.dart';
+import '../../../global_widgets/custom_search_field.dart';
 import '../../../global_widgets/textfield_refactor.dart';
 
 class CustomMadeSolutionScreen extends StatefulWidget {

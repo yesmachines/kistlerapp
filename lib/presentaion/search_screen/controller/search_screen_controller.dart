@@ -10,6 +10,8 @@ class SearchScreenController extends ChangeNotifier {
 
   Future<bool> getSearchData(
       {required Locale language, required String searchText}) async {
+    searchList = [];
+    searchedProductList = [];
     isLoading = true;
     notifyListeners();
 
