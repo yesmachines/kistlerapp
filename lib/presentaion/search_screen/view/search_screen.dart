@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
+import 'package:kistler/presentaion/search_screen/controller/search_screen_controller.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/constants.dart/color.dart';
 import '../../../generated/locale_keys.g.dart';
@@ -50,6 +52,13 @@ class _SearchScreenState extends State<SearchScreen> {
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.all(10),
                           ),
+                          onChanged: (value) {
+                            Provider.of<SearchScreenController>(context,
+                                    listen: false)
+                                .getSearchData(
+                                    language: context.locale,
+                                    searchText: value);
+                          },
                         ),
                       ),
                       Container(

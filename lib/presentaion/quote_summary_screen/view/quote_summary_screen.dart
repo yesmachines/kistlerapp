@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
@@ -41,7 +39,9 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PriceScreenController>(context);
+    final priceScreenProvider = Provider.of<PriceScreenController>(context);
+    final quotationScreenProvider =
+        Provider.of<QuotationSummaryScreenController>(context);
 
     Future<bool> showExitPopup() async {
       return await showDialog(
@@ -148,7 +148,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
               thickness: 8,
             ),
             ...[
-              for (final model in provider.modelsList)
+              for (final model in priceScreenProvider.modelsList)
                 if (model.isSelected ||
                     model.accessoriesList.any((a) => a.isSelected) ||
                     model.extrasList.any((f) => f.isSelected))
@@ -279,7 +279,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                   SizedBox(
                     height: 40,
                   ),
-                  provider.isLoading
+                  quotationScreenProvider.isLoading
                       ? ReusableLoadingIndicator()
                       : InkWell(
                           onTap: () async {
@@ -301,19 +301,17 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                                       email: emailAddressController.text.trim(),
                                       phoneNumber:
                                           contactNumberController.text.trim(),
-                                      quptationData:
-                                          provider.generateJsonData())
+                                      quptationData: priceScreenProvider
+                                          .generateJsonData())
                                   .then((value) {
                                 if (value) {
-                                  provider.generateJsonData();
+                                  showExitPopup();
                                 } else {
                                   AppUtils.oneTimeSnackBar(
                                       LocaleKeys.Failed_to_send_quotation.tr(),
                                       context: context);
                                 }
                               });
-
-                              // showExitPopup();
                             }
                           },
                           child: Padding(

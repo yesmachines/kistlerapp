@@ -152,7 +152,7 @@ class ProfileCard extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          "https://kistler-machine.com",
+                          website,
                           style: TextStyle(
                               color: ColorConstant.kistlerBrandGreen,
                               fontSize: 12),

@@ -125,7 +125,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                         mobileNumber: provider.userData?.phone,
                                         email: provider.userData?.email,
                                         linkedin: provider.userData?.linkedin,
-                                        website: ""),
+                                        website: provider.userData?.website),
                                     child: Icon(
                                       Icons.share,
                                       size: 30,

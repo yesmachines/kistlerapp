@@ -74,9 +74,7 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                                 listen: false)
                             .onLogout(language: context.locale)
                             .then((value) {
-                          if (value) {
-                            HelperFunctions.logOut(context);
-                          }
+                          HelperFunctions.logOut(context);
                         });
                       },
                       child: Container(

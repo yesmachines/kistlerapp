@@ -40,6 +40,7 @@ class Profile {
   dynamic designation;
   String? qrCode;
   String? linkedin;
+  String? website;
 
   Profile({
     this.name,
@@ -49,6 +50,7 @@ class Profile {
     this.designation,
     this.qrCode,
     this.linkedin,
+    this.website,
   });
 
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
@@ -59,6 +61,7 @@ class Profile {
         designation: json["designation"],
         qrCode: json["qr_code"],
         linkedin: json["linkedin"],
+        website: json["website"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,5 +72,6 @@ class Profile {
         "designation": designation,
         "qr_code": qrCode,
         "linkedin": linkedin,
+        "website": website,
       };
 }

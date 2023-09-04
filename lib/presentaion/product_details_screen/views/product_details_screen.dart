@@ -117,13 +117,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 children: [
                                   SizedBox(),
                                   //todo need to change this link to provider
-                                  InkWell(
-                                    onTap: () => Share.share(
-                                        "https://newwebsite.kistler-machine.com/en/cutting/cnc-controlled/cnc-pipe-cutting-machine-rsm-range"),
-                                    child: Icon(Icons.share,
-                                        weight: 30,
-                                        color: ColorConstant.kistlerBrandGreen),
-                                  ),
+                                  provider.productDetails?.link != null
+                                      ? InkWell(
+                                          onTap: () => Share.share(
+                                              provider.productDetails?.link ??
+                                                  ""),
+                                          child: Icon(Icons.share,
+                                              weight: 30,
+                                              color: ColorConstant
+                                                  .kistlerBrandGreen),
+                                        )
+                                      : SizedBox(),
                                 ],
                               ),
                               SizedBox(height: 20),

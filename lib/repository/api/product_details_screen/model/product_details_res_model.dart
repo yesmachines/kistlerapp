@@ -7,6 +7,7 @@ String productDetailsResModelToJson(ProductDetailsResModel data) =>
     json.encode(data.toJson());
 
 class ProductDetailsResModel {
+  String? link;
   SpecDataArr? specDataArr;
   List<ProductTechnicalDiagram>? productTechnicalDiagrams;
   Products? products;
@@ -20,6 +21,7 @@ class ProductDetailsResModel {
   List<ProductSpecificationsModelNo>? productSpecificationsModelNo;
 
   ProductDetailsResModel({
+    this.link,
     this.specDataArr,
     this.productTechnicalDiagrams,
     this.products,
@@ -35,6 +37,7 @@ class ProductDetailsResModel {
 
   factory ProductDetailsResModel.fromJson(Map<String, dynamic> json) =>
       ProductDetailsResModel(
+        link: json["link"],
         specDataArr: json["spec_data_arr"] == null
             ? null
             : SpecDataArr.fromJson(json["spec_data_arr"]),
@@ -81,6 +84,7 @@ class ProductDetailsResModel {
       );
 
   Map<String, dynamic> toJson() => {
+        "link": link,
         "spec_data_arr": specDataArr,
         "product_technical_diagrams": productTechnicalDiagrams == null
             ? []
