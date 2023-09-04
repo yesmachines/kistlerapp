@@ -6,7 +6,6 @@ import 'package:kistler/presentaion/search_screen/controller/search_screen_contr
 import 'package:provider/provider.dart';
 import '../../../core/constants.dart/color.dart';
 import '../../../generated/locale_keys.g.dart';
-import '../../../global_widgets/custom_product_container.dart';
 import '../../product_details_screen/controller/product_details_screen_controller.dart';
 import '../../product_details_screen/views/product_details_screen.dart';
 
@@ -105,7 +104,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: searchScreenProvider.searchedProductList.length == 0
                         ? Container(
                             padding: EdgeInsets.only(top: 50),
-                            child: Text(LocaleKeys.not_found_any_result.tr()))
+                            child: Text(searchcontroller.text.isEmpty
+                                ? ""
+                                : LocaleKeys.no_results_found.tr()))
                         : Container(
                             width: MediaQuery.of(context).size.width * .80,
                             padding: EdgeInsets.all(10),

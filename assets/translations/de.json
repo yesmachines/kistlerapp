@@ -95,6 +95,6 @@
     "No_internet_connection": "Keine Internetverbindung !!!",
     "retry": "Wiederholen",
     "Something_went_wrong": "Etwas ist schiefgelaufen",
-    "not_found_any_result": "Kein Ergebnis gefunden",
+    "no_results_found": "keine Ergebnisse gefunden",
     "Total_amount": "Gesamtmenge"
 }

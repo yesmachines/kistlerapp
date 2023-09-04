@@ -111,7 +111,7 @@ class CodegenLoader extends AssetLoader{
   "No_internet_connection": "Keine Internetverbindung !!!",
   "retry": "Wiederholen",
   "Something_went_wrong": "Etwas ist schiefgelaufen",
-  "not_found_any_result": "Kein Ergebnis gefunden",
+  "no_results_found": "keine Ergebnisse gefunden",
   "Total_amount": "Gesamtmenge"
 };
 static const Map<String,dynamic> en = {
@@ -211,7 +211,7 @@ static const Map<String,dynamic> en = {
   "No_internet_connection": "No internet connection !!!",
   "retry": "Retry",
   "Something_went_wrong": "Something went wrong",
-  "not_found_any_result": "not found any result",
+  "no_results_found": "No results found",
   "Total_amount": "Total amount"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};

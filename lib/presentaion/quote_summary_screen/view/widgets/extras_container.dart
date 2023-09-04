@@ -70,7 +70,7 @@ class _ExtrasQuoteContainerState extends State<ExtrasQuoteContainer> {
                         color: ColorConstant.kistlerWhite,
                       ),
                       onPressed: () {
-                        if (widget.fittingsData.quantity > 0) {
+                        if (widget.fittingsData.quantity > 1) {
                           Provider.of<PriceScreenController>(context,
                                   listen: false)
                               .updateFittingQuantity(
@@ -117,7 +117,7 @@ class _ExtrasQuoteContainerState extends State<ExtrasQuoteContainer> {
                   SizedBox(
                     width: 8,
                   ),
-                  Text(widget.fittingsData.price.toString()),
+                  Text(widget.fittingsData.price.toStringAsFixed(2).toString()),
                 ],
               ),
             ],

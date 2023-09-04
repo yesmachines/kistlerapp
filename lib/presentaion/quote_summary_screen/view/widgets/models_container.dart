@@ -87,7 +87,7 @@ class _ModelsContainerState extends State<ModelsContainer> {
                                   color: ColorConstant.kistlerWhite,
                                 ),
                                 onPressed: () {
-                                  if (widget.modelData.quantity > 0) {
+                                  if (widget.modelData.quantity > 1) {
                                     Provider.of<PriceScreenController>(context,
                                             listen: false)
                                         .updateQuantity(
@@ -134,7 +134,9 @@ class _ModelsContainerState extends State<ModelsContainer> {
                             SizedBox(
                               width: 8,
                             ),
-                            Text(widget.modelData.price.toString()),
+                            Text(widget.modelData.price
+                                .toStringAsFixed(2)
+                                .toString()),
                           ],
                         ),
                       ],

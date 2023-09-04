@@ -365,7 +365,10 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                   width: 8,
                 ),
                 Text(
-                  "5940.00",
+                  priceScreenProvider
+                      .calculateTotalPrice()
+                      .toStringAsFixed(2)
+                      .toString(),
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,

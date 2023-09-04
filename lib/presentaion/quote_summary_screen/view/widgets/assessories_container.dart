@@ -71,7 +71,7 @@ class _AssessoriesQuoteContainerState extends State<AssessoriesQuoteContainer> {
                         color: ColorConstant.kistlerWhite,
                       ),
                       onPressed: () {
-                        if (widget.accessoryData.quantity > 0) {
+                        if (widget.accessoryData.quantity > 1) {
                           Provider.of<PriceScreenController>(context,
                                   listen: false)
                               .updateAccessoryQuantity(
@@ -119,7 +119,8 @@ class _AssessoriesQuoteContainerState extends State<AssessoriesQuoteContainer> {
                   SizedBox(
                     width: 8,
                   ),
-                  Text(widget.accessoryData.price.toString()),
+                  Text(
+                      widget.accessoryData.price.toStringAsFixed(2).toString()),
                 ],
               ),
             ],

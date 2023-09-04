@@ -106,7 +106,7 @@ class _CustomExtrasTableWidgetState extends State<CustomExtrasTableWidget> {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                        "€ ${widget.extraFittingsDataList[index].price?.toString() ?? "N/a"}",
+                        "€ ${widget.extraFittingsDataList[index].price.toStringAsFixed(2).toString() ?? "N/a"}",
                         textAlign: TextAlign.center),
                   ),
                 ),

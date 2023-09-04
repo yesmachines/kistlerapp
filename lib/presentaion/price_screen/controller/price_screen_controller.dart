@@ -114,6 +114,7 @@ class PriceScreenController extends ChangeNotifier {
       modelsList[productIndex].quantity = newQuantity;
       notifyListeners();
     }
+    calculateTotalPrice();
   }
 
   void updateAccessoryQuantity(
@@ -132,6 +133,7 @@ class PriceScreenController extends ChangeNotifier {
         notifyListeners();
       }
     }
+    calculateTotalPrice();
   }
 
   void updateFittingQuantity(
@@ -150,6 +152,7 @@ class PriceScreenController extends ChangeNotifier {
         notifyListeners();
       }
     }
+    calculateTotalPrice();
   }
 
   double calculateTotalPrice() {

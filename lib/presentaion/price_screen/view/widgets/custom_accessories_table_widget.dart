@@ -104,7 +104,7 @@ class _CustomAccessoriesTableWidgetState
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                        "€ ${widget.dataList[index].price?.toString() ?? "N/a"}",
+                        "€ ${widget.dataList[index].price.toStringAsFixed(2).toString() ?? "N/a"}",
                         textAlign: TextAlign.center),
                   ),
                 ),

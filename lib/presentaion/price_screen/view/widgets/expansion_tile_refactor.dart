@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
 import 'package:kistler/presentaion/price_screen/view/widgets/custom_extras_table_widget.dart';
-import 'package:kistler/presentaion/price_screen/view/widgets/custom_table_widget.dart';
+import 'package:kistler/presentaion/price_screen/view/widgets/custom_accessories_table_widget.dart';
 import 'package:kistler/repository/api/price_screen/models/price_details_res_model.dart';
 import 'package:provider/provider.dart';
 

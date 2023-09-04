@@ -97,7 +97,7 @@ abstract class  LocaleKeys {
   static const No_internet_connection = 'No_internet_connection';
   static const retry = 'retry';
   static const Something_went_wrong = 'Something_went_wrong';
-  static const not_found_any_result = 'not_found_any_result';
+  static const no_results_found = 'no_results_found';
   static const Total_amount = 'Total_amount';
 
 }
