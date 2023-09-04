@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/global_widgets/custom_app_bar.dart';
+import 'package:kistler/global_widgets/reusable_loading_widget.dart';
 import 'package:kistler/presentaion/search_screen/controller/search_screen_controller.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants.dart/color.dart';
@@ -92,13 +93,34 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
-            ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: searchScreenProvider.searchedProductList.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) => Text(
-                  searchScreenProvider.searchedProductList[index].title ?? ""),
-            )
+            searchScreenProvider.isLoading
+                ? ReusableLoadingIndicator()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * .80,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all()),
+                      child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount:
+                            searchScreenProvider.searchedProductList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => Container(
+                          height: 45,
+                          child: Text(
+                            searchScreenProvider
+                                    .searchedProductList[index].title ??
+                                "",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
           ],
         ),
       ),
