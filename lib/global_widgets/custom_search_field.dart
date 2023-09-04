@@ -18,12 +18,14 @@ class CustomSearchField extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ChangeNotifierProvider(
-                            create: (context) => SearchScreenController(),
-                            child: SearchScreen(),
-                          ))),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                    create: (context) => SearchScreenController(),
+                    child: SearchScreen(),
+                  ),
+                ),
+              ),
               child: Container(
                 padding: EdgeInsets.all(6),
                 // color: Colors.amber,

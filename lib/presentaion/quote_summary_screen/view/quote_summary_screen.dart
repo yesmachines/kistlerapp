@@ -343,6 +343,39 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: Container(
+        height: 50,
+        color: ColorConstant.kistlerBrandGreen,
+        child: Center(
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              LocaleKeys.Total_amount.tr(),
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.euro,
+                  color: Colors.white,
+                  size: 18,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "5940.00",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ],
+        )),
+      ),
     );
   }
 }

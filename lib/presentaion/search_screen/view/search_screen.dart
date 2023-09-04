@@ -105,7 +105,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: searchScreenProvider.searchedProductList.length == 0
                         ? Container(
                             padding: EdgeInsets.only(top: 50),
-                            child: Text("not found any result"))
+                            child: Text(LocaleKeys.not_found_any_result.tr()))
                         : Container(
                             width: MediaQuery.of(context).size.width * .80,
                             padding: EdgeInsets.all(10),

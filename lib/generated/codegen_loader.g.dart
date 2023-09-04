@@ -110,7 +110,9 @@ class CodegenLoader extends AssetLoader{
   "not_found_in_cart": "nicht im Warenkorb gefunden",
   "No_internet_connection": "Keine Internetverbindung !!!",
   "retry": "Wiederholen",
-  "Something_went_wrong": "Etwas ist schiefgelaufen"
+  "Something_went_wrong": "Etwas ist schiefgelaufen",
+  "not_found_any_result": "Kein Ergebnis gefunden",
+  "Total_amount": "Gesamtmenge"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -208,7 +210,9 @@ static const Map<String,dynamic> en = {
   "not_found_in_cart": "not found in cart",
   "No_internet_connection": "No internet connection !!!",
   "retry": "Retry",
-  "Something_went_wrong": "Something went wrong"
+  "Something_went_wrong": "Something went wrong",
+  "not_found_any_result": "not found any result",
+  "Total_amount": "Total amount"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

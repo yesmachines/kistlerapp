@@ -4,7 +4,7 @@ import 'package:kistler/repository/api/search_screen/services/search_screen_serv
 
 class SearchScreenController extends ChangeNotifier {
   // to make it default loading
-  bool isLoading = true;
+  bool isLoading = false;
   List<SearchDataModel> searchList = [];
   List<SearchDataModel> searchedProductList = [];
 

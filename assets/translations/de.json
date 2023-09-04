@@ -94,5 +94,7 @@
     "not_found_in_cart": "nicht im Warenkorb gefunden",
     "No_internet_connection": "Keine Internetverbindung !!!",
     "retry": "Wiederholen",
-    "Something_went_wrong": "Etwas ist schiefgelaufen"
+    "Something_went_wrong": "Etwas ist schiefgelaufen",
+    "not_found_any_result": "Kein Ergebnis gefunden",
+    "Total_amount": "Gesamtmenge"
 }
