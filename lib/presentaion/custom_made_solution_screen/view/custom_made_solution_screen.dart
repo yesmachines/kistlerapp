@@ -284,8 +284,8 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                                 contactNameFormKey.currentState!.validate() &&
                                 emailAddressFormKey.currentState!.validate() &&
                                 contactNumberFormKey.currentState!.validate() &&
-                                productNameFormKey.currentState!.validate() &&
                                 countryNameFormKey.currentState!.validate() &&
+                                productNameFormKey.currentState!.validate() &&
                                 descriptionFormKey.currentState!.validate()) {
                               await Provider.of<CustomMadeScreenController>(
                                       context,

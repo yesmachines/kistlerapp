@@ -86,7 +86,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                ImageConstant.assetNotfound),
+                                                ImageConstant.dpDummy),
                                             fit: BoxFit.fill),
                                         color: ColorConstant.kistlerBrandGreen,
                                         shape: BoxShape.circle),
