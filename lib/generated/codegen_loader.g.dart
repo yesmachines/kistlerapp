@@ -112,7 +112,10 @@ class CodegenLoader extends AssetLoader{
   "retry": "Wiederholen",
   "Something_went_wrong": "Etwas ist schiefgelaufen",
   "no_results_found": "keine Ergebnisse gefunden",
-  "Total_amount": "Gesamtmenge"
+  "Total_amount": "Gesamtmenge",
+  "no_item_selected": "Kein Element ausgewählt",
+  "profile_update_successfully": "Profil erfolgreich aktualisiert",
+  "file_uploaded": "Datei hochgeladen"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -212,7 +215,10 @@ static const Map<String,dynamic> en = {
   "retry": "Retry",
   "Something_went_wrong": "Something went wrong",
   "no_results_found": "No results found",
-  "Total_amount": "Total amount"
+  "Total_amount": "Total amount",
+  "no_item_selected": "No item selected",
+  "profile_update_successfully": "Profile updated successfully",
+  "file_uploaded": "File uploaded"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

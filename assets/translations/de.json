@@ -96,5 +96,8 @@
     "retry": "Wiederholen",
     "Something_went_wrong": "Etwas ist schiefgelaufen",
     "no_results_found": "keine Ergebnisse gefunden",
-    "Total_amount": "Gesamtmenge"
+    "Total_amount": "Gesamtmenge",
+    "no_item_selected": "Kein Element ausgewählt",
+    "profile_update_successfully": "Profil erfolgreich aktualisiert",
+    "file_uploaded": "Datei hochgeladen"
 }

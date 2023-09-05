@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/global_widgets/common_image_view.dart';
@@ -98,7 +99,7 @@ class _PriceScreenState extends State<PriceScreen> {
                             modelDescription:
                                 provider.modelsList[index].description ?? "",
                             tilenumber:
-                                index < 10 ? "0$index" : index.toString(),
+                                index < 10 ? "0${index + 1}" : index.toString(),
                             modelDetails: provider.modelsList[index],
                             accessoriesList:
                                 provider.modelsList[index].accessoriesList ??
@@ -115,12 +116,15 @@ class _PriceScreenState extends State<PriceScreen> {
             ),
       bottomNavigationBar: InkWell(
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => QuoteSummaryScreen(
-                        productId: widget.productId,
-                      )));
+          provider.calculateTotalPrice() > 0
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => QuoteSummaryScreen(
+                            productId: widget.productId,
+                          )))
+              : AppUtils.oneTimeSnackBar(LocaleKeys.no_item_selected.tr(),
+                  context: context);
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 50, bottom: 20, right: 50),

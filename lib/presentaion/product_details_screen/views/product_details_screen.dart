@@ -550,7 +550,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           EdgeInsets.symmetric(vertical: 20),
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
-                                      itemCount: 4,
+                                      itemCount: provider.productDetails!
+                                          .productAccessories?.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return Padding(

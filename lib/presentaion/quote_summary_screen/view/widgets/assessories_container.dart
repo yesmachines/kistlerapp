@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/presentaion/price_screen/controller/price_screen_controller.dart';
 import 'package:kistler/repository/api/price_screen/models/price_details_res_model.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../generated/locale_keys.g.dart';
 
 // todo here is the container used for assessories container
 class AssessoriesQuoteContainer extends StatefulWidget {
@@ -108,7 +111,7 @@ class _AssessoriesQuoteContainerState extends State<AssessoriesQuoteContainer> {
               ),
               Row(
                 children: [
-                  Text("Price : "),
+                  Text("${LocaleKeys.price.tr()} :"),
                   SizedBox(
                     width: 10,
                   ),
@@ -120,7 +123,7 @@ class _AssessoriesQuoteContainerState extends State<AssessoriesQuoteContainer> {
                     width: 8,
                   ),
                   Text(
-                      widget.accessoryData.price.toStringAsFixed(2).toString()),
+                      "${widget.accessoryData.price * widget.accessoryData.quantity}.00"),
                 ],
               ),
             ],

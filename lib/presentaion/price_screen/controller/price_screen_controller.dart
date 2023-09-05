@@ -57,6 +57,7 @@ class PriceScreenController extends ChangeNotifier {
 
       notifyListeners();
     }
+    calculateTotalPrice();
   }
 
   void toggleAccessorySelection(
@@ -82,6 +83,7 @@ class PriceScreenController extends ChangeNotifier {
         notifyListeners();
       }
     }
+    calculateTotalPrice();
   }
 
   void toggleFittingSelection(
@@ -105,6 +107,7 @@ class PriceScreenController extends ChangeNotifier {
         notifyListeners();
       }
     }
+    calculateTotalPrice();
   }
 
   void updateQuantity({required int productId, required int newQuantity}) {

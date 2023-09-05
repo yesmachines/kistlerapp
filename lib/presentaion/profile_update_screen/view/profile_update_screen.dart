@@ -366,7 +366,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                     Text(
                       provider.qrImgeFile == null
                           ? LocaleKeys.QR.tr()
-                          : "File uploaded",
+                          : LocaleKeys.file_uploaded.tr(),
                     ),
                   ],
                 ),
@@ -402,7 +402,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                             .then((value) {
                           if (value) {
                             AppUtils.oneTimeSnackBar(
-                                "Profile updated successfully",
+                                LocaleKeys.profile_update_successfully.tr(),
                                 context: context,
                                 bgColor: ColorConstant.kistlerBrandGreen);
                             // calling api to update user  data on profile screen
@@ -435,7 +435,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                           .then((value) {
                         if (value) {
                           AppUtils.oneTimeSnackBar(
-                              "Profile updated successfully",
+                              LocaleKeys.profile_update_successfully.tr(),
                               context: context,
                               bgColor: ColorConstant.kistlerBrandGreen);
                           // calling api to update user  data on profile screen

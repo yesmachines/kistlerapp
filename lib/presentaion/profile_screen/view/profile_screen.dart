@@ -118,14 +118,17 @@ class _ProfilScreenState extends State<ProfilScreen> {
                                     width: 20,
                                   ),
                                   InkWell(
-                                    onTap: () => _showProfileCard(context,
-                                        name: provider.userData?.name,
-                                        designation:
-                                            provider.userData?.designation,
-                                        mobileNumber: provider.userData?.phone,
-                                        email: provider.userData?.email,
-                                        linkedin: provider.userData?.linkedin,
-                                        website: provider.userData?.website),
+                                    onTap: () {
+                                      _showProfileCard(context,
+                                          name: provider.userData?.name,
+                                          designation:
+                                              provider.userData?.designation,
+                                          mobileNumber:
+                                              provider.userData?.phone,
+                                          email: provider.userData?.email,
+                                          linkedin: provider.userData?.linkedin,
+                                          website: provider.userData?.website);
+                                    },
                                     child: Icon(
                                       Icons.share,
                                       size: 30,
@@ -262,6 +265,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                     InkWell(
                       onTap: () {
                         logoutConfirmPopup(context: context);
+                        Navigator.pop(context);
                       },
                       child: Container(
                           height: 50,

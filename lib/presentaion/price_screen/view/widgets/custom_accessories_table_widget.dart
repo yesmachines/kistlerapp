@@ -88,7 +88,7 @@ class _CustomAccessoriesTableWidgetState
                 TableCell(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text(index.toString(), textAlign: TextAlign.center),
+                    child: Text("${index + 1}", textAlign: TextAlign.center),
                   ),
                 ),
                 TableCell(

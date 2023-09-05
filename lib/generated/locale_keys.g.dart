@@ -99,5 +99,8 @@ abstract class  LocaleKeys {
   static const Something_went_wrong = 'Something_went_wrong';
   static const no_results_found = 'no_results_found';
   static const Total_amount = 'Total_amount';
+  static const no_item_selected = 'no_item_selected';
+  static const profile_update_successfully = 'profile_update_successfully';
+  static const file_uploaded = 'file_uploaded';
 
 }

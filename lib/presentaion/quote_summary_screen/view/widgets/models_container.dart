@@ -123,7 +123,7 @@ class _ModelsContainerState extends State<ModelsContainer> {
                         ),
                         Row(
                           children: [
-                            Text("Price : "),
+                            Text("${LocaleKeys.price.tr()} :"),
                             SizedBox(
                               width: 10,
                             ),
@@ -134,9 +134,8 @@ class _ModelsContainerState extends State<ModelsContainer> {
                             SizedBox(
                               width: 8,
                             ),
-                            Text(widget.modelData.price
-                                .toStringAsFixed(2)
-                                .toString()),
+                            Text(
+                                "${widget.modelData.price * widget.modelData.quantity}.00"),
                           ],
                         ),
                       ],

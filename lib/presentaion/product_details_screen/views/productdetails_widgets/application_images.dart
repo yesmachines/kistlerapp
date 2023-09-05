@@ -26,13 +26,18 @@ class ApplicationImages extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return Dialog(
+                    backgroundColor: Colors.transparent,
                     child: Container(
+                        color: Colors.transparent,
                         height: MediaQuery.of(context).size.height * .60,
                         width: MediaQuery.of(context).size.width,
                         child: Stack(
                           children: [
                             imageList![index].imageUrl != null
                                 ? PhotoView(
+                                    backgroundDecoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
                                     imageProvider: NetworkImage(imageList?[
                                                 index]
                                             .imageUrl ??

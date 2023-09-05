@@ -96,5 +96,8 @@
     "retry": "Retry",
     "Something_went_wrong": "Something went wrong",
     "no_results_found": "No results found",
-    "Total_amount": "Total amount"
+    "Total_amount": "Total amount",
+    "no_item_selected": "No item selected",
+    "profile_update_successfully": "Profile updated successfully",
+    "file_uploaded": "File uploaded"
 }
