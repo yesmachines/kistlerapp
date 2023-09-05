@@ -69,13 +69,12 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                     child: InkWell(
                       onTap: () async {
                         //Funtionality need tobe tested
-
-                        await Provider.of<ProfileScreenController>(context,
+                        HelperFunctions.logOut(context);
+                        Navigator.pop(context);
+                        Provider.of<ProfileScreenController>(context,
                                 listen: false)
                             .onLogout(language: context.locale)
-                            .then((value) {
-                          HelperFunctions.logOut(context);
-                        });
+                            .then((value) {});
                       },
                       child: Container(
                         height: 40,

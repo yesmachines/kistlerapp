@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/image_constant/images.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/presentaion/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 import 'package:kistler/presentaion/get_started_screen/view/get_started_screen.dart';
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       } else {
         if (mounted) {
-          await AppUtils.oneTimeSnackBar("No internet connection !!!",
+          await AppUtils.oneTimeSnackBar(LocaleKeys.No_internet_connection.tr(),
               context: CommonController.navigatorState.currentContext!);
         }
 

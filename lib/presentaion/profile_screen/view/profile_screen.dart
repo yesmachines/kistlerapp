@@ -265,7 +265,6 @@ class _ProfilScreenState extends State<ProfilScreen> {
                     InkWell(
                       onTap: () {
                         logoutConfirmPopup(context: context);
-                        Navigator.pop(context);
                       },
                       child: Container(
                           height: 50,

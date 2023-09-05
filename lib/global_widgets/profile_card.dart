@@ -190,7 +190,8 @@ class ProfileCard extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   CardShareAndSaveServices().shareWidgetAsImage(shareCardKey);
-                  Navigator.pop(context);
+                  Future.delayed(Duration(seconds: 3))
+                      .then((value) => Navigator.pop(context));
                 },
                 child: Text(LocaleKeys.send.tr()),
                 style: ButtonStyle(

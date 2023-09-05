@@ -12,4 +12,6 @@ class ImageConstant {
 
   //asset not found
   static String assetNotfound = "assets/images/asset_not_found.png";
+
+  static String dpDummy = "assets/images/dpdummy.png";
 }

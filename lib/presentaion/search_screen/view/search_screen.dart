@@ -66,16 +66,20 @@ class _SearchScreenState extends State<SearchScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.all(10),
                             ),
+                            onChanged: (value) {
+                              if (searchcontroller.text.length > 1) {
+                                Provider.of<SearchScreenController>(context,
+                                        listen: false)
+                                    .getSearchData(
+                                        language: context.locale,
+                                        searchText:
+                                            searchcontroller.text.trim());
+                              }
+                            },
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            Provider.of<SearchScreenController>(context,
-                                    listen: false)
-                                .getSearchData(
-                                    language: context.locale,
-                                    searchText: searchcontroller.text.trim());
-                          },
+                          onTap: () {},
                           child: Container(
                             decoration: BoxDecoration(
                               color: ColorConstant.kistlerBrandGreen,

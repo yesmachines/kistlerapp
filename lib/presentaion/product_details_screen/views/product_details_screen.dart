@@ -152,14 +152,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             : Image.asset(
                                                 ImageConstant.assetNotfound)),
                                   ),
-                                  Container(
-                                      height: 30,
-                                      width: 100,
-                                      child: CommonImageView(
-                                        fit: BoxFit.contain,
-                                        url: provider.productDetails?.products
-                                            ?.brandImage,
-                                      ))
+                                  Positioned(
+                                    left: 15,
+                                    child: Container(
+                                        height: 30,
+                                        width: 100,
+                                        child: CommonImageView(
+                                          fit: BoxFit.contain,
+                                          url: provider.productDetails?.products
+                                              ?.brandImage,
+                                        )),
+                                  )
                                 ],
                               ),
                               SizedBox(

@@ -102,5 +102,11 @@ abstract class  LocaleKeys {
   static const no_item_selected = 'no_item_selected';
   static const profile_update_successfully = 'profile_update_successfully';
   static const file_uploaded = 'file_uploaded';
+  static const quotation_Sent_Successfully = 'quotation_Sent_Successfully';
+  static const image_uploaded_successfully = 'image_uploaded_successfully';
+  static const failed_to_upload_image = 'failed_to_upload_image';
+  static const password_must_contain_8_character = 'password_must_contain_8_character';
+  static const camera = 'camera';
+  static const gallery = 'gallery';
 
 }

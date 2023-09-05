@@ -99,5 +99,11 @@
     "Total_amount": "Gesamtmenge",
     "no_item_selected": "Kein Element ausgewählt",
     "profile_update_successfully": "Profil erfolgreich aktualisiert",
-    "file_uploaded": "Datei hochgeladen"
+    "file_uploaded": "Datei hochgeladen",
+    "quotation_Sent_Successfully": "Angebot erfolgreich gesendet",
+    "image_uploaded_successfully": "Bild erfolgreich hochgeladen",
+    "failed_to_upload_image": "Fehler beim Hochladen des Bildes",
+    "password_must_contain_8_character": "Das Passwort muss 8 Zeichen enthalten",
+    "camera": "Kamera",
+    "gallery": "Galerie"
 }

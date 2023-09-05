@@ -141,7 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 value.length >= 8) {
                               return null;
                             } else {
-                              return "Password must contain 8 character";
+                              return LocaleKeys
+                                  .password_must_contain_8_character
+                                  .tr();
                             }
                           },
                         ),

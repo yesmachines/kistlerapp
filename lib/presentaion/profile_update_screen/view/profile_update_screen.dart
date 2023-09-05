@@ -70,7 +70,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
             children: <Widget>[
               ListTile(
                 leading: Icon(Icons.camera),
-                title: Text('Camera'),
+                title: Text(LocaleKeys.camera.tr()),
                 onTap: () {
                   Provider.of<ProfileUpdateScreenController>(context,
                           listen: false)
@@ -82,7 +82,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.photo),
-                title: Text('Gallery'),
+                title: Text(LocaleKeys.gallery.tr()),
                 onTap: () {
                   Provider.of<ProfileUpdateScreenController>(context,
                           listen: false)
@@ -134,7 +134,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                       radius: 58,
                       backgroundImage: provider.profileImgeFile == null
                           ? (profileData.userData?.imageUrl == null
-                              ? AssetImage(ImageConstant.assetNotfound)
+                              ? AssetImage(ImageConstant.dpDummy)
                               : NetworkImage(profileData.userData!.imageUrl!)
                                   as ImageProvider)
                           : FileImage(provider.profileImgeFile!),

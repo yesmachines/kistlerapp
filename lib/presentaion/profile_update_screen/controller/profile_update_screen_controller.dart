@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
+import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/repository/api/profile_update_screen/services/profile_update_screen_services.dart';
 
 class ProfileUpdateScreenController extends ChangeNotifier {
@@ -79,10 +81,11 @@ class ProfileUpdateScreenController extends ChangeNotifier {
       {required ImageSource source, required BuildContext context}) async {
     profileImgeFile = await getImage(source: source);
     if (profileImgeFile != null) {
-      AppUtils.oneTimeSnackBar("Image uploaded successfully",
+      AppUtils.oneTimeSnackBar(LocaleKeys.image_uploaded_successfully.tr(),
           context: context, bgColor: ColorConstant.kistlerBrandGreen);
     } else {
-      AppUtils.oneTimeSnackBar("Failed to upload Image", context: context);
+      AppUtils.oneTimeSnackBar(LocaleKeys.failed_to_upload_image.tr(),
+          context: context);
     }
     notifyListeners();
   }
@@ -91,10 +94,11 @@ class ProfileUpdateScreenController extends ChangeNotifier {
       {required ImageSource source, required BuildContext context}) async {
     qrImgeFile = await getImage(source: source);
     if (qrImgeFile != null) {
-      AppUtils.oneTimeSnackBar("Image uploaded successfully",
+      AppUtils.oneTimeSnackBar(LocaleKeys.image_uploaded_successfully.tr(),
           context: context, bgColor: ColorConstant.kistlerBrandGreen);
     } else {
-      AppUtils.oneTimeSnackBar("Failed to upload Image", context: context);
+      AppUtils.oneTimeSnackBar(LocaleKeys.failed_to_upload_image.tr(),
+          context: context);
     }
     notifyListeners();
   }

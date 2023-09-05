@@ -99,5 +99,11 @@
     "Total_amount": "Total amount",
     "no_item_selected": "No item selected",
     "profile_update_successfully": "Profile updated successfully",
-    "file_uploaded": "File uploaded"
+    "file_uploaded": "File uploaded",
+    "quotation_Sent_Successfully": "Quotation sent successfully",
+    "image_uploaded_successfully": "Image uploaded successfully",
+    "failed_to_upload_image": "Failed to upload Image",
+    "password_must_contain_8_character": "Password must contain 8 character",
+    "camera": "Camera",
+    "gallery": "Gallery"
 }

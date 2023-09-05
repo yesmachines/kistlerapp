@@ -115,7 +115,13 @@ class CodegenLoader extends AssetLoader{
   "Total_amount": "Gesamtmenge",
   "no_item_selected": "Kein Element ausgewählt",
   "profile_update_successfully": "Profil erfolgreich aktualisiert",
-  "file_uploaded": "Datei hochgeladen"
+  "file_uploaded": "Datei hochgeladen",
+  "quotation_Sent_Successfully": "Angebot erfolgreich gesendet",
+  "image_uploaded_successfully": "Bild erfolgreich hochgeladen",
+  "failed_to_upload_image": "Fehler beim Hochladen des Bildes",
+  "password_must_contain_8_character": "Das Passwort muss 8 Zeichen enthalten",
+  "camera": "Kamera",
+  "gallery": "Galerie"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -218,7 +224,13 @@ static const Map<String,dynamic> en = {
   "Total_amount": "Total amount",
   "no_item_selected": "No item selected",
   "profile_update_successfully": "Profile updated successfully",
-  "file_uploaded": "File uploaded"
+  "file_uploaded": "File uploaded",
+  "quotation_Sent_Successfully": "Quotation sent successfully",
+  "image_uploaded_successfully": "Image uploaded successfully",
+  "failed_to_upload_image": "Failed to upload Image",
+  "password_must_contain_8_character": "Password must contain 8 character",
+  "camera": "Camera",
+  "gallery": "Gallery"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

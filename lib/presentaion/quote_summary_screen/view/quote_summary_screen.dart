@@ -61,7 +61,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                 ),
                 content: Text(
                   // this is the one that actually works
-                  LocaleKeys.quotation_req_sucess.tr(),
+                  LocaleKeys.quotation_Sent_Successfully.tr(),
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
@@ -283,35 +283,45 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                       ? ReusableLoadingIndicator()
                       : InkWell(
                           onTap: () async {
-                            if (contactNameFormKey.currentState!.validate() &&
-                                companyNameFormKey.currentState!.validate() &&
-                                emailAddressFormKey.currentState!.validate() &&
-                                contactNumberFormKey.currentState!.validate()) {
-                              await Provider.of<
-                                          QuotationSummaryScreenController>(
-                                      context,
-                                      listen: false)
-                                  .sendQuotation(
-                                      language: context.locale,
-                                      productId: widget.productId,
-                                      companyName:
-                                          companyNameController.text.trim(),
-                                      name: contactNameController.text.trim(),
-                                      comment: commentsController.text.trim(),
-                                      email: emailAddressController.text.trim(),
-                                      phoneNumber:
-                                          contactNumberController.text.trim(),
-                                      quptationData: priceScreenProvider
-                                          .generateJsonData())
-                                  .then((value) {
-                                if (value) {
-                                  showExitPopup();
-                                } else {
-                                  AppUtils.oneTimeSnackBar(
-                                      LocaleKeys.Failed_to_send_quotation.tr(),
-                                      context: context);
-                                }
-                              });
+                            if (priceScreenProvider.calculateTotalPrice() < 1) {
+                              AppUtils.oneTimeSnackBar(
+                                  LocaleKeys.no_item_selected.tr(),
+                                  context: context);
+                            } else {
+                              if (contactNameFormKey.currentState!.validate() &&
+                                  companyNameFormKey.currentState!.validate() &&
+                                  emailAddressFormKey.currentState!
+                                      .validate() &&
+                                  contactNumberFormKey.currentState!
+                                      .validate()) {
+                                await Provider.of<
+                                            QuotationSummaryScreenController>(
+                                        context,
+                                        listen: false)
+                                    .sendQuotation(
+                                        language: context.locale,
+                                        productId: widget.productId,
+                                        companyName:
+                                            companyNameController.text.trim(),
+                                        name: contactNameController.text.trim(),
+                                        comment: commentsController.text.trim(),
+                                        email:
+                                            emailAddressController.text.trim(),
+                                        phoneNumber:
+                                            contactNumberController.text.trim(),
+                                        quptationData: priceScreenProvider
+                                            .generateJsonData())
+                                    .then((value) {
+                                  if (value) {
+                                    showExitPopup();
+                                  } else {
+                                    AppUtils.oneTimeSnackBar(
+                                        LocaleKeys.Failed_to_send_quotation
+                                            .tr(),
+                                        context: context);
+                                  }
+                                });
+                              }
                             }
                           },
                           child: Padding(
