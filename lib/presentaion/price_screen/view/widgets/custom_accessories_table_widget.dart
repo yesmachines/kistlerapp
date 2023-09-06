@@ -96,8 +96,11 @@ class _CustomAccessoriesTableWidgetState
                     padding: EdgeInsets.all(8.0),
                     child: SizedBox(
                         width: 50,
-                        child: Text(widget.dataList[index].title ?? "N/a",
-                            textAlign: TextAlign.center)),
+                        child: Text(
+                          "${widget.dataList[index].title}\n\n${widget.dataList[index].description ?? "N/a"}",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
                   ),
                 ),
                 TableCell(

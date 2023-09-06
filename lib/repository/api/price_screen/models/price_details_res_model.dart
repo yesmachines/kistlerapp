@@ -102,6 +102,7 @@ class ItemModel {
   int id;
   String? title;
   int price;
+  String? description;
   int? status;
   bool isSelected;
   int quantity;
@@ -110,6 +111,7 @@ class ItemModel {
     required this.id,
     this.title,
     this.price = 0,
+    this.description,
     this.status,
     this.isSelected = false,
     this.quantity = 0,
@@ -119,6 +121,7 @@ class ItemModel {
         id: json["id"],
         title: json["title"],
         price: json["price"],
+        description: json["description"],
         status: json["status"],
       );
 
@@ -126,6 +129,7 @@ class ItemModel {
         "id": id,
         "title": title,
         "price": price,
+        "description": description,
         "status": status,
       };
 }

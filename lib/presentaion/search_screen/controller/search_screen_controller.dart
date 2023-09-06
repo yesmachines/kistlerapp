@@ -20,6 +20,8 @@ class SearchScreenController extends ChangeNotifier {
       final fetchedData = await SearchScreenServices().getSearchResult(
           language: language, body: {"search_input": searchText});
       if (fetchedData.error != true) {
+        searchList = [];
+        searchedProductList = [];
         SearchResultResModel resData = fetchedData.data;
         searchList = resData.searchDataList ?? [];
         if (searchList.isNotEmpty) {
