@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:kistler/core/image_constant/images.dart';
 
 import 'package:kistler/generated/locale_keys.g.dart';
@@ -76,6 +77,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.sizeOf(context);
     final provider = Provider.of<ProductDetailsScreenController>(context);
     brochure_Download = provider.productDetails?.productPdf?.catalogue ?? "";
     videoLink = provider.productDetails?.products?.defaultVideo ?? "";
@@ -121,7 +123,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       ? InkWell(
                                           onTap: () => Share.share(
                                               provider.productDetails?.link ??
-                                                  ""),
+                                                  "",
+                                              sharePositionOrigin:
+                                                  Rect.fromLTWH(
+                                                      0,
+                                                      0,
+                                                      size.width,
+                                                      size.height / 2)),
                                           child: Icon(Icons.share,
                                               weight: 30,
                                               color: ColorConstant
@@ -302,12 +310,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 10),
-                                child: Text(
+                                child: HtmlWidget(
                                   provider.productDetails?.products
                                           ?.tdescription ??
                                       "",
-                                  style: TextStyle(fontSize: 14, height: 1.5),
-                                  textAlign: TextAlign.justify,
+                                  // style: TextStyle(fontSize: 14, height: 1.5),
+                                  // textAlign: TextAlign.justify,
                                 ),
                               ),
 
@@ -397,8 +405,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () =>
-                                        Share.share("${brochure_Download}"),
+                                    onTap: () => Share.share(
+                                        "${brochure_Download}",
+                                        sharePositionOrigin: Rect.fromLTWH(
+                                            0, 0, size.width, size.height / 2)),
                                     child: Row(
                                       children: [
                                         Text(

@@ -29,7 +29,7 @@ class ProductContainer extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(),
@@ -54,11 +54,12 @@ class ProductContainer extends StatelessWidget {
                 ),
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     productData.ttitle ?? "N/a",
                     maxLines: 3,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

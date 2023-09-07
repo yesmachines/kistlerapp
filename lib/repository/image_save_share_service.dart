@@ -25,7 +25,8 @@ class CardShareAndSaveServices {
   }
 
 // to share the widget to other apps
-  Future<void> shareWidgetAsImage(GlobalKey globalKey) async {
+  Future<void> shareWidgetAsImage(
+      GlobalKey globalKey, double width, double height) async {
     await captureWidget(globalKey);
 
     if (_imageBytes.isNotEmpty) {
@@ -34,10 +35,9 @@ class CardShareAndSaveServices {
       final imageFile = File(imagePath);
       await imageFile.writeAsBytes(_imageBytes);
 
-      await Share.shareFiles(
-        [imagePath],
-        text: '',
-      );
+      await Share.shareFiles([imagePath],
+          text: '',
+          sharePositionOrigin: Rect.fromLTWH(0, 0, width, height / 2));
     }
   }
 

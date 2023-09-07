@@ -24,6 +24,8 @@ class ProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final shareCardKey = GlobalKey();
 
+    final Size size = MediaQuery.sizeOf(context);
+
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -189,7 +191,8 @@ class ProfileCard extends StatelessWidget {
               SizedBox(),
               ElevatedButton(
                 onPressed: () {
-                  CardShareAndSaveServices().shareWidgetAsImage(shareCardKey);
+                  CardShareAndSaveServices().shareWidgetAsImage(
+                      shareCardKey, size.width, size.height);
                   Future.delayed(Duration(seconds: 3))
                       .then((value) => Navigator.pop(context));
                 },
