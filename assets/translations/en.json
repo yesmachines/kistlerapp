@@ -105,5 +105,6 @@
     "failed_to_upload_image": "Failed to upload Image",
     "password_must_contain_8_character": "Password must contain 8 character",
     "camera": "Camera",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "login_failed_try_again": "Login Failed, try again."
 }

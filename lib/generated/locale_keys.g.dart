@@ -108,5 +108,6 @@ abstract class  LocaleKeys {
   static const password_must_contain_8_character = 'password_must_contain_8_character';
   static const camera = 'camera';
   static const gallery = 'gallery';
+  static const login_failed_try_again = 'login_failed_try_again';
 
 }

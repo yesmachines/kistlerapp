@@ -195,7 +195,7 @@ class _EnquirycreenState extends State<Enquirycreen> {
                   if (value != null && value.isNotEmpty) {
                     return null;
                   } else {
-                    return "Enter a vaild name";
+                    return LocaleKeys.Enter_your_company_name.tr();
                   }
                 },
               ),
@@ -208,12 +208,10 @@ class _EnquirycreenState extends State<Enquirycreen> {
                   maxLines: 1,
                   formKey: emailFormKey,
                   validator: (value) {
-                    if (value != null &&
-                        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
+                    if (value != null && value.contains("@")) {
                       return null;
                     } else {
-                      return "Enter a valid email address";
+                      return LocaleKeys.Enter_a_valid_email_address.tr();
                     }
                   }),
               SizedBox(
@@ -226,11 +224,10 @@ class _EnquirycreenState extends State<Enquirycreen> {
                   name: LocaleKeys.contact_number.tr(),
                   maxLines: 1,
                   validator: (value) {
-                    if (value != null &&
-                        RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
+                    if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
-                      return "Enter a valid Contact number";
+                      return LocaleKeys.Enter_a_valid_Contact_number.tr();
                     }
                   }),
               SizedBox(

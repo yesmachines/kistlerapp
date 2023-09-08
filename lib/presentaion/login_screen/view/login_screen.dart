@@ -82,9 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  focusedBorder: OutlineInputBorder()
                           ),
                           validator: (value) {
-                            if (value != null &&
-                                RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(value)) {
+                            if (value != null && value.contains("@")) {
                               return null;
                             } else {
                               return LocaleKeys.Enter_a_valid_email_address
@@ -172,7 +170,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         );
                                       } else {
                                         AppUtils.oneTimeSnackBar(
-                                            "Login Failed , try again.",
+                                            LocaleKeys.login_failed_try_again
+                                                .tr(),
                                             context: context);
                                       }
                                     });

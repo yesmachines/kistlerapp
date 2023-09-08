@@ -1,5 +1,6 @@
 class AppConfig {
-  static String finalUrl = 'https://bigleap.tech/apiKistler/public/api/v1';
+  // static String finalUrl = 'https://bigleap.tech/apiKistler/public/api/v1';
+  static String finalUrl = 'https://api.kistler-machine.com/api/v1';
 
   /// Shared pref Keys
   static const String ACCESS = 'access';

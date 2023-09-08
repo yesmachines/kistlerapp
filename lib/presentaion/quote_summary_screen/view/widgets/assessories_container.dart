@@ -38,8 +38,8 @@ class _AssessoriesQuoteContainerState extends State<AssessoriesQuoteContainer> {
               SizedBox(
                 width: MediaQuery.sizeOf(context).width * .55,
                 child: Text(
-                  widget.accessoryData.title ?? "",
-                  maxLines: 3,
+                  "${widget.accessoryData.title}\n\n${widget.accessoryData.description}",
+                  maxLines: 6,
                   style: TextStyle(
                     fontSize: 12,
                   ),
