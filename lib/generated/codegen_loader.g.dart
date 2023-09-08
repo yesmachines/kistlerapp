@@ -121,7 +121,8 @@ class CodegenLoader extends AssetLoader{
   "failed_to_upload_image": "Fehler beim Hochladen des Bildes",
   "password_must_contain_8_character": "Das Passwort muss 8 Zeichen enthalten",
   "camera": "Kamera",
-  "gallery": "Galerie"
+  "gallery": "Galerie",
+  "login_failed_try_again": "Anmeldung fehlgeschlagen, versuchen Sie es erneut."
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -230,7 +231,8 @@ static const Map<String,dynamic> en = {
   "failed_to_upload_image": "Failed to upload Image",
   "password_must_contain_8_character": "Password must contain 8 character",
   "camera": "Camera",
-  "gallery": "Gallery"
+  "gallery": "Gallery",
+  "login_failed_try_again": "Login Failed, try again."
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

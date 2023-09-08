@@ -241,9 +241,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     name: LocaleKeys.email_address.tr(),
                     maxLines: 1,
                     validator: (value) {
-                      if (value != null &&
-                          RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(value)) {
+                      if (value != null && value.contains("@")) {
                         return null;
                       } else {
                         return LocaleKeys.Enter_a_valid_email_address.tr();
@@ -260,9 +258,7 @@ class _QuoteSummaryScreenState extends State<QuoteSummaryScreen> {
                     name: LocaleKeys.contact_number.tr(),
                     maxLines: 1,
                     validator: (value) {
-                      if (value != null &&
-                          RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)')
-                              .hasMatch(value)) {
+                      if (value != null && value.isNotEmpty) {
                         return null;
                       } else {
                         return LocaleKeys.Enter_a_valid_Contact_number.tr();

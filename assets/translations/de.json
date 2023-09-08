@@ -105,5 +105,6 @@
     "failed_to_upload_image": "Fehler beim Hochladen des Bildes",
     "password_must_contain_8_character": "Das Passwort muss 8 Zeichen enthalten",
     "camera": "Kamera",
-    "gallery": "Galerie"
+    "gallery": "Galerie",
+    "login_failed_try_again": "Anmeldung fehlgeschlagen, versuchen Sie es erneut."
 }

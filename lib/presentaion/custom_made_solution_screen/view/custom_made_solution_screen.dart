@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../../core/app_utils/app_utils.dart';
 import '../../../global_widgets/reusable_loading_widget.dart';
-import '../../../global_widgets/custom_search_field.dart';
 import '../../../global_widgets/textfield_refactor.dart';
 
 class CustomMadeSolutionScreen extends StatefulWidget {
@@ -203,9 +202,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   name: LocaleKeys.email_address.tr(),
                   maxLines: 1,
                   validator: (value) {
-                    if (value != null &&
-                        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
+                    if (value != null && value.contains("@")) {
                       return null;
                     } else {
                       return LocaleKeys.Enter_a_valid_email_address.tr();
@@ -220,8 +217,7 @@ class _CustomMadeSolutionScreenState extends State<CustomMadeSolutionScreen> {
                   name: LocaleKeys.contact_number.tr(),
                   maxLines: 1,
                   validator: (value) {
-                    if (value != null &&
-                        RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
+                    if (value != null && value.isNotEmpty) {
                       return null;
                     } else {
                       return LocaleKeys.Enter_a_valid_Contact_number.tr();
