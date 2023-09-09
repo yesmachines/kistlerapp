@@ -17,10 +17,10 @@ class CodegenLoader extends AssetLoader{
   static const Map<String,dynamic> de = {
   "get_started": "Loslegen",
   "accessories": "Zubehör",
-  "technical_diagram": "Technische Zeichnung",
+  "technical_diagram": "Technisches Diagramm",
   "application_images": "Anwendungsbilder",
-  "application": "Anwendung",
-  "specificattion": "Spezifikation",
+  "application": "Anwendungen",
+  "specification": "Spezifikation",
   "share": "Teilen",
   "download": "Herunterladen",
   "catalogue": "Katalog",
@@ -41,7 +41,7 @@ class CodegenLoader extends AssetLoader{
   "contact_number": "Kontaktnummer",
   "email_address": "E-Mail-Adresse",
   "contact_name": "Kontaktname",
-  "conpany_name": "Firmenname",
+  "conpany_name": "Unternehmen",
   "find_the_solution_with_us": "Finden Sie Lösungen mit uns",
   "custom_made_solution": "Maßgeschneiderte Lösungen",
   "enquiry": "Anfrage",
@@ -52,7 +52,7 @@ class CodegenLoader extends AssetLoader{
   "welding": "Schweißen",
   "select_model": "Modell auswählen",
   "t_and_c": "Allgemeine Geschäftsbedingungen",
-  "Log_in": "Einloggen",
+  "Log_in": "Anmeldung",
   "user_id": "Benutzer-ID",
   "password": "Passwort",
   "safe1": "Sie sind völlig sicher",
@@ -84,13 +84,13 @@ class CodegenLoader extends AssetLoader{
   "First_Name": "Vorname",
   "Middle_Name": "Zweiter Vorname",
   "Last_Name": "Nachname",
-  "Designation": "Bezeichnung",
+  "Designation": "Berufsbezeichnung",
   "Contact": "Kontakt nummer",
   "Account_Details": "Kontodetails",
   "QR": "Laden Sie Ihren QR-Code hier hoch",
   "Update": "Aktualisieren",
   "cancel": "Abbrechen",
-  "send": "Senden",
+  "send": "Schicken",
   "confirm_password": "Kennwort Bestätigen",
   "change_password": "Kennwort ändern",
   "full_name": "Vollständiger Name",
@@ -122,15 +122,16 @@ class CodegenLoader extends AssetLoader{
   "password_must_contain_8_character": "Das Passwort muss 8 Zeichen enthalten",
   "camera": "Kamera",
   "gallery": "Galerie",
-  "login_failed_try_again": "Anmeldung fehlgeschlagen, versuchen Sie es erneut."
+  "login_failed_try_again": "Anmeldung fehlgeschlagen, versuchen Sie es erneut.",
+  "extra_charge_for_parts": "Mehrpreis für teile"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
   "accessories": "Accessories",
   "technical_diagram": "Technical Diagram",
   "application_images": "Application Images",
-  "application": "Application",
-  "specificattion": "specificattion",
+  "application": "Applications",
+  "specification": "Specification",
   "share": "Share",
   "download": "Download",
   "catalogue": "Catalogue",
@@ -232,7 +233,8 @@ static const Map<String,dynamic> en = {
   "password_must_contain_8_character": "Password must contain 8 character",
   "camera": "Camera",
   "gallery": "Gallery",
-  "login_failed_try_again": "Login Failed, try again."
+  "login_failed_try_again": "Login Failed, try again.",
+  "extra_charge_for_parts": "Extra charge for parts"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

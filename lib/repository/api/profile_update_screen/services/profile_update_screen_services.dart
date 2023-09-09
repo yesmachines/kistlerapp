@@ -19,9 +19,12 @@ class ProfileUpdateScreenServices {
       File? qrImage,
       String? linkedin,
       required Locale language}) async {
+    final header =
+        ApiHelper.getApiHeader(access: await AppUtils.getAccessKey());
+    print(header);
     final userId = await AppUtils.getUserId();
     var url = Uri.parse(
-        "https://bigleap.tech/apiKistler/public/api/v1/${language.languageCode}/profile-update/$userId"); // Replace with your API endpoint
+        "https://api.kistler-machine.com/api/v1/${language.languageCode}/profile-update/$userId"); // Replace with your API endpoint
 
     try {
       // Prepare the request body

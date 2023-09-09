@@ -3,8 +3,8 @@
     "accessories": "Accessories",
     "technical_diagram": "Technical Diagram",
     "application_images": "Application Images",
-    "application": "Application",
-    "specificattion": "specificattion",
+    "application": "Applications",
+    "specification": "Specification",
     "share": "Share",
     "download": "Download",
     "catalogue": "Catalogue",
@@ -106,5 +106,6 @@
     "password_must_contain_8_character": "Password must contain 8 character",
     "camera": "Camera",
     "gallery": "Gallery",
-    "login_failed_try_again": "Login Failed, try again."
+    "login_failed_try_again": "Login Failed, try again.",
+    "extra_charge_for_parts": "Extra charge for parts"
 }

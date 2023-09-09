@@ -6,7 +6,7 @@ abstract class  LocaleKeys {
   static const technical_diagram = 'technical_diagram';
   static const application_images = 'application_images';
   static const application = 'application';
-  static const specificattion = 'specificattion';
+  static const specification = 'specification';
   static const share = 'share';
   static const download = 'download';
   static const catalogue = 'catalogue';
@@ -109,5 +109,6 @@ abstract class  LocaleKeys {
   static const camera = 'camera';
   static const gallery = 'gallery';
   static const login_failed_try_again = 'login_failed_try_again';
+  static const extra_charge_for_parts = 'extra_charge_for_parts';
 
 }

@@ -57,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 25,
                         ),
                         TextFormField(
+                          textCapitalization: TextCapitalization.none,
                           controller: _emailController,
                           decoration: InputDecoration(
                             //  isDense: true,
