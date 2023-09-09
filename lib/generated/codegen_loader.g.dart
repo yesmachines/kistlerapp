@@ -123,7 +123,8 @@ class CodegenLoader extends AssetLoader{
   "camera": "Kamera",
   "gallery": "Galerie",
   "login_failed_try_again": "Anmeldung fehlgeschlagen, versuchen Sie es erneut.",
-  "extra_charge_for_parts": "Mehrpreis für teile"
+  "extra_charge_for_parts": "Mehrpreis für teile",
+  "options_accessories": "Optionen/Zusatzgeräte"
 };
 static const Map<String,dynamic> en = {
   "get_started": "Get Started",
@@ -234,7 +235,8 @@ static const Map<String,dynamic> en = {
   "camera": "Camera",
   "gallery": "Gallery",
   "login_failed_try_again": "Login Failed, try again.",
-  "extra_charge_for_parts": "Extra charge for parts"
+  "extra_charge_for_parts": "Extra charge for parts",
+  "options_accessories": "Options/Accessories"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }

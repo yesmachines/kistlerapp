@@ -110,5 +110,6 @@ abstract class  LocaleKeys {
   static const gallery = 'gallery';
   static const login_failed_try_again = 'login_failed_try_again';
   static const extra_charge_for_parts = 'extra_charge_for_parts';
+  static const options_accessories = 'options_accessories';
 
 }
