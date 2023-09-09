@@ -323,7 +323,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ? Align(
                                       alignment: Alignment.topLeft,
                                       child: Text(
-                                        "${LocaleKeys.specificattion.tr()} :",
+                                        "${LocaleKeys.specification.tr()} :",
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
