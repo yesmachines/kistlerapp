@@ -128,7 +128,7 @@ class _ExpansionTileRefactorState extends State<ExpansionTileRefactor> {
                 ),
                 widget.extrasList.isNotEmpty
                     ? Text(
-                        LocaleKeys.extra_charge_for_parts.tr(),
+                        LocaleKeys.options_accessories.tr(),
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       )

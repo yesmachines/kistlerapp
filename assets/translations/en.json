@@ -107,5 +107,6 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "login_failed_try_again": "Login Failed, try again.",
-    "extra_charge_for_parts": "Extra charge for parts"
+    "extra_charge_for_parts": "Extra charge for parts",
+    "options_accessories": "Options/Accessories"
 }
