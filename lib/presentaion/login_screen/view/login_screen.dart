@@ -494,6 +494,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
+                        SizedBox(
+                          height: 30,
+                        ),
                       ],
                     ),
                   ),
