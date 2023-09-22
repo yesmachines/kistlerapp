@@ -251,6 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_heading.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerBrandGreen,
                               fontWeight: FontWeight.bold,
                               fontSize: 16),
@@ -261,6 +262,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_start_content_1.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -270,6 +272,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_start_content_2.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -279,6 +282,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_start_content_3.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -288,6 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_1.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -297,6 +302,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_2.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -306,6 +312,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_3.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -315,6 +322,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_4.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -324,6 +332,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_5.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -333,6 +342,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_6.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -342,6 +352,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_7.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -351,6 +362,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_8.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -360,6 +372,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_9.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -369,6 +382,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_10.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -378,6 +392,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_11.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -387,6 +402,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_12.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -396,6 +412,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.privacy_point_13.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -414,6 +431,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.terms_1.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -423,6 +441,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.terms_2.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -441,6 +460,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.terms_4.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -450,6 +470,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.terms_5.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -459,6 +480,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.terms_6.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
@@ -468,6 +490,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         HtmlWidget(
                           LocaleKeys.terms_7.tr(),
                           textStyle: TextStyle(
+                              height: 1.5,
                               color: ColorConstant.kistlerTextBlack,
                               fontSize: 12),
                         ),
