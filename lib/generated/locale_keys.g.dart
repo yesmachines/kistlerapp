@@ -111,5 +111,30 @@ abstract class  LocaleKeys {
   static const login_failed_try_again = 'login_failed_try_again';
   static const extra_charge_for_parts = 'extra_charge_for_parts';
   static const options_accessories = 'options_accessories';
+  static const privacy_heading = 'privacy_heading';
+  static const privacy_start_content_1 = 'privacy_start_content_1';
+  static const privacy_start_content_2 = 'privacy_start_content_2';
+  static const privacy_start_content_3 = 'privacy_start_content_3';
+  static const privacy_point_1 = 'privacy_point_1';
+  static const privacy_point_2 = 'privacy_point_2';
+  static const privacy_point_3 = 'privacy_point_3';
+  static const privacy_point_4 = 'privacy_point_4';
+  static const privacy_point_5 = 'privacy_point_5';
+  static const privacy_point_6 = 'privacy_point_6';
+  static const privacy_point_7 = 'privacy_point_7';
+  static const privacy_point_8 = 'privacy_point_8';
+  static const privacy_point_9 = 'privacy_point_9';
+  static const privacy_point_10 = 'privacy_point_10';
+  static const privacy_point_11 = 'privacy_point_11';
+  static const privacy_point_12 = 'privacy_point_12';
+  static const privacy_point_13 = 'privacy_point_13';
+  static const privacy_point_14 = 'privacy_point_14';
+  static const terms_1 = 'terms_1';
+  static const terms_2 = 'terms_2';
+  static const terms_3 = 'terms_3';
+  static const terms_4 = 'terms_4';
+  static const terms_5 = 'terms_5';
+  static const terms_6 = 'terms_6';
+  static const terms_7 = 'terms_7';
 
 }

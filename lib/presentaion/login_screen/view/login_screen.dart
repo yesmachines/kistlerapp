@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/core/image_constant/images.dart';
@@ -204,11 +205,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         LocaleKeys.safe1.tr(),
                       ),
-                      Text(
-                        LocaleKeys.safe2.tr(),
-                        style: TextStyle(
-                            color: ColorConstant.kistlerBrandGreen,
-                            fontSize: 13),
+                      InkWell(
+                        onTap: () => termsAndConditionSheet(context),
+                        child: Text(
+                          LocaleKeys.safe2.tr(),
+                          style: TextStyle(
+                              color: ColorConstant.kistlerBrandGreen,
+                              fontSize: 13),
+                        ),
                       ),
                       SizedBox(
                         height: 50,
@@ -222,5 +226,256 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> termsAndConditionSheet(BuildContext context) {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        context: context,
+        builder: (context) => Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 30,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_heading.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerBrandGreen,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_start_content_1.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_start_content_2.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_start_content_3.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_1.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_2.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_3.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_4.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_5.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_6.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_7.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_8.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_9.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_10.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_11.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_12.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_13.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.privacy_point_14.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_1.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_2.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_3.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_4.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_5.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_6.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        HtmlWidget(
+                          LocaleKeys.terms_7.tr(),
+                          textStyle: TextStyle(
+                              color: ColorConstant.kistlerTextBlack,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ));
   }
 }
