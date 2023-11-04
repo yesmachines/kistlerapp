@@ -55,12 +55,12 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 2
+        versionName "1.0.1"
         multiDexEnabled true
     }
 
-     signingConfigs {
+   signingConfigs {
        release {
            keyAlias keystoreProperties['keyAlias']
            keyPassword keystoreProperties['keyPassword']
@@ -71,11 +71,9 @@ android {
    buildTypes {
        release {
            signingConfig signingConfigs.release
-           ndk {
-                debugSymbolLevel 'SYMBOL_TABLE'
-            }
        }
    }
+
 
 }
 

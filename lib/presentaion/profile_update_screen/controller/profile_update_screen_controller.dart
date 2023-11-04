@@ -7,6 +7,7 @@ import 'package:kistler/core/app_utils/app_utils.dart';
 import 'package:kistler/core/constants.dart/color.dart';
 import 'package:kistler/generated/locale_keys.g.dart';
 import 'package:kistler/repository/api/profile_update_screen/services/profile_update_screen_services.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfileUpdateScreenController extends ChangeNotifier {
   bool isSuccess = false;
@@ -102,6 +103,54 @@ class ProfileUpdateScreenController extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  // selectProfileImage(
+  //     {required ImageSource source, required BuildContext context}) async {
+  //   if (source == ImageSource.camera) {
+  //     var status = await Permission.camera.request();
+  //     if (status.isGranted) {
+  //       profileImgeFile = await getImage(source: source);
+  //     } else {
+  //       AppUtils.oneTimeSnackBar("Camera permission denied", context: context);
+  //       return;
+  //     }
+  //   } else if (source == ImageSource.gallery) {
+  //     var status = await Permission.photos.request();
+  //     if (status.isGranted) {
+  //       profileImgeFile = await getImage(source: source);
+  //     } else {
+  //       AppUtils.oneTimeSnackBar("Gallery permission denied", context: context);
+  //       return;
+  //     }
+  //   }
+
+  //   if (profileImgeFile != null) {
+  //     AppUtils.oneTimeSnackBar("Image uploaded successfully",
+  //         context: context, bgColor: ColorConstant.kistlerBrandGreen);
+  //   } else {
+  //     AppUtils.oneTimeSnackBar("Failed to upload image", context: context);
+  //   }
+  //   notifyListeners();
+  // }
+
+  // selectQrImage(
+  //     {required ImageSource source, required BuildContext context}) async {
+  //   var galleryStatus = await Permission.photos.request();
+  //   if (galleryStatus.isGranted) {
+  //     qrImgeFile = await getImage(source: ImageSource.gallery);
+  //   } else {
+  //     AppUtils.oneTimeSnackBar("Gallery permission denied", context: context);
+  //     return;
+  //   }
+
+  //   if (qrImgeFile != null) {
+  //     AppUtils.oneTimeSnackBar("Image uploaded successfully",
+  //         context: context, bgColor: ColorConstant.kistlerBrandGreen);
+  //   } else {
+  //     AppUtils.oneTimeSnackBar("Failed to upload image", context: context);
+  //   }
+  //   notifyListeners();
+  // }
 
   onPasswordVisibilityPressed() {
     isPasswordVissible = !isPasswordVissible;

@@ -180,44 +180,6 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
               ],
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          //   child: Row(
-          //     children: [
-          //       SizedBox(
-          //         width: 120,
-          //         child: Text(
-          //           LocaleKeys.Middle_Name.tr(),
-          //           style: TextStyle(fontWeight: FontWeight.bold),
-          //         ),
-          //       ),
-          //       SizedBox(width: 15),
-          //       Expanded(
-          //         child: TextfieldRefactor(
-          //             controller: _midddleNameController, name: "", length: 1),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          //   child: Row(
-          //     children: [
-          //       SizedBox(
-          //         width: 120,
-          //         child: Text(
-          //           LocaleKeys.Last_Name.tr(),
-          //           style: TextStyle(fontWeight: FontWeight.bold),
-          //         ),
-          //       ),
-          //       SizedBox(width: 15),
-          //       Expanded(
-          //         child: TextfieldRefactor(
-          //             controller: _lastNameController, name: "", length: 1),
-          //       ),
-          //     ],
-          //   ),
-          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Row(
@@ -310,7 +272,6 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
           SizedBox(
             height: 30,
           ),
-
           CustomPasswordTextField(
             titleText: LocaleKeys.password.tr(),
             formKey: passFormKey,
